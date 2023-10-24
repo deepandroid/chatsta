@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MyCustomTextView">
+        <attr name="setTypeFace" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="GroupRecyclerView">
+        <attr name="group_height" format="dimension"/>
+        <attr name="group_child_offset" format="dimension"/>
+        <attr name="group_background" format="color"/>
+        <attr name="group_text_color" format="color"/>
+        <attr name="group_text_size" format="dimension"/>
+        <attr name="group_center" format="boolean"/>
+        <attr name="group_padding_left" format="dimension"/>
+        <attr name="group_padding_right" format="dimension"/>
+        <attr name="group_has_header" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="MyCustomEdittext">
+        <attr name="setFontType" format="string"/>
+    </declare-styleable>
+
+    <!--Button style-->
+    <eat-comment>"Button style"</eat-comment>
+    <declare-styleable name="MyCustomButton">
+        <attr name="setCustomFontType" format="string"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="CircularProgressBar">
+        <attr name="maximum" format="float"/>
+        <attr name="progress" format="float"/>
+        <attr name="animateProgress" format="boolean"/>
+        <attr name="progressAnimationDuration" format="integer"/>
+        <attr name="foregroundStrokeColor" format="color"/>
+        <attr name="foregroundStrokeWidth" format="dimension"/>
+        <attr name="drawBackgroundStroke" format="boolean"/>
+        <attr name="backgroundStrokeColor" format="color"/>
+        <attr name="backgroundStrokeWidth" format="dimension"/>
+        <attr name="startAngle" format="float"/>
+        <attr name="indeterminate" format="boolean"/>
+        <attr name="indeterminateMinimumAngle" format="float"/>
+        <attr name="indeterminateSweepAnimationDuration" format="integer"/>
+        <attr name="indeterminateRotationAnimationDuration" format="integer"/>
+        <attr name="foregroundStrokeCap" format="enum">
+            <enum name="butt" value="0"/>
+            <enum name="round" value="1"/>
+            <enum name="square" value="2"/>
+        </attr>
+    </declare-styleable>
+
+
+        <declare-styleable name="SimpleSwipeMenuLayout">
+            <attr name="menuSide" format="enum">
+                <enum name="Left" value="1"/>
+                <enum name="Right" value="0"/>
+            </attr>
+            <attr name="dynamicMenuWidth" format="boolean"/>
+        </declare-styleable>
+
+    <declare-styleable name="SelectableRoundedImageView">
+        <attr name="sriv_left_top_corner_radius" format="dimension" />
+        <attr name="sriv_right_top_corner_radius" format="dimension" />
+        <attr name="sriv_left_bottom_corner_radius" format="dimension" />
+        <attr name="sriv_right_bottom_corner_radius" format="dimension" />
+        <attr name="sriv_border_width" format="dimension" />
+        <attr name="sriv_border_color" format="color" />
+        <attr name="sriv_oval" format="boolean" />
+        <attr name="android:scaleType" />
+    </declare-styleable>
+
+
+    <declare-styleable name="Slidr">
+        <attr name="slidr_barHeight" format="dimension" />
+        <attr name="slidr_textTop_visible" format="boolean" />
+        <attr name="slidr_textTop_size" format="dimension" />
+        <attr name="slidr_textBottom_visible" format="boolean" />
+        <attr name="slidr_textBottom_size" format="dimension" />
+        <attr name="slidr_backgroundColor" format="color" />
+        <attr name="slidr_indicator_color" format="color" />
+
+        <attr name="slidr_step_colorizeAfterLast" format="boolean" />
+        <attr name="slidr_step_drawLine" format="boolean" />
+        <attr name="slidr_step_colorizeOnlyBeforeIndicator" format="boolean" />
+
+        <attr name="slidr_draw_bubble" format="boolean" />
+
+        <attr name="slidr_regions" format="boolean" />
+        <attr name="slidr_regions_centerText" format="boolean" />
+        <attr name="slidr_regions_textFollowRegionColor" format="boolean" />
+        <attr name="slidr_region_leftColor" format="color" />
+        <attr name="slidr_region_rightColor" format="color" />
+
+        <attr name="slidr_indicator_inside" format="boolean" />
+        <attr name="slidr_edditable" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomDottedProgressBar">
+        <attr name="dot_color" format="color"/>
+        <attr name="duration" format="integer"/>
+    </declare-styleable>
+
+</resources>

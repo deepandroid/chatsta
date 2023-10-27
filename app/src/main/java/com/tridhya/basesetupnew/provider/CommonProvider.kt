@@ -1,27 +1,20 @@
 package com.tridhya.basesetupnew.provider
 
 import android.content.Context
-import android.content.pm.PackageManager
-import android.os.Build
-import androidx.core.content.pm.PackageInfoCompat
+
 import androidx.databinding.PropertyChangeRegistry
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.intuit.sdp.BuildConfig
 
-import com.tridhya.basesetupnew.R
 import com.tridhya.basesetupnew.Service.ApiInterface
 import com.tridhya.basesetupnew.Service.HeaderLoggingIntercepter
 import com.tridhya.basesetupnew.Service.NetworkConstants
-import com.tridhya.basesetupnew.Service.NetworkStatusInterceptor
-import com.tridhya.basesetupnew.database.BrifecaseDataBase
 import com.tridhya.basesetupnew.utils.Constant
-import com.tridhya.basesetupnew.utils.Constant.APP_NAME
-import com.tridhya.basesetupnew.utils.Constant.DEVICE_MODEL
+
 import com.tridhya.basesetupnew.utils.Constant.SHARED_COMMON
-import com.tridhya.basesetupnew.utils.Constant.VERSION_CODE
-import com.tridhya.basesetupnew.utils.Constant.VERSION_NAME
 import com.tridhya.basesetupnew.utils.PrefUtils
+
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -41,24 +34,6 @@ import javax.inject.Singleton
 object CommonProvider {
 
 
-    @Singleton
-    @Provides
-    @Named(APP_NAME)
-    fun provideAppName(
-        @ApplicationContext context: Context
-    ): String {
-        return context.getString(R.string.app_name)
-    }
-
-    @Singleton
-    @Provides
-    @Named(DEVICE_MODEL)
-    fun provideDeviceModel(): String {
-        val manufacturer = Build.MANUFACTURER
-        val model = Build.MODEL
-        return "$manufacturer $model"
-    }
-
 
     @Singleton
     @Named(SHARED_COMMON)
@@ -71,38 +46,9 @@ object CommonProvider {
     fun providesPropertyChangeRegistry(): PropertyChangeRegistry = PropertyChangeRegistry()
 
 
-//    @Singleton
-//    @Provides
-//    fun providesFirebaseAnalytics(@ApplicationContext context: Context): FirebaseAnalytics =
-//        FirebaseAnalytics.getInstance(context)
 
-    @Singleton
-    @Provides
-    @Named(VERSION_CODE)
-    fun providesVersionCode(@ApplicationContext context: Context): String {
-        val packageInfo = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            context.packageManager.getPackageInfo(
-                context.packageName, PackageManager.PackageInfoFlags.of(0)
-            )
-        } else {
-            context.packageManager.getPackageInfo(context.packageName, 0)
-        }
-        return PackageInfoCompat.getLongVersionCode(packageInfo).toString()
-    }
 
-    @Singleton
-    @Provides
-    @Named(VERSION_NAME)
-    fun providesVersionName(@ApplicationContext context: Context): String {
-        val packageInfo = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            context.packageManager.getPackageInfo(
-                context.packageName, PackageManager.PackageInfoFlags.of(0)
-            )
-        } else {
-            context.packageManager.getPackageInfo(context.packageName, 0)
-        }
-        return packageInfo.versionName
-    }
+
 
     @Singleton
     @Provides
@@ -114,7 +60,7 @@ object CommonProvider {
     @Named(Constant.OK_HTTPS)
     fun providesOkHttpClient(
         @ApplicationContext context: Context,
-        brifecaseDataBase: BrifecaseDataBase,
+
         @Named(Constant.GSON) gson: Gson,
 
         @Named(SHARED_COMMON) preference: PrefUtils

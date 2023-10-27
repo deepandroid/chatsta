@@ -7,7 +7,7 @@ import com.tridhya.basesetupnew.R
 import com.tridhya.basesetupnew.base.ActivityBase
 import com.tridhya.basesetupnew.Service.Status
 import com.tridhya.basesetupnew.databinding.ActivityRegisterBinding
-import com.tridhya.basesetupnew.response.Register.RegisterResponse
+import com.tridhya.basesetupnew.Model.response.Register.RegisterResponse
 import com.tridhya.basesetupnew.utils.Constant
 import com.tridhya.basesetupnew.utils.Constant.smallToast
 
@@ -61,16 +61,14 @@ class RegisterActivity : ActivityBase() {
                         }
 
 //                        )
-                        Log.d("TAG", "observer: "+"correct")
+
                     } else {
-                        Log.d("TAG", "observer: "+"wrong")
+
                         smallToast(getString(R.string.wrongCredential))
                     }
                 }
 
-                Status.UNAUTHORISED -> {
-                    logout()
-                }
+
 
                 Status.ERROR -> {
                     smallToast(it.localError.toString())

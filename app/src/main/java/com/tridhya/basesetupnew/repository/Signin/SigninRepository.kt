@@ -8,7 +8,7 @@ import com.tridhya.basesetupnew.Service.ApiState
 import com.tridhya.basesetupnew.Service.NetworkConstants
 import com.tridhya.basesetupnew.Service.NetworkConstants.getApiStateResponseStatus
 import com.tridhya.basesetupnew.Service.ResponseState
-import com.tridhya.basesetupnew.request.LoginRequest
+import com.tridhya.basesetupnew.Model.request.LoginRequest
 import com.tridhya.basesetupnew.utils.Constant
 import com.tridhya.basesetupnew.utils.PrefUtils
 import retrofit2.Response
@@ -21,20 +21,17 @@ class SigninRepository @Inject constructor(
 ) {
     suspend fun userSignin(
         parent: View?,
-        username: String,
-        password: String,
+
         isSuccessMessageShow: Boolean,
         isFailureMessageShow: Boolean,
         loginRequest: LoginRequest
     ): ApiState {
-        // Log.d("TAG", "userSignin: "+username+"pass"+password)
+
         val responseData: ResponseState?
         if (Constant.isNetWork(parent!!.context)) {
-            val response = apiClient.signin(username = username, password = password,loginRequest)
+            val response = apiClient.signin(loginRequest)
             val responseBody = response.body()
-            Log.d(
-                "TAG", "userSignin: " + Gson().toJson(response.raw().headers)
-            )
+
             val responseMessage = response.message() ?: NetworkConstants.ErrorMsg.SOMETHING_WENT_WRONG
             responseData =
                 ResponseState(
@@ -47,7 +44,7 @@ class SigninRepository @Inject constructor(
                     isSuccessMessageShow = isSuccessMessageShow
 
                 )
-            // Log.d("TAG", "userSignin: "+ response..toString())
+
         } else
             responseData =
                 ResponseState(

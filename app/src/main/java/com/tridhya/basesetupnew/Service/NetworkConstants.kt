@@ -54,34 +54,34 @@ object NetworkConstants {
 
                     else -> {
                         if (isNetworkAvailable == false) {
-                            val getDataFromDatabase = funListener.invoke(Constant.GET_DATA_IN_DATABASE, null)
-                            if (getDataFromDatabase != null) {
-                                Constant.logI(
-                                    "TAG",
-                                    "getApiStateResponseStatus: get Data,--> $getDataFromDatabase"
-                                )
-                                responseBody = getDataFromDatabase
-                                apiStatus = ApiCode.SUCCESS_CODE
-
-                            } else {
+                           // val getDataFromDatabase = funListener.invoke(Constant.GET_DATA_IN_DATABASE, null)
+//                            if (getDataFromDatabase != null) {
+//                                Constant.logI(
+//                                    "TAG",
+//                                    "getApiStateResponseStatus: get Data,--> $getDataFromDatabase"
+//                                )
+//                                responseBody = getDataFromDatabase
+//                                apiStatus = ApiCode.SUCCESS_CODE
+//
+//                            } else {
                                 Constant.smallToastWithContext(
                                     parentView!!.context, ErrorMsg.NO_NETWORK
                                 )
                                 return ApiState(
                                     localError = ErrorMsg.NO_NETWORK, localStatus = Status.ERROR
                                 )
-                            }
+
                         }
                         when (apiStatus) {
                             ApiCode.SUCCESS_CODE -> {
                                 if (isNetworkAvailable == true) {
                                     Constant.logI("TAG", "getApiStateResponseStatus: delete")
-                                    funListener.invoke(Constant.DELETE_DATA_IN_DATABASE, null)
+                                   // funListener.invoke(Constant.DELETE_DATA_IN_DATABASE, null)
                                     responseBody?.let {
                                         Constant.logI("TAG", "getApiStateResponseStatus: insert")
-                                        funListener.invoke(
-                                            Constant.INSERT_DATA_IN_DATABASE, responseBody
-                                        )
+//                                        funListener.invoke(
+//                                            Constant.INSERT_DATA_IN_DATABASE, responseBody
+//                                        )
                                     }
                                 }
                                 if (parentView != null && isSuccessMessageShow == true) Constant.smallToastWithContext(
@@ -175,11 +175,9 @@ object NetworkConstants {
         responseState: ResponseState?, prefUtils: PrefUtils
     ): ApiState {
         responseState.apply {
-//            Log.d("TAG", "getApiStateResponseStatus: "+"inside")
             when (this) {
 
                 null -> {
-                    //Log.d("TAG", "getApiStateResponseStatus: "+"null")
                     return ApiState(
                         localStatus = Status.ERROR, localError = ErrorMsg.SOMETHING_WENT_WRONG
                     )

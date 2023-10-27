@@ -64,28 +64,10 @@ import kotlin.system.exitProcess
 
 @SuppressLint("SdCardPath", "StaticFieldLeak")
 object Constant {
-    const val TIME_ZONE = "TimeZone"
-    const val DEVICE_ID = "DeviceId"
-    const val APPLICATION_ID = "ApplicationId"
-    const val APP_NAME = "AppName"
+
+
+
     const val SHARED_COMMON = "SharedCommon"
-    const val USER_ID = "UserId"
-    const val DEVICE_MODEL = "DeviceModel"
-    const val LOGIN_USER_NAME = "loginUserName"
-    const val LOGIN_PINCODE = "loginPincode"
-    const val VERSION_CODE = "versionCode"
-    const val VERSION_NAME = "versionName"
-    const val databaseNameTest = "Firebase-Analytics-Test"
-
-
-    // Database Details
-    const val DATABASE_NAME = "BrifecaseDatabase"
-
-
-    const val DatabaseVersion = 11
-
-
-    // Service Details
     const val BASE_URL = "BaseUrl"
     const val API_CLIENT = "ApiClient"
     const val OK_HTTPS = "okHttps"
@@ -93,33 +75,12 @@ object Constant {
     const val SERVICE_FOR_LOGIN_GSON = "ServiceForLoginGson"
     const val SERVICE_WITH_GSON = "ServiceWithGson"
     const val SERVICE_WITH_GSON_SIGNIN = "ServiceWithGsonSignIN"
-
-    const val AUTHORIZATION_KEY =
-        "Key=Z1kIE-gMhWtkEsAeBIVtuvEbjjOrYCIk6Z3UZCaA4sScng7gLNlTYivrGCb2Jdo2-4LMZMAC6y1IqMKOADAZSw"
-
-
     const val IS_LOGIN = "isLogin"
     const val LOGOUT_SCREEN = "logoutScreen"
     const val LOGOUT = "logout"
-    const val DELETE_DATA_IN_DATABASE = 0
-    const val INSERT_DATA_IN_DATABASE = 1
-    const val GET_DATA_IN_DATABASE = 2
-    const val PERMISSION_INTENT_REQ_CODE = 4282
-
-    // Table Name
     const val TABLE_LOGIN = "UserData"
-
-    const val TABLE_ORDER_SELECTED_PRODUCT_LIST = "OrderSelectedProductList"
-    const val TABLE_ORDER_SELECTED_CUSTOMER_LIST = "OrderSelectedCustomerList"
-    const val TABLE_ORDER_DRAFT_LIST = "OrderDraftList"
-    const val TABLE_CUSTOMER_SPECIAL_PRICE_DRAFT_LIST = "CustomerSpecialPriceDraftList"
-    const val TABLE_BACKUP_RESTORE = "BackUpRestore"
-    const val TABLE_LOGIN_ROLES = "LoginRoles"
-    const val TABLE_HTML_TAGS = "HtmlTags"
     const val INTENT_LOGIN_USER_NAME = "INTENT_LOGIN_USER_NAME"
     const val INTENT_LOGIN_PASSWORD = "INTENT_LOGIN_PASSWORD"
-
-
 
 
     fun getDateFormat(date: String): String {
@@ -155,7 +116,7 @@ object Constant {
 
 
     fun dismissProgress(context: Context) {
-        Log.d("TAG", "getApiStateResponseStatus: "+"inside dismiss dialog")
+
         try {
             if (::dialog.isInitialized && dialog.isShowing) {
                 dialog.dismiss()
@@ -165,10 +126,6 @@ object Constant {
             e.localizedMessage?.let { logE("catch Error", it) }
         }
     }
-
-
-
-
 
 
     private fun getKeyNameFromJson(productsJson: JSONObject): Pair<ArrayList<String>, ArrayList<String>> {
@@ -201,7 +158,6 @@ object Constant {
         }
         return endString.trim()
     }
-
 
 
     fun convertToDoubleString(double: String): String {
@@ -402,8 +358,6 @@ object Constant {
     }
 
 
-
-
     fun String.decodeString(): String {
 
         return try {
@@ -490,9 +444,6 @@ object Constant {
     }
 
 
-
-
-
     private fun copyFile(src: File, dest: File) {
         FileInputStream(src).use { fis ->
             FileOutputStream(dest).use { os ->
@@ -544,34 +495,6 @@ object Constant {
         return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
     }
 
-    fun TextView.counterForLottery(stringDate: String) {
-        val sdf = SimpleDateFormat("yyyy-MM-dd hh:mm aa", Locale.ENGLISH)
-        val endDate = try {
-            sdf.parse(getCurrentDateString() + " " + stringDate) ?: Date()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            Date()
-        }
-
-        val currentStartTime = Date().time
-        val remainingEndInMillis: Long = endDate.time - currentStartTime
-
-        if (remainingEndInMillis > 0) {
-            val countdownEndTimer =
-                object : CountDownTimer(kotlin.math.abs(remainingEndInMillis), 1) {
-                    override fun onTick(millisUntilFinished: Long) {
-                        this@counterForLottery.timerConversion(millisUntilFinished)
-                    }
-
-                    override fun onFinish() {
-                        this@counterForLottery.text = "CutOff time Ended"
-                    }
-                }
-            countdownEndTimer.start()
-        } else {
-            this@counterForLottery.text = "CutOff time Ended"
-        }
-    }
 
     fun TextView.timerConversion(millisUntilFinished: Long) {
         val seconds = (millisUntilFinished / 1000) % 60
@@ -590,9 +513,6 @@ object Constant {
         else if (seconds > 0) "$newSec"
         else "${newDay}d : $newHours : $newMin : $newSec"
     }
-
-
-
 
 
     fun Double?.changeDoubleToStringWith2Decimal(): String {

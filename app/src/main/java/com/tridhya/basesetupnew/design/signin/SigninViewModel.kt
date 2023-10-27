@@ -15,7 +15,7 @@ import com.tridhya.basesetupnew.R
 import com.tridhya.basesetupnew.Service.ApiState
 import com.tridhya.basesetupnew.Service.Status
 import com.tridhya.basesetupnew.repository.Signin.SigninRepository
-import com.tridhya.basesetupnew.request.LoginRequest
+import com.tridhya.basesetupnew.Model.request.LoginRequest
 import com.tridhya.basesetupnew.utils.Constant
 import com.tridhya.basesetupnew.utils.PrefUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -28,7 +28,7 @@ class SigninViewModel @Inject constructor(
     val repository: SigninRepository,
     private val propertyChangeRegistry: PropertyChangeRegistry,
     @Named(Constant.SHARED_COMMON) private val sharedPreferences: PrefUtils
-) :ViewModel(),Observable{
+) : ViewModel(), Observable {
     val parentView: ObservableField<View> = ObservableField()
     private val _signinUserResponse: MutableLiveData<ApiState> = MutableLiveData()
     val signinUserResponse: LiveData<ApiState>
@@ -59,6 +59,7 @@ class SigninViewModel @Inject constructor(
         password.set(pwd)
         propertyChangeRegistry.notifyChange(this, BR.passwordXml)
     }
+
     fun loginUser() {
         if (getEmailXml().isEmpty()) {
             _signinUserResponse.postValue(
@@ -88,21 +89,25 @@ class SigninViewModel @Inject constructor(
             val response = repository.userSignin(
                 parent = parentView.get(),
                 loginRequest = loginRequest,
-                username = getEmailXml(),
-                password = getPasswordXml(),
+
                 isSuccessMessageShow = false,
                 isFailureMessageShow = true
             )
             launch {
-                Log.d("TAG", "getApiStateResponseStatus: "+"inside viemodel"+response.response.toString())
+                Log.d(
+                    "TAG",
+                    "getApiStateResponseStatus: " + "inside viemodel" + response.response.toString()
+                )
                 Constant.dismissProgress(parentView.get()!!.context)
                 _signinUserResponse.postValue(response)
             }
         }
     }
-    fun navigateToRegister(){
+
+    fun navigateToRegister() {
 
     }
+
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
         propertyChangeRegistry.add(callback)
     }

@@ -32,7 +32,7 @@ class HeaderLoggingIntercepter : Interceptor {
             ?.addHeader("Content-Type", "application/json")
             ?.addHeader("Accept", "application/json")
             ?.build()!!
-        Log.d("TAG", "HeaderLoggingIntercepter: " + request)
+
         return chain.proceed(request)
     }
 

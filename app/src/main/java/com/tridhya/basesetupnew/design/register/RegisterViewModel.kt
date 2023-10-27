@@ -15,7 +15,7 @@ import com.tridhya.basesetupnew.R
 import com.tridhya.basesetupnew.Service.ApiState
 import com.tridhya.basesetupnew.Service.Status
 import com.tridhya.basesetupnew.repository.Register.RegisterRepository
-import com.tridhya.basesetupnew.request.RegisterationRequest
+import com.tridhya.basesetupnew.Model.request.RegisterationRequest
 import com.tridhya.basesetupnew.utils.Constant
 import com.tridhya.basesetupnew.utils.PrefUtils
 import dagger.hilt.android.lifecycle.HiltViewModel

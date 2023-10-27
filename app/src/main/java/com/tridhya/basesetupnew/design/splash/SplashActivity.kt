@@ -9,7 +9,6 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.tridhya.basesetupnew.R
 import com.tridhya.basesetupnew.base.ActivityBase
 import com.tridhya.basesetupnew.databinding.ActivitySplashBinding
-import com.tridhya.basesetupnew.design.login.LoginActivity
 import com.tridhya.basesetupnew.design.signin.SigninActivity
 import kotlinx.coroutines.runBlocking
 

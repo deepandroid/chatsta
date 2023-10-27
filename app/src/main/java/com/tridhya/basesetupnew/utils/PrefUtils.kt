@@ -6,7 +6,6 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.tridhya.basesetupnew.R
-import com.tridhya.basesetupnew.utils.Constant.databaseNameTest
 
 class PrefUtils(private val context: Context) {
 
@@ -52,9 +51,7 @@ class PrefUtils(private val context: Context) {
         return prefs.getString(key, "") ?: ""
     }
 
-    fun getStringForFirebase(key: String): String {
-        return prefs.getString(key, "") ?: databaseNameTest
-    }
+
 
     /**
      * Store boolean value

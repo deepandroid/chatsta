@@ -7,7 +7,7 @@ import com.tridhya.basesetupnew.Service.ApiClient
 import com.tridhya.basesetupnew.Service.ApiState
 import com.tridhya.basesetupnew.Service.NetworkConstants
 import com.tridhya.basesetupnew.Service.ResponseState
-import com.tridhya.basesetupnew.request.RegisterationRequest
+import com.tridhya.basesetupnew.Model.request.RegisterationRequest
 import com.tridhya.basesetupnew.utils.Constant
 import com.tridhya.basesetupnew.utils.PrefUtils
 import retrofit2.Response
@@ -21,7 +21,7 @@ class RegisterRepository @Inject constructor(@Named(Constant.GSON) private val g
         parent: View?,
         isSuccessMessageShow: Boolean,
         isFailureMessageShow: Boolean,
-        registerationRequest :RegisterationRequest
+        registerationRequest : RegisterationRequest
     ): ApiState {
         val responseData: ResponseState?
         if (Constant.isNetWork(parent!!.context)) {
@@ -40,7 +40,7 @@ class RegisterRepository @Inject constructor(@Named(Constant.GSON) private val g
                     isSuccessMessageShow = isSuccessMessageShow
 
                 )
-           // Log.d("TAG", "userRegister: "+ responseBody?.modelState?.logEmail.toString())
+
         }else
             responseData =
                 ResponseState(

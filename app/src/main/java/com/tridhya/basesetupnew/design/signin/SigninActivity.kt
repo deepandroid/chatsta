@@ -10,7 +10,7 @@ import com.tridhya.basesetupnew.base.ActivityBase
 import com.tridhya.basesetupnew.Service.Status
 import com.tridhya.basesetupnew.databinding.ActivitySigninBinding
 import com.tridhya.basesetupnew.design.register.RegisterActivity
-import com.tridhya.basesetupnew.response.SignIn.SigninResponse
+import com.tridhya.basesetupnew.Model.response.SignIn.SigninResponse
 import com.tridhya.basesetupnew.utils.Constant
 import com.tridhya.basesetupnew.utils.Constant.smallToast
 
@@ -44,7 +44,7 @@ class SigninActivity : ActivityBase(), View.OnClickListener {
     }
 
     private fun clickListener() {
-        Log.d("TAG", "clickListener: " + "inside")
+
         with(binding) {
             btnRegister.setOnClickListener(this@SigninActivity)
 
@@ -70,9 +70,9 @@ class SigninActivity : ActivityBase(), View.OnClickListener {
                         }
 
 //                        )
-                        Log.d("TAG", "observer: " + "correct")
+
                     } else {
-                        Log.d("TAG", "observer: " + "wrong")
+
                         smallToast(getString(R.string.wrongCredential))
                     }
                 }

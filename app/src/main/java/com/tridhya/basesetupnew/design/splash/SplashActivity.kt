@@ -24,11 +24,10 @@ class SplashActivity : ActivityBase() {
             loginLogic()
         }, 2000)
     }
+
     private fun loginLogic() {
         runBlocking {
-
-            val i =    Intent(this@SplashActivity, SigninActivity::class.java)
-
+            val i = Intent(this@SplashActivity, SigninActivity::class.java)
             startActivity(i)
             finish()
         }

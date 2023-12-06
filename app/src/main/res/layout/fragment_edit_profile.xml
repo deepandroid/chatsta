@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.tridhya.chatsta.design.viewModel.ProfileViewModel" />
+    </data>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:contentInsetStart="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:gravity="center">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvTitle"
+                        style="@style/titleText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/edit_profile" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivClose"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="16dp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="6dp"
+                        android:src="@drawable/ic_back_arrow" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/btnOk"
+                        style="@style/titleText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginEnd="16dp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:text="@string/done"
+                        android:textColor="@color/purple"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="8dp">
+
+                    <include
+                        android:id="@+id/cvAddPhoto1"
+                        layout="@layout/layout_add_photo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1" />
+
+                    <include
+                        android:id="@+id/cvAddPhoto2"
+                        layout="@layout/layout_add_photo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1" />
+
+                    <include
+                        android:id="@+id/cvAddPhoto3"
+                        layout="@layout/layout_add_photo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="8dp"
+                    android:weightSum="3">
+
+                    <include
+                        android:id="@+id/cvAddPhoto4"
+                        layout="@layout/layout_add_photo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1" />
+
+                    <include
+                        android:id="@+id/cvAddPhoto5"
+                        layout="@layout/layout_add_photo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llMain2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include
+                        android:id="@+id/llGender"
+                        layout="@layout/layout_recycler_grid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="10dp"
+                        app:titleText="@{@string/gender}" />
+
+                    <include
+                        android:id="@+id/llRelationshipStatus"
+                        layout="@layout/layout_recycler_grid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="30dp"
+                        app:titleText="@{@string/relationship_status}" />
+
+                    <include
+                        android:id="@+id/llStarSign"
+                        layout="@layout/layout_recycler_grid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="30dp"
+                        app:titleText="@{@string/star_sign}" />
+
+                    <include
+                        android:id="@+id/llBio"
+                        layout="@layout/layout_input_text_multiline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="30dp"
+                        app:lines="@{3}"
+                        app:titleText="@{@string/your_bio}"
+                        app:value="@={viewModel.bio}" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llMain3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include
+                        android:id="@+id/etHeight"
+                        layout="@layout/layout_input_drop_down"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="30dp"
+                        app:hintText="@{@string/tap_to_choose}"
+                        app:titleText="@{@string/height}"
+                        app:value="@={viewModel.height}" />
+
+                    <include
+                        android:id="@+id/llInterest"
+                        layout="@layout/layout_recycler_grid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="30dp"
+                        app:titleText="@{@string/interest}" />
+
+                    <include
+                        android:id="@+id/etQuotes"
+                        layout="@layout/layout_input_text_multiline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="?actionBarSize"
+                        app:lines="@{3}"
+                        app:titleText="@{@string/quotes}"
+                        app:value="@={viewModel.quotes}" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.core.widget.NestedScrollView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

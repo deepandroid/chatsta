@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tbSearch"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/white"
+            android:elevation="0dp"
+            android:theme="@style/AppTheme.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_bg_search"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etSearch"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:drawableStart="@drawable/ic_search_small"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="@string/search_for_connections_or_posts"
+                        android:imeOptions="actionSearch"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:paddingStart="20dp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/pale_purple"
+                        android:textSize="12sp" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivClear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_close_rounded_selected_pale_purple"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@id/editText"
+                        app:layout_constraintEnd_toEndOf="@id/editText"
+                        app:layout_constraintTop_toTopOf="@id/editText" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvCancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="?selectableItemBackground"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:padding="6dp"
+                    android:text="@string/cancel"
+                    android:textColor="@color/purple"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <View
+            android:id="@+id/toolbar_shadow"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/toolbar_drop_shadow" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

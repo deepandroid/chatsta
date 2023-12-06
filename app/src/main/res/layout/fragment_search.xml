@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentInsetStart="0dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivSponsorLogo"
+                        android:layout_width="?actionBarSize"
+                        android:layout_height="?actionBarSize"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_app_small"
+                        android:visibility="gone" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivSponsorAd"
+                        android:layout_width="0dp"
+                        android:layout_height="?actionBarSize"
+                        android:layout_weight="1"
+                        android:scaleType="fitXY"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivStaticSponsor"
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:paddingStart="10dp"
+                    android:src="@drawable/img_header"
+                    android:visibility="gone" />
+
+                <include
+                    android:id="@+id/toolbarSearch"
+                    layout="@layout/toolbar_search" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/sky_blue"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp"
+                    app:cardUseCompatPadding="true">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp">
+
+                        <com.google.android.material.tabs.TabLayout
+                            android:id="@+id/tlSearch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:tabGravity="fill"
+                            app:tabIndicator="@drawable/tab_indicator"
+                            app:tabIndicatorColor="@color/purple"
+                            app:tabMode="fixed"
+                            app:tabPaddingBottom="-10dp"
+                            app:tabSelectedTextColor="@color/purple"
+                            app:tabTextAppearance="@style/tab_text_appearence"
+                            app:tabTextColor="@color/pale_purple">
+
+                            <com.google.android.material.tabs.TabItem
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/feed" />
+
+                            <com.google.android.material.tabs.TabItem
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/public_posts" />
+
+                            <com.google.android.material.tabs.TabItem
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/connections" />
+
+                        </com.google.android.material.tabs.TabLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/sky_blue" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/llFilterType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingVertical="4dp"
+                            android:visibility="invisible">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:includeFontPadding="false"
+                                android:text="@string/sort_by"
+                                android:textColor="@color/pale_purple"
+                                android:textSize="12sp" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvFilterType"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:drawableEnd="@drawable/ic_down_arrow_unselected"
+                                android:drawablePadding="5dp"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:includeFontPadding="false"
+                                android:text="@string/most_recent"
+                                android:textColor="@color/pale_purple"
+                                android:textSize="12sp" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvNotFound"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center"
+                            android:textColor="@color/pale_purple"
+                            android:textSize="14sp"
+                            android:visibility="gone" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.cardview.widget.CardView>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipeRefresh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSearchFeed"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:overScrollMode="never"
+                    android:paddingBottom="90dp"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/item_feed_text" />
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

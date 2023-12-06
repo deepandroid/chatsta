@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="titleText"
+            type="String" />
+
+        <variable
+            name="hintText"
+            type="String" />
+
+        <variable
+            name="value"
+            type="String" />
+
+        <variable
+            name="lines"
+            type="Integer" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/llInputText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_border"
+            android:drawablePadding="5dp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center_horizontal"
+            android:inputType="textMultiLine"
+            android:scrollbarStyle="insideInset"
+            android:scrollbars="vertical"
+            android:overScrollMode="always"
+            android:hint="@{hintText}"
+            android:lines="@{lines}"
+            android:saveEnabled="false"
+            android:padding="15dp"
+            android:text="@={value}"
+            android:textCursorDrawable="@null"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
+            style="@style/info_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_horizontal"
+            android:paddingHorizontal="5dp"
+            android:text="@{titleText}"
+            android:textColor="@drawable/selector_color_grey_purple"
+            app:layout_constraintEnd_toEndOf="@id/editText"
+            app:layout_constraintStart_toStartOf="@id/editText"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

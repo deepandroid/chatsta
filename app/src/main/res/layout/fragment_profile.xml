@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.tridhya.chatsta.Model.User" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/clMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsingToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#E0E0E0"
+                app:contentScrim="#80000000"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <!--                <androidx.appcompat.widget.AppCompatImageView-->
+                <!--                    android:id="@+id/profileImage"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="350dp"-->
+                <!--                    android:scaleType="centerCrop"-->
+                <!--                    app:layout_collapseMode="pin" />-->
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvYourPhotos"
+                    style="@style/info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/your_photos_here"
+                    android:textColor="@color/pale_purple" />
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPagerImages"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:overScrollMode="never"
+                    app:layout_collapseMode="pin" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="26dp"
+                    android:background="@color/transparent"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:overScrollMode="never"
+                    app:tabBackground="@drawable/tab_selector"
+                    app:tabGravity="center"
+                    app:tabIndicatorHeight="0dp" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            app:behavior_overlapTop="20dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="100dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="24dp"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <RelativeLayout
+                        android:id="@+id/profile_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/shape_top_rect_round_bg_bottom_sheet">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/evProfileEmpty"
+                            style="@style/info_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/tvUserName"
+                            android:layout_alignBottom="@id/tvUserName"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginHorizontal="16dp"
+                            android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:text="@string/edit_profile"
+                            android:visibility="invisible" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvUserName"
+                            style="@style/titleText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_toStartOf="@id/evEditProfile"
+                            android:layout_toEndOf="@+id/evProfileEmpty"
+                            android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:text="@{data.username}" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/evEditProfile"
+                            style="@style/info_text_small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/tvUserName"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginHorizontal="16dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:text="@string/edit_profile"
+                            android:textColor="@color/pale_purple" />
+
+                        <LinearLayout
+                            android:id="@+id/location"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tvUserName"
+                            android:layout_marginHorizontal="16dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/address"
+                                style="@style/info_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/ic_location_pin"
+                                android:drawablePadding="10dp"
+                                android:drawableTint="@color/black"
+                                android:gravity="center"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llTotalDonated"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/location"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/subTitleText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:text="@string/total_donated"
+                                app:fontFamily="@font/poppins_medium" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvTotalDonated"
+                                style="@style/subTitleText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:text="@{'$' + String.valueOf(data.totalDonated)}"
+                                app:fontFamily="@font/poppins_medium" />
+
+                        </LinearLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/status"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/llTotalDonated"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/llGender"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical"
+                                android:padding="8dp"
+                                app:layout_constraintEnd_toStartOf="@id/llRelationshipStatus"
+                                app:layout_constraintHorizontal_chainStyle="packed"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/ivGenderImage"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:maxHeight="56dp"
+                                    android:minHeight="56dp"
+                                    android:padding="4dp"
+                                    tools:srcCompat="@drawable/v_ic_female" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/tvGenderName"
+                                    style="@style/info_text_small"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="bottom|center_horizontal"
+                                    android:text="@string/female"
+                                    android:textColor="@drawable/selector_color_grey_purple"
+                                    android:textSize="12sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/llRelationshipStatus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical"
+                                android:padding="8dp"
+                                app:layout_constraintEnd_toStartOf="@id/llStarSign"
+                                app:layout_constraintStart_toEndOf="@id/llGender"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/ivRelationshipStatusImage"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:maxHeight="56dp"
+                                    android:minHeight="56dp"
+                                    android:padding="4dp"
+                                    tools:srcCompat="@drawable/ic_in_relationship" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/tvRelationshipStatusName"
+                                    style="@style/info_text_small"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="bottom|center_horizontal"
+                                    android:text="@string/female"
+                                    android:textColor="@drawable/selector_color_grey_purple"
+                                    android:textSize="12sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/llStarSign"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical"
+                                android:padding="8dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/llRelationshipStatus"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/ivStarSignImage"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:maxHeight="56dp"
+                                    android:minHeight="56dp"
+                                    android:padding="4dp"
+                                    tools:srcCompat="@drawable/ic_star_sign__leo" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/tvStarSignName"
+                                    style="@style/info_text_small"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="bottom|center_horizontal"
+                                    android:text="@string/female"
+                                    android:textColor="@drawable/selector_color_grey_purple"
+                                    android:textSize="12sp" />
+
+                            </LinearLayout>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/status"
+                            android:animateLayoutChanges="true"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:id="@+id/bio"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    style="@style/info_text_semibold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginHorizontal="50dp"
+                                    android:text="@string/bio" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    style="@style/info_text_small"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginHorizontal="50dp"
+                                    android:fontFamily="@font/poppins_regular"
+                                    android:gravity="center"
+                                    android:text="@{data.bio}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/show_more_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <androidx.appcompat.widget.LinearLayoutCompat
+                                    android:id="@+id/llHeight"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        style="@style/info_text_semibold"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="8dp"
+                                        android:text="@string/height" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        style="@style/info_text_small"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:fontFamily="@font/poppins_regular"
+                                        android:gravity="center"
+                                        android:text="@{String.valueOf(data.height)}"
+                                        android:textColor="@color/black" />
+
+                                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                <androidx.appcompat.widget.LinearLayoutCompat
+                                    android:id="@+id/llInterests"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        style="@style/info_text_semibold"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="8dp"
+                                        android:text="@string/interest" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginHorizontal="16dp"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                        <androidx.recyclerview.widget.RecyclerView
+                                            android:id="@+id/recyclerview"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:background="@color/white"
+                                            android:overScrollMode="never"
+                                            android:padding="8dp"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                    </LinearLayout>
+                                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                <androidx.appcompat.widget.LinearLayoutCompat
+                                    android:id="@+id/llQuotes"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        style="@style/info_text_semibold"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:text="@string/quotes" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        style="@style/info_text_small"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginHorizontal="50dp"
+                                        android:fontFamily="@font/poppins_regular"
+                                        android:gravity="center"
+                                        android:text="@{data.quotes}" />
+
+                                </androidx.appcompat.widget.LinearLayoutCompat>
+                            </LinearLayout>
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/show_more_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="12dp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="@string/show_more"
+                                android:textSize="12sp" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvMyConnections"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintTop_toBottomOf="@id/cvProfile">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llConnections"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvTitle"
+                                style="@style/subTitleText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="@string/connections"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvConnectionCount"
+                                style="@style/info_text_small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/pale_purple"
+                                android:textSize="11sp"
+                                android:visibility="gone"
+                                app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+                                app:layout_constraintStart_toEndOf="@id/tvTitle"
+                                app:layout_constraintTop_toTopOf="@id/tvTitle"
+                                tools:text="120" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvRequestCount"
+                                style="@style/info_text_small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableEnd="@drawable/ic_right_arrow_small"
+                                android:drawablePadding="8dp"
+                                android:padding="6dp"
+                                android:textColor="@color/pale_purple"
+                                android:textSize="11sp"
+                                android:visibility="gone"
+                                app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/tvTitle"
+                                tools:text="2 requests" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvConnections"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:overScrollMode="never"
+                            android:visibility="visible" />
+
+                        <!--                        <androidx.appcompat.widget.AppCompatTextView-->
+                        <!--                            android:id="@+id/tvNoConnections"-->
+                        <!--                            style="@style/info_text"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_gravity="center"-->
+                        <!--                            android:gravity="center"-->
+                        <!--                            android:padding="10dp"-->
+                        <!--                            android:text="No Connections"-->
+                        <!--                            android:textSize="11sp"-->
+                        <!--                            android:visibility="gone" />-->
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvMyPosts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintTop_toBottomOf="@id/cvMyConnections">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/subTitleText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="@string/my_posts"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvFeed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:overScrollMode="never"
+                    android:visibility="visible"
+                    app:layout_constraintTop_toBottomOf="@id/cvMyPosts"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/item_feed_text" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

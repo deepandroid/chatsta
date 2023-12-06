@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navgraph"
+    app:startDestination="@id/login">
+
+    <fragment
+        android:id="@+id/register"
+        android:name="com.tridhya.chatsta.design.fragments.RegisterFragment"
+        android:label="Register"
+        tools:layout="@layout/fragment_register">
+
+        <action
+            android:id="@+id/to_login"
+            app:destination="@id/login" />
+        <action
+            android:id="@+id/to_createPin"
+            app:destination="@id/createPin" />
+        <action
+            android:id="@+id/to_register_success"
+            app:destination="@id/registerSuccess"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/navgraph"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerSuccess"
+        android:name="com.tridhya.chatsta.design.fragments.RegisterSuccessFragment"
+        android:label="RegisterSuccess"
+        tools:layout="@layout/fragment_register_success">
+
+        <action
+            android:id="@+id/to_home"
+            app:destination="@id/profile"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/navgraph"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/to_cp_1"
+            app:destination="@id/cpName"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/navgraph"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerComplete"
+        android:name="com.tridhya.chatsta.design.fragments.RegisterCompleteFragment"
+        android:label="RegisterComplete"
+        tools:layout="@layout/fragment_register_complete">
+
+        <action
+            android:id="@+id/to_home"
+            app:destination="@id/profile"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/navgraph"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/login"
+        android:name="com.tridhya.chatsta.design.fragments.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+
+        <action
+            android:id="@+id/to_pin"
+            app:destination="@id/unlockPin" />
+        <action
+            android:id="@+id/to_forgot_pwd"
+            app:destination="@id/forgotPassword" />
+        <action
+            android:id="@+id/to_register"
+            app:destination="@id/register" />
+        <action
+            android:id="@+id/to_home"
+            app:destination="@id/feed"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/navgraph"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/forgotPassword"
+        android:name="com.tridhya.chatsta.design.fragments.ForgotPasswordFragment"
+        android:label="ForgotPassword"
+        tools:layout="@layout/fragment_forgot_password">
+
+        <action
+            android:id="@+id/to_login"
+            app:destination="@id/login" />
+
+        <action
+            android:id="@+id/to_set_new_password"
+            app:destination="@id/setNewPassword" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cpName"
+        android:name="com.tridhya.chatsta.design.fragments.completeProfile.CPNameFragment"
+        android:label="Complete Profile Name"
+        tools:layout="@layout/fragment_cp_name">
+
+        <action
+            android:id="@+id/to_home"
+            app:destination="@id/profile"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/navgraph"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/to_cp_2"
+            app:destination="@id/cpEmailLocation" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/cpEmailLocation"
+        android:name="com.tridhya.chatsta.design.fragments.completeProfile.CPEmailLocationFragment"
+        android:label="Complete Profile Email and Location"
+        tools:layout="@layout/fragment_cp_email_location">
+
+        <action
+            android:id="@+id/to_home"
+            app:destination="@id/profile"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/navgraph"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/to_cp_3"
+            app:destination="@id/cpAddPhotos" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/cpAddPhotos"
+        android:name="com.tridhya.chatsta.design.fragments.completeProfile.CPAddPhotosFragment"
+        android:label="Complete Profile Add Photos"
+        tools:layout="@layout/fragment_cp_add_photos">
+
+        <action
+            android:id="@+id/to_home"
+            app:destination="@id/profile"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/navgraph"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/to_cp_4"
+            app:destination="@id/cpMoreAboutYou" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/cpMoreAboutYou"
+        android:name="com.tridhya.chatsta.design.fragments.completeProfile.CPMoreAboutYouFragment"
+        android:label="Complete Profile More About You"
+        tools:layout="@layout/fragment_cp_more_about_you">
+
+        <action
+            android:id="@+id/to_home"
+            app:destination="@id/profile"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/navgraph"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/to_cp_5"
+            app:destination="@id/cpLastQuestions" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cpLastQuestions"
+        android:name="com.tridhya.chatsta.design.fragments.completeProfile.CPLastQuestionsFragment"
+        android:label="Complete Profile Last Questions"
+        tools:layout="@layout/fragment_cp_last_questions">
+
+        <action
+            android:id="@+id/to_register_complete_fragment"
+            app:destination="@+id/registerComplete" />
+
+        <action
+            android:id="@+id/to_home"
+            app:destination="@id/feed"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/navgraph"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/to_register_success"
+            app:destination="@id/registerSuccess" />
+
+        <action
+            android:id="@+id/to_cp_2"
+            app:destination="@id/cpEmailLocation" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/unlockPin"
+        android:name="com.tridhya.chatsta.design.fragments.PinUnlockFragment"
+        android:label="PinUnlock"
+        tools:layout="@layout/fragment_pin_unlock">
+
+        <action
+            android:id="@+id/to_home"
+            app:destination="@id/feed"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/navgraph"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/createPin"
+        android:name="com.tridhya.chatsta.design.fragments.EnterPinFragment"
+        android:label="CreatePin"
+        tools:layout="@layout/fragment_pin_enter" />
+
+    <fragment
+        android:id="@+id/feed"
+        android:name="com.tridhya.chatsta.design.fragments.FeedFragment"
+        android:label="Feed"
+        tools:layout="@layout/fragment_feed">
+        <action
+            android:id="@+id/to_search"
+            app:destination="@id/search" />
+
+        <action
+            android:id="@+id/to_notifications"
+            app:destination="@id/notifications" />
+
+        <action
+            android:id="@+id/to_user_profile"
+            app:destination="@id/userProfile" />
+
+        <action
+            android:id="@+id/to_profile"
+            app:destination="@id/profile" />
+
+        <action
+            android:id="@+id/to_create_post"
+            app:destination="@id/addPost" />
+
+        <action
+            android:id="@+id/to_User_Comments"
+            app:destination="@id/userComments" />
+    </fragment>
+    <fragment
+        android:id="@+id/search"
+        android:name="com.tridhya.chatsta.design.fragments.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search">
+
+        <action
+            android:id="@+id/to_user_profile"
+            app:destination="@id/userProfile" />
+
+        <action
+            android:id="@+id/to_profile"
+            app:destination="@id/profile" />
+
+        <action
+            android:id="@+id/to_User_Comments"
+            app:destination="@id/userComments" />
+
+        <action
+            android:id="@+id/to_create_post"
+            app:destination="@id/addPost" />
+
+        <action
+            android:id="@+id/to_chat"
+            app:destination="@id/chat" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/addPost"
+        android:name="com.tridhya.chatsta.design.fragments.AddPostFragment"
+        android:label="AddPost"
+        tools:layout="@layout/fragment_create_post">
+
+        <action
+            android:id="@+id/to_feed"
+            app:destination="@id/feed"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/navgraph"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/notification"
+        android:name="com.tridhya.chatsta.design.fragments.notifications.NotificationFragment"
+        android:label="Notification"
+        tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.tridhya.chatsta.design.fragments.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile">
+
+        <action
+            android:id="@+id/to_edit_profile"
+            app:destination="@id/editProfile" />
+
+        <action
+            android:id="@+id/to_my_connections"
+            app:destination="@id/myConnections" />
+
+        <action
+            android:id="@+id/to_user_profile"
+            app:destination="@id/userProfile" />
+
+        <action
+            android:id="@+id/to_User_Comments"
+            app:destination="@id/userComments" />
+
+        <action
+            android:id="@+id/to_create_post"
+            app:destination="@id/addPost" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfile"
+        android:name="com.tridhya.chatsta.design.fragments.EditProfileFragment"
+        android:label="EditProfile"
+        tools:layout="@layout/fragment_edit_profile" />
+    <dialog
+        android:id="@+id/settingsDialog"
+        android:name="com.tridhya.chatsta.design.dialogs.SettingsBottomDialog"
+        android:label="Settings"
+        tools:layout="@layout/layout_settings_dialog">
+
+        <action
+            android:id="@+id/to_account"
+            app:destination="@id/account" />
+
+        <action
+            android:id="@+id/to_transactions"
+            app:destination="@id/transactionsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </dialog>
+    <dialog
+        android:id="@+id/notificationsSettingDialog"
+        android:name="com.tridhya.chatsta.design.dialogs.NotificationsBottomDialog"
+        android:label="NotificationsSettings"
+        tools:layout="@layout/layout_notifications_dialog" />
+    <dialog
+        android:id="@+id/informativePagesDialog"
+        android:name="com.tridhya.chatsta.design.dialogs.cmsPages.InformativePagesBottomDialog"
+        android:label="InformativePages"
+        tools:layout="@layout/layout_informative_pages_dialog" />
+    <fragment
+        android:id="@+id/transactionsFragment"
+        android:name="com.tridhya.chatsta.design.fragments.settings.transactions.TransactionsFragment"
+        android:label="TransactionsFragment"
+        tools:layout="@layout/fragment_transactions">
+
+        <action
+            android:id="@+id/to_amount_due"
+            app:destination="@id/amountDueFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+    <dialog
+        android:id="@+id/membershipBottomDialog"
+        android:name="com.tridhya.chatsta.design.dialogs.membership.MembershipBottomDialog"
+        android:label="MembershipBottomDialog"
+        tools:layout="@layout/layout_membership_bottom_dialog" />
+    <fragment
+        android:id="@+id/amountDueFragment"
+        android:name="com.tridhya.chatsta.design.fragments.settings.transactions.AmountDueFragment"
+        android:label="AmountDueFragment"
+        tools:layout="@layout/fragment_amount_due">
+
+        <action
+            android:id="@+id/to_donation_history"
+            app:destination="@id/donationHistoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/to_stripe_payment"
+            app:destination="@id/stripePaymentFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/donationHistoryFragment"
+        android:name="com.tridhya.chatsta.design.fragments.settings.transactions.DonationHistoryFragment"
+        android:label="DonationHistoryFragment"
+        tools:layout="@layout/fragment_donation_history">
+
+        <action
+            android:id="@+id/to_user_profile"
+            app:destination="@id/userProfile" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/stripePaymentFragment"
+        android:name="com.tridhya.chatsta.design.fragments.settings.transactions.StripePaymentFragment"
+        android:label="StripePaymentFragment"
+        tools:layout="@layout/fragment_stripe_payment" />
+    <dialog
+        android:id="@+id/cmsPagesDialog"
+        android:name="com.tridhya.chatsta.design.dialogs.cmsPages.CMSPagesBottomDialog"
+        android:label="AboutUs"
+        tools:layout="@layout/layout_cms_pages_dialog" />
+    <dialog
+        android:id="@+id/changePinDialog"
+        android:name="com.tridhya.chatsta.design.dialogs.account.ChangePinDialog"
+        android:label="ChangePin"
+        tools:layout="@layout/layout_change_pin">
+
+        <action
+            android:id="@+id/to_create_pin"
+            app:destination="@id/createPin" />
+
+    </dialog>
+
+    <dialog
+        android:id="@+id/requestToBeContentProvider"
+        android:name="com.tridhya.chatsta.design.dialogs.account.RequestForContentProviderDialog"
+        android:label="RequestForContentProviderDialog"
+        tools:layout="@layout/layout_request_for_content_provider">
+
+        <action
+            android:id="@+id/to_create_pin"
+            app:destination="@id/createPin" />
+
+    </dialog>
+    <dialog
+        android:id="@+id/changePasswordDialog"
+        android:name="com.tridhya.chatsta.design.dialogs.account.ChangePasswordDialog"
+        android:label="ChangePassword"
+        tools:layout="@layout/layout_change_password" />
+    <fragment
+        android:id="@+id/account"
+        android:name="com.tridhya.chatsta.design.dialogs.account.AccountDialog"
+        android:label="Account"
+        tools:layout="@layout/layout_account_dialog">
+        <action
+            android:id="@+id/to_change_pin"
+            app:destination="@id/changePinDialog" />
+        <action
+            android:id="@+id/to_change_password"
+            app:destination="@id/changePasswordDialog" />
+        <action
+            android:id="@+id/to_request_for_content_provider"
+            app:destination="@id/requestToBeContentProvider" />
+        <!--        <action-->
+        <!--            android:id="@+id/to_profile"-->
+        <!--            app:destination="@id/profile"-->
+        <!--            app:launchSingleTop="true"-->
+        <!--            app:popUpTo="@+id/navgraph"-->
+        <!--            app:popUpToInclusive="true"/>-->
+    </fragment>
+    <fragment
+        android:id="@+id/setNewPassword"
+        android:name="com.tridhya.chatsta.design.fragments.forogtPassword.EnterNewPasswordFragment"
+        android:label="EnterNewPassword"
+        tools:layout="@layout/fragment_enter_new_password">
+
+        <action
+            android:id="@+id/to_password_updated"
+            app:destination="@id/passwordUpdated" />
+
+        <action
+            android:id="@+id/to_login"
+            app:destination="@id/login" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/passwordUpdated"
+        android:name="com.tridhya.chatsta.design.fragments.forogtPassword.PasswordUpdatedFragment"
+        android:label="PasswordUpdated"
+        tools:layout="@layout/fragment_password_updated">
+
+        <action
+            android:id="@+id/to_login"
+            app:destination="@id/login" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/userProfile"
+        android:name="com.tridhya.chatsta.design.fragments.UserProfileFragment"
+        android:label="UserProfileFragment"
+        tools:layout="@layout/fragment_user_profile">
+
+        <action
+            android:id="@+id/to_edit_profile"
+            app:destination="@id/editProfile" />
+
+        <action
+            android:id="@+id/to_User_Comments"
+            app:destination="@id/userComments" />
+
+        <action
+            android:id="@+id/to_create_post"
+            app:destination="@id/addPost" />
+
+        <action
+            android:id="@+id/to_chat"
+            app:destination="@id/chat" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/userComments"
+        android:name="com.tridhya.chatsta.design.fragments.CommentsFragment"
+        android:label="CommentsFragment"
+        tools:layout="@layout/fragment_comments">
+
+        <action
+            android:id="@+id/to_user_profile"
+            app:destination="@id/userProfile" />
+
+        <action
+            android:id="@+id/to_profile"
+            app:destination="@id/profile" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/messages"
+        android:name="com.tridhya.chatsta.design.fragments.MessagesFragment"
+        android:label="MessagesFragment"
+        tools:layout="@layout/fragment_messages">
+
+        <action
+            android:id="@+id/to_create_chat"
+            app:destination="@id/createChat"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/to_chat"
+            app:destination="@id/chat" />
+
+        <action
+            android:id="@+id/to_group_chat"
+            app:destination="@id/groupChat" />
+
+        <action
+            android:id="@+id/to_user_status"
+            app:destination="@id/userStatusDialog" />
+
+        <action
+            android:id="@+id/to_user_message_setting"
+            app:destination="@id/userMessageSettings"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/createChat"
+        android:name="com.tridhya.chatsta.design.fragments.chat.CreateChatFragment"
+        android:label="CreateChatFragment"
+        tools:layout="@layout/fragment_create_chat">
+
+        <action
+            android:id="@+id/to_create_group"
+            app:destination="@id/createGroup"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/to_chat"
+            app:destination="@id/chat" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/createGroup"
+        android:name="com.tridhya.chatsta.design.fragments.chat.CreateGroupFragment"
+        android:label="CreateGroupFragment"
+        tools:layout="@layout/fragment_create_group">
+
+        <action
+            android:id="@+id/to_group_chat"
+            app:destination="@id/groupChat"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/createChat"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/groupChat"
+        android:name="com.tridhya.chatsta.design.fragments.chat.GroupChatFragment"
+        android:label="GroupChatFragment"
+        tools:layout="@layout/fragment_group_chat">
+
+        <action
+            android:id="@+id/to_group_message_setting"
+            app:destination="@id/groupMessageSettings" />
+
+        <action
+            android:id="@+id/to_user_profile"
+            app:destination="@id/userProfile" />
+
+        <action
+            android:id="@+id/to_profile"
+            app:destination="@id/profile" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/chat"
+        android:name="com.tridhya.chatsta.design.fragments.chat.ChatFragment"
+        android:label="Chat"
+        tools:layout="@layout/fragment_chat">
+
+        <action
+            android:id="@+id/to_user_message_setting"
+            app:destination="@id/userMessageSettings" />
+
+        <action
+            android:id="@+id/to_message"
+            app:destination="@id/messages" />
+
+        <action
+            android:id="@+id/to_user_profile"
+            app:destination="@id/userProfile" />
+
+        <action
+            android:id="@+id/to_profile"
+            app:destination="@id/profile" />
+
+    </fragment>
+
+    <dialog
+        android:id="@+id/userStatusDialog"
+        android:name="com.tridhya.chatsta.design.dialogs.UserStatusBottomDialog"
+        android:label="UserStatusBottomDialog"
+        tools:layout="@layout/layout_user_status">
+
+    </dialog>
+
+    <fragment
+        android:id="@+id/userMessageSettings"
+        android:name="com.tridhya.chatsta.design.fragments.UserMessageSettingsFragment"
+        android:label="UserMessageSettingsFragment"
+        tools:layout="@layout/fragment_user_message_settings">
+
+        <action
+            android:id="@+id/to_message"
+            app:destination="@id/messages" />
+
+        <action
+            android:id="@+id/to_user_profile"
+            app:destination="@id/userProfile" />
+
+        <action
+            android:id="@+id/to_profile"
+            app:destination="@id/profile" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/groupMessageSettings"
+        android:name="com.tridhya.chatsta.design.fragments.chat.GroupMessageSettingsFragment"
+        android:label="GroupMessageSettingsFragment"
+        tools:layout="@layout/fragment_group_message_settings">
+
+        <action
+            android:id="@+id/to_message"
+            app:destination="@id/messages" />
+
+        <action
+            android:id="@+id/to_user_profile"
+            app:destination="@id/userProfile" />
+
+        <action
+            android:id="@+id/to_add_members_to_group"
+            app:destination="@id/addMemberToGroup" />
+
+        <action
+            android:id="@+id/to_edit_group"
+            app:destination="@id/edit_group" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/myConnections"
+        android:name="com.tridhya.chatsta.design.fragments.MyConnectionsFragment"
+        android:label="MyConnectionsFragment"
+        tools:layout="@layout/fragment_my_connections">
+
+        <action
+            android:id="@+id/to_user_profile"
+            app:destination="@id/userProfile" />
+
+        <action
+            android:id="@+id/to_chat"
+            app:destination="@id/chat" />
+
+        <action
+            android:id="@+id/to_connection_requests"
+            app:destination="@id/connectionRequests" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/connectionRequests"
+        android:name="com.chatsta.ui.home.fragments.profile.ConnectionRequestFragment"
+        android:label="ConnectionRequestFragment"
+        tools:layout="@layout/fragment_connection_request">
+
+        <action
+            android:id="@+id/to_user_profile"
+            app:destination="@id/userProfile" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/addMemberToGroup"
+        android:name="com.tridhya.chatsta.design.fragments.AddMemberToGroupFragment"
+        android:label="AddMemberToGroupFragment"
+        tools:layout="@layout/fragment_add_member_to_group">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/edit_group"
+        android:name="com.tridhya.chatsta.design.fragments.EditGroupFragment"
+        android:label="EditGroupFragment"
+        tools:layout="@layout/fragment_edit_group">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/notifications"
+        android:name="com.tridhya.chatsta.design.fragments.notifications.NotificationFragment"
+        android:label="NotificationFragment"
+        tools:layout="@layout/fragment_notification">
+
+        <action
+            android:id="@+id/to_user_profile"
+            app:destination="@id/userProfile" />
+
+        <action
+            android:id="@+id/to_profile"
+            app:destination="@id/profile" />
+
+    </fragment>
+
+</navigation>

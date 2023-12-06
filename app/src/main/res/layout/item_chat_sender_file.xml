@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="5dp"
+                android:fontFamily="@font/poppins_medium"
+                android:includeFontPadding="false"
+                android:textColor="@color/pale_purple"
+                android:textSize="13sp"
+                android:visibility="gone" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvReactions"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-10dp"
+                    android:layout_marginEnd="75dp"
+                    android:elevation="15dp"
+                    android:layoutDirection="rtl"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintStart_toStartOf="@id/cvContainer"
+                    app:layout_constraintTop_toBottomOf="@id/cvContainer"
+                    app:spanCount="8"
+                    tools:listitem="@layout/item_chat_reaction_icons" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cvContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="75dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="end"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_chat_sender_audio"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivPlayAudio"
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
+                                android:src="@drawable/ic_file_purple"
+                                android:tint="@color/white" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvFileName"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="16dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_regular"
+                                android:includeFontPadding="false"
+                                android:textColor="@color/white"
+                                android:textSize="13sp"
+                                tools:text="File Name" />
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="30dp"
+                                android:layout_height="30dp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/ivDownload"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="4dp"
+                                    android:src="@drawable/ic_download_white"
+                                    android:visibility="gone" />
+
+                                <ProgressBar
+                                    android:id="@+id/progressBar"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:indeterminateTint="@color/white"
+                                    android:visibility="gone" />
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/ivFailed"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/ic_warning"
+                                    android:visibility="gone" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvSelfDestructTime"
+                            style="@style/info_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="4dp"
+                            android:textColor="@color/yellow"
+                            android:textSize="12sp"
+                            android:visibility="gone"
+                            tools:text="5:00" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivAnimation"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:scaleType="centerCrop"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="2dp"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivMessageStatus"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="4dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_app_small" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:padding="4dp"
+                    android:textColor="@color/pale_purple"
+                    android:textSize="10sp"
+                    tools:text="9:50 am" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

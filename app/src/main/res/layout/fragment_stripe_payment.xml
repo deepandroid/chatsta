@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.tridhya.chatsta.design.viewModel.SettingsViewModel" />
+    </data>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@drawable/top_shadow" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-16dp"
+            android:background="@drawable/shape_top_rect_round_bg_bottom_sheet"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:contentInsetStart="0dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:gravity="center">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTitle"
+                            style="@style/titleText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="@string/stripe_payment" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivClose"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginStart="16dp"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:padding="6dp"
+                            android:src="@drawable/ic_back_arrow" />
+
+                    </RelativeLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.Toolbar>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@color/grey_light" />
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvCardDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/card_details"
+                        android:textColor="@color/pale_purple"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llCardNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="30dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/bg_border_pale_purple"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvCardDetails">
+
+                        <com.stripe.android.view.CardNumberEditText
+                            android:id="@+id/evCardNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="8dp"
+                            android:background="@null"
+                            android:drawableEnd="@drawable/stripe_ic_card_placeholder"
+                            android:fontFamily="@font/poppins_regular"
+                            android:hint="@string/card_number"
+                            android:inputType="number"
+                            android:maxLength="19"
+                            android:padding="6dp"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/hintTextStyle"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvCardDetails" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivMastercard"
+                        android:layout_width="158dp"
+                        android:layout_height="66dp"
+                        android:layout_marginTop="-16dp"
+                        android:src="@drawable/visa_mastercard_amex"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/llCardNumber" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llCvv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="30dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ivMastercard">
+
+                        <com.stripe.android.view.ExpiryDateEditText
+                            android:id="@+id/evExpiryDate"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_weight="2"
+                            android:background="@drawable/bg_border_pale_purple"
+                            android:fontFamily="@font/poppins_regular"
+                            android:hint="@string/expiry_date_format"
+                            android:inputType="phone"
+                            android:maxLength="5"
+                            android:padding="6dp"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/hintTextStyle"
+                            android:textSize="12sp" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.3" />
+
+                        <com.stripe.android.view.CvcEditText
+                            android:id="@+id/evCvv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_border_pale_purple"
+                            android:fontFamily="@font/poppins_regular"
+                            android:hint="@string/cvv"
+                            android:inputType="number"
+                            android:maxLength="3"
+                            android:padding="6dp"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/hintTextStyle"
+                            android:textSize="12sp" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tNameOnCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/name_on_card"
+                        android:textColor="@color/pale_purple"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/llCvv" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/evNameOnCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="30dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/bg_border_pale_purple"
+                        android:fontFamily="@font/poppins_regular"
+                        android:padding="6dp"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/hintTextStyle"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tNameOnCard" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/btnFinish"
+                        style="@style/yellow_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="48dp"
+                        android:layout_marginTop="48dp"
+                        android:paddingHorizontal="16dp"
+                        android:text="@string/finish"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/evNameOnCard" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

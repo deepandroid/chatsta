@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.tridhya.chatsta.design.viewModel.CompleteProfileViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:contentInsetStart="0dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.core.widget.ContentLoadingProgressBar
+                    android:id="@+id/progressIndiac"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-4dp"
+                    android:max="5"
+                    android:progress="3"
+                    android:progressTint="@color/yellow"
+                    android:scaleY="1.5" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivClose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_close_grey" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:text="@string/what_s_your_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/info_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="30dp"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="@string/this_is_how_it_will_appear_in_your_chatsta_profile_you_will_be_able_to_edit_this_later"
+            android:textColor="@color/black" />
+
+        <include
+            android:id="@+id/etFirstName"
+            layout="@layout/layout_input_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="35dp"
+            app:titleText="@{@string/first_name}"
+            app:value="@={viewModel.firstName}" />
+
+        <include
+            android:id="@+id/etLastName"
+            layout="@layout/layout_input_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="12dp"
+            app:titleText="@{@string/last_name}"
+            app:value="@={viewModel.lastName}" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnNext"
+            style="@style/yellow_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="90dp"
+            android:layout_marginBottom="50dp"
+            android:gravity="center_horizontal"
+            android:text="@string/next" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

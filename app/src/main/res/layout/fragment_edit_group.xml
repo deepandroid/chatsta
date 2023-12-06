@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@drawable/top_shadow" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-16dp"
+            android:background="@drawable/shape_top_rect_round_bg_bottom_sheet"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:contentInsetStart="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:gravity="center">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTitle"
+                            style="@style/titleText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="@string/edit_group" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvCancel"
+                            style="@style/subTitleText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/tvTitle"
+                            android:layout_alignBottom="@id/tvTitle"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginStart="16dp"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:fontFamily="@font/poppins_medium"
+                            android:gravity="center"
+                            android:text="@string/cancel"
+                            android:textColor="@color/purple"
+                            android:textSize="16sp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/btnOk"
+                            style="@style/subTitleText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/tvTitle"
+                            android:layout_alignBottom="@id/tvTitle"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginEnd="16dp"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:fontFamily="@font/poppins_medium"
+                            android:gravity="center"
+                            android:text="@string/done"
+                            android:textColor="@color/purple"
+                            android:textSize="16sp" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/grey_light" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/tvGroupName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="36dp"
+                    android:backgroundTint="@color/transparent"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="@string/group_name"
+                    android:includeFontPadding="false"
+                    android:textAlignment="center"
+                    android:textSize="15sp"
+                    app:hintTextAppearance="@style/TitleHintTextStyle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivClear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_close_rounded_selected_pale_purple"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

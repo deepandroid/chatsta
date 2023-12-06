@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.tridhya.chatsta.design.viewModel.LoginViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nvMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivLogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="42dp"
+                android:src="@drawable/ic_app" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/ivSignInText"
+                style="@style/titleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="42dp"
+                android:text="@string/sign_in_to_continue" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llForm"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="48dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingHorizontal="50dp">
+
+                <include
+                    android:id="@+id/etUserName"
+                    layout="@layout/layout_input_text_limit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:maxLengthValue="@{25}"
+                    app:titleText="@{@string/username}"
+                    app:value="@={viewModel.userName}" />
+
+                <include
+                    android:id="@+id/etPassword"
+                    layout="@layout/layout_input_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:titleText="@{@string/password}"
+                    app:value="@={viewModel.password}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvEnterPin"
+                    style="@style/Widget.AppCompat.EditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/or_enter_your_pin"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/btnLogin"
+                    style="@style/yellow_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="40dp"
+                    android:layout_marginTop="50dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/log_in" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvForgotPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:background="?selectableItemBackground"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text="@string/forgot_password"
+                    android:textColor="@color/pale_purple"
+                    android:textSize="13sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/don_t_have_an_account"
+                    android:textColor="@color/pale_purple" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSignUpTxt"
+                    style="@style/info_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?selectableItemBackground"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="start"
+                    android:paddingHorizontal="3dp"
+                    android:paddingVertical="5dp"
+                    android:singleLine="true"
+                    android:text="@string/sign_up"
+                    android:textColor="@color/purple" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</layout>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:background="#10000000" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_top_rect_round_bg_bottom_sheet"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:contentInsetStart="0dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:gravity="center">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvTitle"
+                        style="@style/titleText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/settings" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivClose"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/tvTitle"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginEnd="16dp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="6dp"
+                        android:src="@drawable/ic_close_grey" />
+
+
+                </RelativeLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@color/grey_light" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAccount"
+                style="@style/info_text_semibold"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:drawableStart="@drawable/ic_account_blue"
+                android:drawablePadding="16dp"
+                android:gravity="center_vertical"
+                android:text="@string/account" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNotifications"
+                style="@style/info_text_semibold"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_marginHorizontal="16dp"
+                android:drawableStart="@drawable/ic_notification_blue"
+                android:drawablePadding="16dp"
+                android:gravity="center_vertical"
+                android:text="@string/notifications" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTransactions"
+                style="@style/info_text_semibold"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_marginHorizontal="16dp"
+                android:drawableStart="@drawable/ic_transactions_blue"
+                android:drawablePadding="16dp"
+                android:gravity="center_vertical"
+                android:text="@string/transactions" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMembership"
+                style="@style/info_text_semibold"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_marginHorizontal="16dp"
+                android:drawableStart="@drawable/ic_membership_blue"
+                android:drawablePadding="16dp"
+                android:gravity="center_vertical"
+                android:text="@string/membership" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/grey_light" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvInformativePages"
+                style="@style/info_text_semibold"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_marginHorizontal="16dp"
+                android:drawableStart="@drawable/ic_informative_pages_blue"
+                android:drawablePadding="16dp"
+                android:gravity="center_vertical"
+                android:text="@string/informative_pages" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@color/grey_light" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSignOut"
+                style="@style/info_text_semibold"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="center_vertical"
+                android:text="@string/sign_out"
+                android:textColor="@color/red" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

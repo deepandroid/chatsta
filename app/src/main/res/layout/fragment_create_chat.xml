@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@drawable/top_shadow" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-16dp"
+            android:background="@drawable/shape_top_rect_round_bg_bottom_sheet"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:contentInsetStart="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:gravity="center">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvTitle"
+                        style="@style/titleText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/create_new_chat" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivClose"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="16dp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="6dp"
+                        android:src="@drawable/ic_back_arrow" />
+
+                </RelativeLayout>
+            </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@color/grey_light" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/shape_bg_search"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etSearch"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:drawableStart="@drawable/ic_search_small"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="@string/search_name"
+                        android:imeOptions="actionSearch"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:paddingStart="20dp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/pale_purple"
+                        android:textSize="12sp" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivClear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_close_rounded_selected_pale_purple"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@id/editText"
+                        app:layout_constraintEnd_toEndOf="@id/editText"
+                        app:layout_constraintTop_toTopOf="@id/editText" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llCreateGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:layout_marginVertical="4dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingVertical="8dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivGroup"
+                        android:layout_width="30dp"
+                        android:layout_height="22dp"
+                        android:layout_marginStart="4dp"
+                        android:src="@drawable/ic_group" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvText"
+                        style="@style/subTitleText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:gravity="start"
+                        android:paddingHorizontal="16dp"
+                        android:text="@string/new_group"
+                        android:textColor="@color/purple" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivCreateGroup"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/ic_add_comments_purple" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvNoConnections"
+                    style="@style/info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/no_connection"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvUsers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingBottom="90dp"
+                    android:visibility="visible"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/item_create_new_chat" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

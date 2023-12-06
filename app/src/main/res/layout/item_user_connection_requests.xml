@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:orientation="vertical"
+        android:paddingVertical="8dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivProfileImage"
+                android:layout_width="52dp"
+                android:layout_gravity="center"
+                android:layout_height="52dp"
+                android:src="@drawable/ic_app" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:includeFontPadding="false"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    tools:text="User Name" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvRequestAccepted"
+                    style="@style/info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_done_pale_purple"
+                    android:drawablePadding="12dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:paddingHorizontal="8dp"
+                    android:text="@string/request_accepted"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvRequestDeclined"
+                    style="@style/info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:paddingHorizontal="8dp"
+                    android:text="@string/request_declined"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clButtons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/llTotalDonated"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="1dp"
+                    android:visibility="visible">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnAccept"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bg_purple_btn"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:minHeight="0dp"
+                        android:paddingHorizontal="22dp"
+                        android:paddingVertical="6dp"
+                        android:text="@string/accept"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnDecline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:background="@drawable/bg_border_pale_purple"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:minHeight="0dp"
+                        android:paddingHorizontal="22dp"
+                        android:paddingVertical="6dp"
+                        android:text="@string/decline"
+                        android:textAllCaps="false"
+                        android:textColor="@color/pale_purple"
+                        android:textSize="10sp"
+                        app:layout_constraintStart_toEndOf="@id/btnAccept"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:includeFontPadding="false"
+                    android:paddingHorizontal="8dp"
+                    android:textColor="@color/pale_purple"
+                    android:textSize="11sp"
+                    android:visibility="gone"
+                    android:layout_marginTop="4dp"
+                    tools:text="Today at 9:09 am" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

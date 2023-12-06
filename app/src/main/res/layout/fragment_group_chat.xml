@@ -1,0 +1,840 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@drawable/top_shadow" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-16dp"
+            android:background="@drawable/shape_top_rect_round_bg_bottom_sheet"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:contentInsetStart="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivClose"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="6dp"
+                        android:src="@drawable/ic_back_arrow"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvToolbarTitle" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvToolbarTitle"
+                        style="@style/info_text_semibold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:gravity="center"
+                        android:paddingBottom="16dp"
+                        android:singleLine="true"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/ivClose2"
+                        app:layout_constraintStart_toEndOf="@id/ivClose"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Group" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivClose2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="6dp"
+                        android:src="@drawable/ic_back_arrow"
+                        android:visibility="invisible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvToolbarTitle" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivMuted"
+                        style="@style/info_text_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:src="@drawable/ic_bell_bordered"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clToolbarUserStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="-16dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvToolbarTitle">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvToolbarUserStatus"
+                            style="@style/tab_text_appearence_message"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="6dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="2 Group Members" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivToolbarBottomIndicator"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/tab_indicator"
+                            app:layout_constraintEnd_toEndOf="@id/tvToolbarUserStatus"
+                            app:layout_constraintStart_toStartOf="@id/tvToolbarUserStatus"
+                            app:layout_constraintTop_toBottomOf="@id/tvToolbarUserStatus" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/sky_blue"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/clToolbarUserStatus" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/nestedScrollView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/llProfileImage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="16dp">
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:id="@+id/llProfile2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="-30dp"
+                                app:layout_constraintStart_toEndOf="@id/llProfile1"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/ivProfileImage2"
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:scaleType="centerCrop"
+                                    app:civ_border_color="@color/white"
+                                    app:civ_border_width="2dp"
+                                    tools:src="@drawable/profile_placeholder" />
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/ivProfileIndicator2"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_gravity="bottom"
+                                    android:layout_marginStart="-20dp"
+                                    android:layout_marginBottom="2dp"
+                                    app:civ_border_color="@color/white"
+                                    app:civ_border_width="1dp"
+                                    tools:src="@drawable/v_ic_circle_red" />
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:id="@+id/llProfile1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/ivProfileImage"
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:scaleType="centerCrop"
+                                    app:civ_border_color="@color/white"
+                                    app:civ_border_width="2dp"
+                                    tools:src="@drawable/profile_placeholder" />
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/ivProfileIndicator"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_gravity="bottom"
+                                    android:layout_marginStart="-20dp"
+                                    android:layout_marginBottom="2dp"
+                                    app:civ_border_color="@color/white"
+                                    app:civ_border_width="1dp"
+                                    tools:src="@drawable/v_ic_circle_red" />
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvGroupName"
+                            style="@style/subTitleText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginVertical="6dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:maxLines="2"
+                            android:textAlignment="center"
+                            tools:text="Username" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clGroupMembers"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvGroupMembers"
+                                style="@style/tab_text_appearence_message"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="6dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="2 Group Members" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivBottomIndicator"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/tab_indicator"
+                                app:layout_constraintEnd_toEndOf="@id/tvGroupMembers"
+                                app:layout_constraintStart_toStartOf="@id/tvGroupMembers"
+                                app:layout_constraintTop_toBottomOf="@id/tvGroupMembers" />
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@color/sky_blue"
+                                app:layout_constraintEnd_toEndOf="@id/tvGroupMembers"
+                                app:layout_constraintStart_toStartOf="@id/tvGroupMembers"
+                                app:layout_constraintTop_toBottomOf="@id/ivBottomIndicator" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <com.tridhya.chatsta.widget.LoadMoreRecyclerView
+                                android:id="@+id/rvMessages"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:clipToPadding="false"
+                                android:overScrollMode="never" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.core.widget.NestedScrollView>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llTypingStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:gravity="center"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llSchedule">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTypingStatus"
+                    style="@style/info_text_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/pale_purple"
+                    tools:text="user is typing" />
+
+                <com.tridhya.chatsta.loaders.LazyLoader
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="4dp"
+                    app:lazyloader_animDur="600"
+                    app:lazyloader_dotsDist="3dp"
+                    app:lazyloader_dotsRadius="3dp"
+                    app:lazyloader_firstDelayDur="150"
+                    app:lazyloader_firstDotColor="@color/pale_purple"
+                    app:lazyloader_interpolator="@android:anim/decelerate_interpolator"
+                    app:lazyloader_secondDelayDur="300"
+                    app:lazyloader_secondDotColor="@color/pale_purple"
+                    app:lazyloader_thirdDotColor="@color/pale_purple" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey_light" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llBlock"
+                android:layout_width="wrap_content"
+                android:layout_height="?actionBarSize"
+                android:layout_gravity="center"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvBlockContact"
+                    style="@style/subTitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?actionBarSize"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="16dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center"
+                    android:text="@string/you_have_blocked_this_user"
+                    android:textColor="@color/red"
+                    android:textSize="14sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llScheduleMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDelete"
+                        style="@style/subTitleText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="@string/delete"
+                        android:textColor="@color/red"
+                        android:textSize="16sp" />
+
+                    <androidx.legacy.widget.Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvCancel"
+                        style="@style/subTitleText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="@string/cancel"
+                        android:textColor="@color/purple"
+                        android:textSize="16sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDate"
+                    style="@style/subTitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:drawableStart="@drawable/ic_calendar"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:hint="@string/schedule_date"
+                    android:padding="5dp"
+                    android:textColor="@color/purple"
+                    android:textColorHint="@color/pale_purple"
+                    android:textSize="14sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cvRecordView"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:padding="12dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/llMainActions"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view2">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivDeleteAudio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_delete_cross"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginHorizontal="14dp"
+                    android:layout_marginVertical="6dp"
+                    android:background="@drawable/bg_border_purple"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/record_button"
+                    app:layout_constraintStart_toEndOf="@id/ivDeleteAudio"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llRecordView"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/record_button"
+                    app:layout_constraintStart_toEndOf="@id/ivDeleteAudio"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.devlomi.record_view.RecordView
+                        android:id="@+id/record_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cancel_text="CANCEL"
+                        app:cancel_text_color="#ff0000"
+                        app:cancel_text_margin_right="10dp"
+                        app:counter_time_color="#ff0000"
+                        app:slide_to_cancel_arrow="@drawable/recv_ic_arrow"
+                        app:slide_to_cancel_arrow_color="#000000"
+                        app:slide_to_cancel_bounds="50dp"
+                        app:slide_to_cancel_margin_right="30dp"
+                        app:slide_to_cancel_text="Slide To Cancel" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <com.devlomi.record_view.RecordButton
+                    android:id="@+id/record_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_oval_purple"
+                    android:scaleType="centerInside"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:mic_icon="@drawable/ic_microphone_white"
+                    app:send_icon="@drawable/recv_ic_send" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--                <androidx.appcompat.widget.LinearLayoutCompat-->
+            <!--                    android:id="@+id/llRecord"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:gravity="center_vertical"-->
+            <!--                    android:paddingHorizontal="12dp"-->
+            <!--                    android:paddingVertical="12dp"-->
+            <!--                    android:visibility="gone">-->
+
+            <!--                    <de.hdodenhof.circleimageview.CircleImageView-->
+            <!--                        android:id="@+id/recBtn"-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:src="@drawable/ic_rec_btn" />-->
+
+            <!--                    <androidx.appcompat.widget.LinearLayoutCompat-->
+            <!--                        android:id="@+id/slider"-->
+            <!--                        android:layout_width="0dp"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_marginHorizontal="4dp"-->
+            <!--                        android:layout_weight="1"-->
+            <!--                        android:background="@drawable/bg_border_purple"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:orientation="horizontal"-->
+            <!--                        android:paddingHorizontal="8dp">-->
+
+            <!--                        <TextView-->
+            <!--                            android:layout_width="wrap_content"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:layout_gravity="center"-->
+            <!--                            android:background="@color/transparent"-->
+            <!--                            android:drawableEnd="@drawable/ic_right_arrow_small"-->
+            <!--                            android:drawablePadding="10dp"-->
+            <!--                            android:fontFamily="@font/poppins_regular"-->
+            <!--                            android:gravity="center_vertical"-->
+            <!--                            android:paddingVertical="8dp"-->
+            <!--                            android:text="@string/slide_to_cancel"-->
+            <!--                            android:textColor="@color/pale_purple"-->
+            <!--                            android:textSize="12sp" />-->
+
+            <!--                    </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+            <!--                    <androidx.appcompat.widget.AppCompatImageView-->
+            <!--                        android:id="@+id/ivTrash"-->
+            <!--                        android:layout_width="42dp"-->
+            <!--                        android:layout_height="42dp"-->
+            <!--                        android:enabled="false"-->
+            <!--                        android:padding="5dp"-->
+            <!--                        android:src="@drawable/ic_delete_cross" />-->
+            <!--                </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llMainActions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
+                android:visibility="visible">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivAddMedia"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_add_media" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivMicrophone"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="6dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_microphone" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_border_purple"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="8dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivEmoji"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="4dp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_chat_emoji" />
+
+                    <com.tridhya.chatsta.utils.MyEditText
+                        android:id="@+id/evMessage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="@string/type_a_message"
+                        android:inputType="textMultiLine"
+                        android:maxLines="3"
+                        android:paddingVertical="8dp"
+                        android:scrollbars="vertical"
+                        android:textSize="12sp"
+                        app:hintTextAppearance="@style/TitleHintTextStyle" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="4dp"
+                        android:gravity="center">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivTimer"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:paddingHorizontal="4dp"
+                            android:src="@drawable/ic_timer" />
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/ivTimerYellow"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="-10dp"
+                            android:layout_marginBottom="8dp"
+                            android:src="@color/yellow"
+                            android:visibility="gone" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="4dp"
+                        android:gravity="center">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivFire"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:paddingHorizontal="4dp"
+                            android:src="@drawable/ic_burn_message" />
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/ivBurnYellow"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="-10dp"
+                            android:layout_marginBottom="8dp"
+                            android:src="@color/yellow"
+                            android:visibility="gone" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivSchedule"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="5dp"
+                    android:enabled="false"
+                    android:src="@drawable/ic_schedule"
+                    android:visibility="gone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivSend"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:enabled="false"
+                    android:src="@drawable/ic_app_small" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvScheduleMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="8dp"
+                    android:visibility="gone" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/llEmojis"
+                android:layout_width="match_parent"
+                android:layout_height="274dp"
+                android:background="@color/light_grey"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tlEmojis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_grey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tabGravity="fill"
+                    app:tabIndicator="@drawable/tab_indicator"
+                    app:tabIndicatorColor="@color/purple"
+                    app:tabMode="fixed"
+                    app:tabPaddingBottom="-10dp"
+                    app:tabSelectedTextColor="@color/purple"
+                    app:tabTextAppearance="@style/tab_text_appearence_emojis"
+                    app:tabTextColor="@color/pale_purple">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/emojis" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sounds" />
+
+                </com.google.android.material.tabs.TabLayout>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llChooseSound"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="8dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tlEmojis">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="72dp"
+                        android:layout_height="52dp"
+                        android:src="@drawable/ic_sound_purple" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:includeFontPadding="false"
+                        android:text="@string/choose_sound_to_play"
+                        android:textColor="@color/pale_purple"
+                        android:textSize="13sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llReactionSound"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/llChooseSound">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginVertical="8dp"
+                        android:gravity="center">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="24dp"
+                            android:layout_height="42dp"
+                            android:src="@drawable/ic_sound_wave_left" />
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivSelectedEmoji"
+                                android:layout_width="37dp"
+                                android:layout_height="37dp"
+                                android:layout_gravity="center"
+                                android:layout_margin="4dp"
+                                android:src="@drawable/ic_reaction_love" />
+
+                            <ProgressBar
+                                android:id="@+id/pbReactionSound"
+                                android:layout_width="44dp"
+                                android:layout_height="44dp"
+                                android:visibility="visible" />
+
+                        </FrameLayout>
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="24dp"
+                            android:layout_height="42dp"
+                            android:src="@drawable/ic_sound_wave_right" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/btnSendEmoji"
+                        style="@style/yellow_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:includeFontPadding="false"
+                        android:paddingHorizontal="18dp"
+                        android:paddingVertical="8dp"
+                        android:text="@string/send"
+                        android:textSize="13sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <ProgressBar
+                    android:id="@+id/pbEmojis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvEmojis"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:paddingHorizontal="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/llReactionSound" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

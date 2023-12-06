@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="5dp"
+            android:fontFamily="@font/poppins_medium"
+            android:includeFontPadding="false"
+            android:textColor="@color/pale_purple"
+            android:textSize="13sp"
+            tools:text="Today"
+            android:visibility="gone" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivProfileImage"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="top"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="5dp"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/profile_placeholder" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:padding="2dp"
+                    android:textColor="@color/pale_purple"
+                    android:textSize="10sp"
+                    android:visibility="gone"
+                    tools:text="@string/username" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="134dp"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvReactions"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-10dp"
+                        android:elevation="15dp"
+                        android:layoutDirection="rtl"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:layout_constraintTop_toBottomOf="@id/cvPhoto"
+                        app:spanCount="5"
+                        tools:listitem="@layout/item_chat_reaction_icons" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvPhoto"
+                        android:layout_width="match_parent"
+                        android:layout_height="86dp"
+                        android:elevation="10dp"
+                        android:visibility="visible"
+                        app:cardCornerRadius="10dp"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerCrop"
+                            app:layout_constraintDimensionRatio="1:1"
+                            tools:src="@drawable/profile_placeholder" />
+
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/pale_purple"
+                    android:textSize="10sp"
+                    tools:text="9:50 am" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

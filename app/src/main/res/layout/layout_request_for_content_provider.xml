@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.tridhya.chatsta.design.viewModel.ProfileViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#10000000" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_top_rect_round_bg_bottom_sheet"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:contentInsetStart="0dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:gravity="center">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTitle"
+                            style="@style/titleText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="@string/request" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivClose"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginStart="16dp"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:padding="6dp"
+                            android:src="@drawable/ic_back_arrow" />
+
+                    </RelativeLayout>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@color/grey_light" />
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="30dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:text="@string/please_fill_the_form_to_send_a_request_nto_be_paid_content_provider"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="26dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/email_address"
+                        android:textColor="@color/grey_text"
+                        android:textSize="16sp" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/evMail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/bg_rect_border"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="@string/email_address"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp"
+                        android:text="@={viewModel.email}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="26dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/link_to_existing_content_created"
+                        android:textColor="@color/grey_text"
+                        android:textSize="16sp" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/evLink"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/bg_rect_border"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="@string/link_to_existing_content_created"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp"
+                        android:text="@={viewModel.contentCreatedLink}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="26dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/link_to_social_media_profiles"
+                        android:textColor="@color/grey_text"
+                        android:textSize="16sp" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/evTikTok"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/bg_rect_border"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="@string/tiktok"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp"
+                        android:text="@={viewModel.tikTokLink}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/evInstagram"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/bg_rect_border"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="@string/instagram"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp"
+                        android:text="@={viewModel.instagramLink}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/evFacebook"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/bg_rect_border"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="@string/facebook"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp"
+                        android:text="@={viewModel.facebookLink}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/evYoutube"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/bg_rect_border"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="@string/youtube"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp"
+                        android:text="@={viewModel.youtubeLink}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="26dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/describe_type_of_content_you_will_provide"
+                        android:textColor="@color/grey_text"
+                        android:textSize="16sp" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/evDescribe"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/bg_rect_border"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="@string/describe_type_of_content_you_will_provide"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp"
+                        android:text="@={viewModel.description}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginVertical="26dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvMessage">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/btnCancel"
+                            style="@style/info_text_semibold"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_dialog_btn_border"
+                            android:gravity="center"
+                            android:paddingVertical="8dp"
+                            android:text="@string/cancel"
+                            android:textAllCaps="false"
+                            android:theme="@style/DefaultThemeDialog" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/btnSendRequest"
+                            style="@style/info_text_semibold"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_dialog_btn_filled"
+                            android:gravity="center"
+                            android:paddingVertical="8dp"
+                            android:text="@string/send_request"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

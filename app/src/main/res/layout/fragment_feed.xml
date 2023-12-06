@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:id="@+id/mainToolbar"
+            android:layout_height="wrap_content"
+            app:contentInsetStart="0dp"
+            app:layout_collapseMode="pin">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivSponsorLogo"
+                        android:layout_width="?actionBarSize"
+                        android:layout_height="?actionBarSize"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_app_small"
+                        android:visibility="gone" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivSponsorAd"
+                        android:layout_width="0dp"
+                        android:layout_height="?actionBarSize"
+                        android:layout_weight="1"
+                        android:scaleType="fitXY"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivStaticSponsor"
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:paddingStart="10dp"
+                    android:src="@drawable/img_header"
+                    android:visibility="gone" />
+
+                <include
+                    android:id="@+id/toolbar"
+                    layout="@layout/toolbar_home" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/sky_blue">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvFeed"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:overScrollMode="never"
+                    android:paddingBottom="90dp"
+                    android:visibility="visible"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/item_feed_text" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvNoFeedFound"
+                    style="@style/titleText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingBottom="90dp"
+                    android:text="@string/no_feed_found"
+                    android:textColor="@color/purple"
+                    android:textSize="20sp"
+                    android:visibility="gone" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

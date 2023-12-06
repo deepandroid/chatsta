@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@drawable/top_shadow" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-16dp"
+            android:background="@drawable/shape_top_rect_round_bg_bottom_sheet"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:contentInsetStart="0dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivBack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_back_arrow" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvTitle"
+                        style="@style/titleText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:visibility="invisible" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nestedScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:overScrollMode="never"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/llProfileImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/llProfile2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="-30dp"
+                            app:layout_constraintStart_toEndOf="@id/llProfile1"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/ivProfileImage2"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:scaleType="centerCrop"
+                                app:civ_border_color="@color/white"
+                                app:civ_border_width="2dp"
+                                tools:src="@drawable/profile_placeholder" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivProfileIndicator2"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="bottom"
+                                android:layout_marginStart="-20dp"
+                                android:layout_marginBottom="2dp"
+                                app:civ_border_color="@color/white"
+                                app:civ_border_width="1dp"
+                                tools:src="@drawable/v_ic_circle_red" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/llProfile1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/ivProfileImage"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:scaleType="centerCrop"
+                                app:civ_border_color="@color/white"
+                                app:civ_border_width="2dp"
+                                tools:src="@drawable/profile_placeholder" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivProfileIndicator"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="bottom"
+                                android:layout_marginStart="-20dp"
+                                android:layout_marginBottom="2dp"
+                                app:civ_border_color="@color/white"
+                                app:civ_border_width="1dp"
+                                tools:src="@drawable/v_ic_circle_red" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="6dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvGroupName"
+                            style="@style/subTitleText"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="75dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:maxLines="2"
+                            android:textAlignment="center"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="UsernameUsernameUsernameUsernameUsernameUsernameUsernameUsername" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:drawableStart="@drawable/ic_edit_black_small"
+                            android:drawablePadding="10dp"
+                            android:drawableTint="@color/pale_purple"
+                            android:padding="5dp"
+                            android:text="@string/edit"
+                            android:textColor="@color/pale_purple"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clGroupMembers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="16dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvGroupMembers"
+                            style="@style/tab_text_appearence_message"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="6dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="2 Group Members" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivBottomIndicator"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/tab_indicator"
+                            app:layout_constraintEnd_toEndOf="@id/tvGroupMembers"
+                            app:layout_constraintStart_toStartOf="@id/tvGroupMembers"
+                            app:layout_constraintTop_toBottomOf="@id/tvGroupMembers" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@color/sky_blue"
+                            app:layout_constraintEnd_toEndOf="@id/tvGroupMembers"
+                            app:layout_constraintStart_toStartOf="@id/tvGroupMembers"
+                            app:layout_constraintTop_toBottomOf="@id/ivBottomIndicator" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/clOptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/llTotalDonated"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="16dp">
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/llDestruct"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivDestruct"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:maxHeight="56dp"
+                                android:minHeight="46dp"
+                                android:padding="4dp"
+                                app:srcCompat="@drawable/ic_fire_purple_bordered" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvDestruct"
+                                style="@style/info_text_semibold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="bottom|center_horizontal"
+                                android:text="@string/destruct"
+                                android:textColor="@drawable/selector_color_grey_purple" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.legacy.widget.Space
+                            android:layout_width="36dp"
+                            android:layout_height="wrap_content" />
+
+                        <LinearLayout
+                            android:id="@+id/llMute"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/llDestruct"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivMute"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:maxHeight="56dp"
+                                android:minHeight="46dp"
+                                android:padding="4dp"
+                                app:srcCompat="@drawable/ic_bell_bordered" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvMute"
+                                style="@style/info_text_semibold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="bottom|center_horizontal"
+                                android:text="@string/mute"
+                                android:textColor="@drawable/selector_color_grey_purple" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llBlock"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:visibility="gone"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/llMute"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivBlock"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:maxHeight="56dp"
+                                android:minHeight="46dp"
+                                android:padding="4dp"
+                                app:srcCompat="@drawable/ic_blocked" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvBlock"
+                                style="@style/info_text_semibold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="bottom|center_horizontal"
+                                android:text="@string/block"
+                                android:textColor="@drawable/selector_color_grey_purple" />
+
+                        </LinearLayout>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/grey_light" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/llAddMembers"
+                        android:layout_width="match_parent"
+                        android:layout_height="?actionBarSize"
+                        android:paddingHorizontal="16dp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="@string/group_members_info"
+                            android:textColor="@color/pale_purple"
+                            android:textSize="15sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivAddMember"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_add_comments_purple"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey_light" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvGroupMembers"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:overScrollMode="never"
+                        tools:itemCount="5"
+                        tools:listitem="@layout/item_group_members_info" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llShowMembers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:includeFontPadding="false"
+                            android:text="@string/see_all_members"
+                            android:textColor="@color/pale_purple"
+                            android:textSize="13sp" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_show_more_grey" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvLeaveGroup"
+                            style="@style/subTitleText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="?actionBarSize"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="16dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:gravity="center"
+                            android:text="@string/leave_this_group"
+                            android:textColor="@color/pale_purple" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvDeleteThisChat"
+                            style="@style/subTitleText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="?actionBarSize"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="16dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:gravity="center"
+                            android:text="@string/delete_this_chat"
+                            android:textColor="@color/red" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

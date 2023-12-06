@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.tridhya.chatsta.design.viewModel.ProfileViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@drawable/top_shadow" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-16dp"
+            android:background="@drawable/shape_top_rect_round_bg_bottom_sheet"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:contentInsetStart="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:gravity="center">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTitle"
+                            style="@style/titleText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="@string/account" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivClose"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginStart="16dp"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:padding="6dp"
+                            android:src="@drawable/ic_back_arrow" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/btnOk"
+                            style="@style/titleText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginEnd="16dp"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:text="@string/done"
+                            android:textColor="@color/purple"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@color/grey_light" />
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include
+                        android:id="@+id/etFirstName"
+                        layout="@layout/layout_input_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="16dp"
+                        app:titleText="@{@string/first_name}"
+                        app:value="@={viewModel.firstName}" />
+
+                    <include
+                        android:id="@+id/etLastName"
+                        layout="@layout/layout_input_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="16dp"
+                        app:titleText="@{@string/last_name}"
+                        app:value="@={viewModel.lastName}" />
+
+                    <include
+                        android:id="@+id/etUserName"
+                        layout="@layout/layout_input_text_limit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="16dp"
+                        app:maxLengthValue="@{25}"
+                        app:titleText="@{@string/username}"
+                        app:value="@={viewModel.userName}" />
+
+                    <include
+                        android:id="@+id/etEmail"
+                        layout="@layout/layout_input_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="16dp"
+                        app:titleText="@{@string/email_id}"
+                        app:value="@={viewModel.email}" />
+
+                    <include
+                        android:id="@+id/etLocation"
+                        layout="@layout/layout_input_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="16dp"
+                        app:titleText="@{@string/location}"
+                        app:value="@={viewModel.location}" />
+
+                    <include
+                        android:id="@+id/etPassword"
+                        layout="@layout/layout_input_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="16dp"
+                        app:hintText="@{@string/change_password}"
+                        app:titleText="@{@string/password}" />
+
+                    <include
+                        android:id="@+id/etPin"
+                        layout="@layout/layout_input_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="16dp"
+                        app:hintText="@{@string/change_pin}"
+                        app:titleText="@{@string/pin}" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginHorizontal="24dp"
+                        android:layout_marginTop="32dp"
+                        android:background="@color/grey_light" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/subTitleText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="@string/private_account" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/info_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="64dp"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:text="@string/private_account_info"
+                        android:textColor="@color/pale_purple" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/swPrivateAccount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:checked="@={viewModel.isPrivateAccount}"
+                        android:padding="10dp"
+                        android:thumb="@drawable/custom_switch_thumb"
+                        app:switchPadding="15dp"
+                        app:track="@drawable/custom_switch_track" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginHorizontal="24dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/grey_light" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvRequestToBePaidContentProvider"
+                        style="@style/subTitleText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="32dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:paddingVertical="8dp"
+                        android:text="@string/request_to_be_paid_content_provider"
+                        android:textColor="@color/purple" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llStripeKey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/subTitleText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/paid_content_provider" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/info_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="32dp"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center"
+                            android:text="@string/switch_profile_type"
+                            android:textColor="@color/pale_purple" />
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/swPaidContentProvider"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:checked="@={viewModel.isContentProvider}"
+                            android:padding="10dp"
+                            android:thumb="@drawable/custom_switch_thumb"
+                            app:switchPadding="15dp"
+                            app:track="@drawable/custom_switch_track" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/subTitleText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/stripe_key"
+                            android:textSize="14sp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/info_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="32dp"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center"
+                            android:text="@string/enter_your_stripe_key_to_receive_payments"
+                            android:textColor="@color/pale_purple"
+                            android:textSize="10sp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/evStripeKey"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="32dp"
+                            android:layout_marginTop="4dp"
+                            android:background="@drawable/bg_corner_rect_pale" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginHorizontal="24dp"
+                        android:layout_marginVertical="8dp"
+                        android:background="@color/grey_light" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvPermanentlyDeleteAccount"
+                        style="@style/subTitleText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginBottom="?actionBarSize"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:paddingVertical="8dp"
+                        android:text="@string/permanently_delete_account"
+                        android:textColor="@color/red" />
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

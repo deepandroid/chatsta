@@ -1,34 +1,412 @@
 <resources>
-    <string name="app_name">BaseSetup</string>
-
-    <string name="briefcase_sampleapp">ISellIt</string>
-    <string name="lets_get_started">Let\'s get started</string>
+    <string name="app_name">Chatsta</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="session_expired">Session Expired</string>
+    <string name="enter_your_pin">Enter your PIN</string>
+    <string name="gender">Gender</string>
+    <string name="relationship_status">Relationship status</string>
+    <string name="star_sign">Star sign</string>
     <string name="username">Username</string>
-    <string name="password_placeholder">Password</string>
-    <string name="sign_in">Login</string>
-
-    <string name="email_address">Email Address</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="sign_in_to_continue">Sign in to continue</string>
     <string name="password">Password</string>
-    <string name="login">Login</string>
-    <string name="register">Register</string>
-    <string name="progress">Progress</string>
-    <string name="downloadingProgress">Download in Progress</string>
-    <string name="waitingForNetwork">Waiting for Network</string>
+    <string name="create_password">Create Password</string>
+    <string name="create_pin">Create Pin</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="or_enter_your_pin">Or enter your PIN</string>
+    <string name="log_in">Log In</string>
+    <string name="location">Location</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="don_t_have_an_account">Don’t have an account?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="forgot_your_password">Forgot your Password?</string>
+    <string name="forgot_pwd_screen_info_text">No problem!\n\nJust enter the Email address you’ve used to register with us and we’ll send you a reset link</string>
+    <string name="email_id">Email ID</string>
+    <string name="get_reset_link">Get Reset Link</string>
+    <string name="return_to">Return to</string>
+    <string name="check_your_email">Check your email</string>
+    <string name="sent_pwd_recover_link_txt">We have sent a password recover instruction to your entered email</string>
+    <string name="signup_terms_conditions_txt">Creating an account means you are accepting our Terms and Conditions and Privacy Policy.</string>
+    <string name="create_account">Create account</string>
+    <string name="skip">Skip</string>
+    <string name="continue_txt">Continue</string>
+    <string name="cancel">Cancel</string>
+    <string name="success">Success!</string>
+    <string name="your_account_has_been_created">Your account has been created!</string>
+    <string name="you_have_3_complimentary">You have 3 complimentary</string>
+    <string name="complete_my_profile">Complete My Profile</string>
+    <string name="what_s_your_name">What’s your name?</string>
+    <string name="this_is_how_it_will_appear_in_your_chatsta_profile_you_will_be_able_to_edit_this_later">This is how it will appear in your Chatsta profile. You will be able to edit this later.</string>
+    <string name="next">Next</string>
+    <string name="location_hint">Type your location</string>
+    <string name="your_email_and_location">Your email and location</string>
+    <string name="email_location_info_text">If you don’t provide your email you won’t be able to reset your password.</string>
+    <string name="add_photos">Add photos</string>
+    <string name="add_photos_info_txt">Add profile image and 4 additional photos. Photos burns after 1 month, so keep it updated!</string>
+    <string name="click_here_upload_main_photo">Click here upload main photo</string>
+    <string name="more_about_you">More about you</string>
+    <string name="more_about_you_info_text">Let everyone know more about you.</string>
+    <string name="your_bio">Your Bio</string>
+    <string name="forgot_your_pin">Forgot your PIN?</string>
+    <string name="use_password">Use Password</string>
+    <string name="delete">Delete</string>
+    <string name="are_you_sure_you_want_to_delete_this_photo">Are you sure you want to delete this photo?</string>
+    <string name="are_you_sure_you_want_to_delete_this_video">Are you sure you want to delete this video?</string>
+    <string name="are_you_sure_you_want_to_delete_this_audio">Are you sure you want to delete this audio?</string>
+    <string name="are_you_sure_you_want_to_delete_this_file">Are you sure you want to delete this file?</string>
+    <string name="are_you_sure_you_want_to_delete_this_emoji">Are you sure you want to delete this emoji?</string>
+    <string name="are_you_sure_you_want_to_delete_this_sound_emoji">Are you sure you want to delete this sound emoji?</string>
+    <string name="are_you_sure_you_want_to_delete_profile">Are you sure you want to delete your account permanently?  All messages will also be deleted. This cannot be undone.</string>
+    <string name="are_you_sure_you_want_to_delete_chat">Are you sure you want to delete this conversation?</string>
+    <string name="ok">Ok</string>
+    <string name="please_wait">Please Wait</string>
+    <string name="permission_required">Permission Required</string>
+    <string name="app_settings">App Settings</string>
+    <string name="please_note">Please note !</string>
+    <string name="if_you_don_t_enter_your_email_in_profile_information_you_won_t_be_able_to_reset_your_password">If you don’t enter your email in profile information you won’t be able to reset your password.</string>
+    <string name="create_your_pin">Create your PIN</string>
+    <string name="enter_4_digits_pin_which_you_can_use_to_sign_in_to_your_account">Enter 4 digits PIN which you can use to sign in to your account</string>
+    <string name="create">Create</string>
+    <string name="skip_complete_profile_confirm_txt">Are you sure you want to close? Entered information on this page won’t be saved.</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="yahooo">Yahooo!</string>
+    <string name="almost_done">Almost done</string>
+    <string name="last_questions">Last questions</string>
+    <string name="height">Height(cm)</string>
+    <string name="quotes">Quotes</string>
+    <string name="interest">Interest</string>
 
-    <string name="pleaseEnterUsername">Please Enter Username</string>
-    <string name="pleaseEnterPincode">Please Enter Password</string>
-    <string name="cancel_download">Cancel Download</string>
-    <string name="app_will_restart_in_5_sec">App will Restart in 5 sec</string>
-    <string name="wrongCredential">Wrong Credential</string>
-    <string name="permission_denied">Permission is Denied.</string>
-    <string name="all_media_access">All Media Access!</string>
-    <string name="you_have_to_grant_us_your_device_media_access">You have to grant us your device Media Access</string>
-    <string name="app_media_settings">App Media Settings</string>
-    <string name="your_device_version_not_need_for_this_permission">Your Device Version not need for this permission</string>
+    <!--    Gender-->
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="non_binary">Non-binary</string>
 
+    <!--    Relationship status-->
+    <string name="single">Single</string>
+    <string name="in_a_relationship">In a relationship</string>
+    <string name="engaged">Engaged</string>
+    <string name="married">Married</string>
+    <string name="in_love">In love</string>
+    <string name="actively_searching">Actively searching</string>
+    <string name="in_a_civil_union">In a civil union</string>
+    <string name="its_complicated">It’s complicated</string>
+    <string name="divorced">Divorced</string>
+    <string name="aries">Aries</string>
+    <string name="taurus">Taurus</string>
+    <string name="gemini">Gemini</string>
+    <string name="cancer">Cancer</string>
+    <string name="leo">Leo</string>
+    <string name="virgo">Virgo</string>
+    <string name="libra">Libra</string>
+    <string name="scorpio">Scorpio</string>
+    <string name="sagittarius">Sagittarius</string>
+    <string name="capricorn">Capricorn</string>
+    <string name="aquarius">Aquarius</string>
+    <string name="pisces">Pisces</string>
+    <string name="tap_to_choose">Tap to choose</string>
 
+    <!--    Error Validation-->
+    <string name="err_enter_username">Please Enter UserName</string>
+    <string name="err_enter_password">Please Enter Password</string>
+    <string name="err_enter_email">Please Enter Email</string>
+    <string name="err_enter_location">Please Enter Location</string>
+    <string name="err_enter_valid_password">Password must contain at least 6 characters with one uppercase letter and one number.</string>
+    <string name="err_enter_confirm_password">Please Enter Password again</string>
+    <string name="err_password_not_match">Passwords don\'t match</string>
+    <string name="err_enter_pin">Please Enter Pin</string>
+    <string name="err_enter_valid_email">Please Enter Valid Email</string>
+    <string name="err_enter_first_name">Please Enter First Name</string>
+    <string name="err_enter_last_name">Please Enter Last Name</string>
+    <string name="err_select_gender">Please select your gender</string>
+    <string name="err_select_relationship_status">Please select your relationship status</string>
+    <string name="err_select_star_sign">Please select your star sign</string>
+    <string name="err_enter_bio">Please enter your bio</string>
+    <string name="err_last_question">Please enter answers</string>
+    <string name="err_select_height">Please select height</string>
+    <string name="err_select_interest">Please select interest</string>
+    <string name="err_enter_quotes">Please enter quotes</string>
+    <string name="done">Done</string>
 
+    <!--    Settings-->
+    <string name="settings">Settings</string>
+    <string name="account">Account</string>
+    <string name="notifications">Notifications</string>
+    <string name="transactions">Transactions</string>
+    <string name="membership">Membership</string>
+    <string name="informative_pages">Informative Pages</string>
+    <string name="sign_out">Sign Out</string>
 
+    <!--    Membership Dialog-->
+    <string name="only_1_99">Only $1.99</string>
+    <string name="unlimited">Unlimited</string>
+    <string name="burner_messages">Burner Messages</string>
+    <string name="scheduled_messages">Scheduled Messages</string>
+    <string name="chatsta_reactions">Chatsta Reactions</string>
+    <string name="sound_effects">Sound Effects</string>
+    <string name="buy">Buy</string>
 
+    <!--    Account Dialog-->
+    <string name="pin">Pin</string>
+    <string name="private_account">Private Account</string>
+    <string name="private_account_info">By making your profile private, only your friends can see your profile info, posts and message you.</string>
+    <string name="request_to_be_paid_content_provider">Request To Be Paid Content Provider</string>
+    <string name="permanently_delete_account">Permanently Delete Account</string>
+    <string name="change_password">Change Password</string>
+    <string name="change_pin">Change Pin</string>
 
+    <!--    Change Password Dialog-->
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+    <string name="save">Save</string>
+
+    <!--    Change Pin Dialog-->
+    <string name="current_pin">Current Pin</string>
+    <string name="new_pin">New Pin</string>
+
+    <!--    Profile Screen-->
+    <string name="edit_profile">Edit profile</string>
+    <string name="total_donated">Total donated</string>
+    <string name="bio">Bio</string>
+    <string name="show_more">Show More</string>
+    <string name="show_less">Show Less</string>
+    <string name="enter">Enter</string>
+    <string name="not_selected">Not Selected</string>
+    <string name="please_select_atleast_one_image">Please select atleast one image</string>
+
+    <!--    Forgot Password Screen-->
+    <string name="create_new_password">Create new password</string>
+    <string name="your_identity_has_been_verified_nset_your_new_password">Your identity has been verified.\nSet your new password</string>
+    <string name="password_updated">Password updated</string>
+    <string name="your_password_successfully_updated_nnow_you_can_login_with_your_new_password">Your password successfully updated!\nNow you can login with your new password</string>
+    <string name="your_photos_here">Your photos here</string>
+
+    <!--    Notification Settings-->
+    <string name="messages_alert">Messages Alert</string>
+    <string name="sounds_on_a_new_message">Sounds on a new message</string>
+    <string name="vibration">Vibration</string>
+    <string name="vibrate_on_new_message">Vibrate on new message</string>
+    <string name="message_preview">Message Preview</string>
+    <string name="show_message_preview_in_push_up_notifications">Show message preview in push up notifications</string>
+    <string name="likes_on_your_timeline_posts">Likes on your timeline posts</string>
+    <string name="receive_push_up_notification_when_someone_likes_your_post">Receive push up notification when someone likes your post</string>
+    <string name="comments_on_your_timeline">Comments on your timeline</string>
+    <string name="receive_push_up_notification_when_someone_comments_on_your_post">Receive push up notification when someone comments on your post</string>
+
+    <!--    Informative Pages-->
+    <string name="version">Version</string>
+    <string name="_1_11">1.11</string>
+    <string name="last_update">Last Update</string>
+    <string name="_21_09_2021">21.09.2021</string>
+    <string name="about_us">About Us</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="general_app_information">General App Information</string>
+    <string name="if_you_have_any_problems_of_questions_with_chatsta_app_please_email_us_directly">If you have any problems of questions with Chatsta App please email us directly.</string>
+    <string name="email">Email</string>
+    <string name="web">Web</string>
+
+    <!--    Create Post-->
+    <string name="create_post">Create Post</string>
+    <string name="post">Post</string>
+    <string name="what_s_new">What’s new?</string>
+    <string name="search">Search</string>
+    <string name="discover">Discover</string>
+
+    <!--    Request for content provider-->
+    <string name="request">Request</string>
+    <string name="please_fill_the_form_to_send_a_request_nto_be_paid_content_provider">Please fill the form to send a request\nto be Paid Content Provider</string>
+    <string name="email_address">Email address</string>
+    <string name="link_to_existing_content_created">Link to existing content created</string>
+    <string name="link_to_social_media_profiles">Link to Social media Profiles</string>
+    <string name="tiktok">TikTok</string>
+    <string name="instagram">Instagram</string>
+    <string name="facebook">Facebook</string>
+    <string name="describe_type_of_content_you_will_provide">Describe type of content you will provide</string>
+    <string name="send_request">Send Request</string>
+    <string name="close">Close</string>
+    <string name="youtube">Youtube</string>
+    <string name="err_existing_content_created">Please enter link to existing content created</string>
+    <string name="err_description_">Please enter description type of content you will provide.</string>
+    <string name="err_url">Please enter valid link</string>
+    <string name="paid_content_provider">Paid Content Provider</string>
+    <string name="switch_profile_type">Switch Profile Type</string>
+    <string name="stripe_key">Stripe Key</string>
+    <string name="enter_your_stripe_key_to_receive_payments">Enter your Stripe Key to receive payments</string>
+
+    <!--    Feed -->
+    <string name="write_a_comment">Write a comment</string>
+    <string name="image">Image</string>
+    <string name="video">Video</string>
+    <string name="ett_file_size">File size can\'t be more than 30mb</string>
+    <string name="ett_image_size">Image size can\'t be more than 10mb</string>
+    <string name="file_format_error">File format not supported</string>
+    <string name="search_for_connections_or_posts">Search for @connections or posts</string>
+    <string name="feed">Feed</string>
+    <string name="public_posts">Public Posts</string>
+    <string name="connections">Connections</string>
+    <string name="sort_by">Sort by:</string>
+    <string name="most_recent">Most Recent</string>
+    <string name="comments">Comments</string>
+    <string name="comment">Comment</string>
+    <string name="most_popular">Most Popular</string>
+    <string name="_0_public_posts_found_for_lado_m">0 public posts found for “Lado M”</string>
+    <string name="report">Report</string>
+    <string name="edit">Edit</string>
+    <string name="delete_post_msg">Deleted post can not be restored.</string>
+    <string name="delete_comment_msg">Deleted comment can not be restored.</string>
+    <string name="delete_reply_msg">Deleted reply can not be restored.</string>
+    <string name="do_not_delete">Don\'t Delete</string>
+    <string name="delete_post_title">Delete this post?</string>
+    <string name="delete_comment_title">Delete this comment?</string>
+    <string name="delete_reply_title">Delete this reply?</string>
+    <string name="no_feed_found">No Feed Found...</string>
+    <string name="my_posts">My Posts</string>
+
+    <!--    User profile-->
+    <string name="photos_here">Photos Here</string>
+    <string name="this_is_a_private_profile">This is a private profile</string>
+    <string name="connect_this_account_to_see_their_posts_photos_and_other_content">Connect this account to see their posts,\n photos and other content.</string>
+    <string name="connect">Connect</string>
+    <string name="message">Message</string>
+    <string name="posts">Posts</string>
+    <string name="no_comments">No Comments...</string>
+    <string name="err_create_post">Please add content</string>
+    <string name="err_select_schedule_time">Please select schedule time</string>
+    <string name="err_comment">Please add comment first</string>
+    <string name="err_reply">Please add reply first</string>
+    <string name="edit_post">Edit Post</string>
+    <string name="title_new_pin">New PIN</string>
+    <string name="title_current_pin">Current PIN</string>
+
+    <!--    Chat-->
+    <string name="messages">Messages</string>
+    <string name="find_people_and_conversations">Find people and conversations</string>
+    <string name="recent">Recent</string>
+    <string name="groups">Groups</string>
+    <string name="create_new_chat">Create New Chat</string>
+    <string name="search_name">Search name</string>
+    <string name="new_group">New group</string>
+    <string name="edit_group">Edit group</string>
+    <string name="group_name">Group name</string>
+    <string name="group_name_optional">Group name (optional)</string>
+    <string name="search_for_name_to_add">Search for name to add</string>
+    <string name="new_message">New Message</string>
+    <string name="can_t_wait_to_get_my_jabs">Can’t wait to get my jabs</string>
+    <string name="type_a_message">Type a message …</string>
+    <string name="status">Status</string>
+    <string name="chat_status">Chat status</string>
+    <string name="destruct">Destruct</string>
+    <string name="mute">Mute</string>
+    <string name="unmute">Unmute</string>
+    <string name="block">Block</string>
+    <string name="unblock">Unblock</string>
+    <string name="block_this_contact">Block this contact</string>
+    <string name="unblock_this_contact">Unblock this contact</string>
+    <string name="delete_this_chat">Delete this chat</string>
+    <string name="all_messages_in_this_chat_will_destruct_after">All messages in this chat will destruct after:</string>
+    <string name="_5min">5min.</string>
+    <string name="_1h">1h</string>
+    <string name="_1w">1w</string>
+    <string name="off">off</string>
+    <string name="connections_requests">Connections Requests</string>
+    <string name="my_connections">My Connections</string>
+    <string name="_0">0</string>
+    <string name="accept">Accept</string>
+    <string name="decline">Decline</string>
+    <string name="requests">Requests</string>
+    <string name="delete_all_request_msg">Are you sure you want to delete all\nrequests? This cannot be undone.</string>
+    <string name="_0_connection_requests">0 connection requests</string>
+    <string name="no_connection">No connections</string>
+    <string name="request_declined">Request declined</string>
+    <string name="request_accepted">Request accepted</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="requested">Requested</string>
+    <string name="cancel_request">Cancel Request</string>
+    <string name="emojis">Emojis</string>
+    <string name="sounds">Sounds</string>
+    <string name="choose_sound_to_play">Choose sound to play</string>
+    <string name="send">Send</string>
+    <string name="add_photos_videos">Add Photos/ Videos</string>
+    <string name="add_music">Add Music</string>
+    <string name="add_pdf">Add PDF</string>
+    <string name="wipe">Wipe</string>
+    <string name="self_destruct_time">Self Destruct Time</string>
+    <string name="copy">Copy</string>
+    <string name="online_now">Online now</string>
+    <string name="you_have_blocked_this_user">You have blocked this user</string>
+    <string name="err_cv_file_size">Error File Size</string>
+    <string name="you_can_no_longer_reply_to_this_conversation">You can no longer reply to this conversation</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="user_has_deleted_account">User has deleted account.</string>
+    <string name="reply">Reply</string>
+    <string name="add_reply">Add reply...</string>
+    <string name="create_group_error">Please select atleast 2 members</string>
+    <string name="create_group_member_error">Please select atleast 1 members</string>
+    <string name="please_make_admin">Please make someone else the admin before leaving</string>
+    <string name="leave_this_group">Leave this group</string>
+    <string name="group_members_info">Group Members Info</string>
+    <string name="see_all_members">See all members</string>
+    <string name="leave_group_text">Are you sure you want to leave this group ?</string>
+    <string name="leave">Leave</string>
+    <string name="view_profile">View Profile</string>
+    <string name="remove_from_group">Remove From Group</string>
+    <string name="add_member">Add Member</string>
+    <string name="add">Add</string>
+    <string name="schedule_date">Schedule date</string>
+    <string name="delete_schedule_msg_txt">Are you sure you want to delete your Scheduled message?</string>
+    <string name="cancel_schedule_msg_txt">Changes that you made may not be saved.</string>
+    <string name="slide_to_cancel">Slide to Cancel</string>
+    <string name="something_went_wrong_on_no_token">Something went wrong. No Token generated</string>
+
+<!--    Notifications-->
+    <string name="all">All</string>
+    <string name="donations">Donations</string>
+    <string name="_new">New</string>
+    <string name="later">Later</string>
+    <string name="no_notification">No Notifications...</string>
+
+<!--    Transactions-->
+    <string name="amount_due">Amount Due</string>
+    <string name="amount_due_info">Payment for donation reactions on posts\nand messages on the Chatsta app.</string>
+    <string name="payable">\*payable</string>
+    <string name="income">Income</string>
+    <string name="earning">Earnings</string>
+    <string name="income_info">Earnings from donations for\nPaid Content Provider</string>
+    <string name="income_earnings_info">These earnings are from donations for\nPaid Content Provider</string>
+    <string name="this_payment_is_for_donation_reactions_on_posts_and_messages_on_the_chatsta_app">This payment is for donation reactions on\nposts and messages on the Chatsta app.</string>
+    <string name="payment">Payment</string>
+    <string name="amount_due_">Amount due($)</string>
+    <string name="make_payment">Make payment</string>
+    <string name="stripe_payment">Stripe Payment</string>
+    <string name="card_details">Card Details</string>
+    <string name="card_number">Card Number</string>
+    <string name="expiry_date">Expiry date</string>
+    <string name="expiry_date_format">MM/YY</string>
+    <string name="cvv">CVV</string>
+    <string name="name_on_card">Name On Card</string>
+    <string name="finish">Finish</string>
+    <string name="donation_history">Donation History</string>
+    <string name="this_message_will_destruct_after">This message will destruct after:</string>
+    <string name="withdraw_earning">Withdraw Earnings</string>
+    <string name="err_card_number">Please enter valid card number</string>
+    <string name="err_expiry_date">Please enter valid expiry date</string>
+    <string name="err_cvv">Please enter valid CVV</string>
+    <string name="err_card_name">Please enter name as on the card</string>
+    <string name="payment_success">Payment Successful</string>
+    <string name="payment_failed">Payment Failed</string>
+    <string name="no_donations_yet">No Donations Yet</string>
+    <string name="membership_plan">Membership Plan</string>
+    <string name="choose_plan">Choose Plan</string>
+    <string name="premiun">Premium</string>
+
+    <array name="dot_colors">
+        <item>#8A97C1</item>
+        <item>#8A97C1</item>
+        <item>#8A97C1</item>
+    </array>
 </resources>

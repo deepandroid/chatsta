@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginHorizontal="2dp"
+            android:layout_marginVertical="70dp"
+            android:backgroundTint="@color/transparent"
+            app:cardCornerRadius="14dp"
+            app:elevation="4dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llAddPhotoVideo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="12dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvAddPhotoVideo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:text="@string/add_photos_videos"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        app:drawableTint="@color/purple" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="27dp"
+                        android:layout_height="23dp"
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/ic_gallery_purple"
+                        app:tint="@color/purple" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_light" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llAddMusic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="10dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvAddMusic"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:text="@string/add_music"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        app:drawableTint="@color/purple" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="27dp"
+                        android:layout_height="23dp"
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/ic_music_purple"
+                        app:tint="@color/purple" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_light" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llAddPDF"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="6dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvAddPDF"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:text="@string/add_pdf"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        app:drawableTint="@color/purple" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="27dp"
+                        android:layout_height="23dp"
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/ic_file_purple" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+</layout>

@@ -10,12 +10,14 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.tridhya.chatsta.Model.response.EnumDataModel
 import com.tridhya.chatsta.R
 import com.tridhya.chatsta.databinding.FragmentCpMoreAboutYouBinding
+import com.tridhya.chatsta.design.adapters.completeProfile.EnumDataAdapter
 import com.tridhya.chatsta.design.dialogs.MessageDialog
 import com.tridhya.chatsta.design.fragments.BaseFragment
 import com.tridhya.chatsta.design.viewModel.CompleteProfileViewModel
+import com.tridhya.chatsta.model.EnumDataModel
+import com.tridhya.chatsta.utils.RelationshipStatusData
 
 class CPMoreAboutYouFragment : BaseFragment(), View.OnClickListener {
 
@@ -25,9 +27,9 @@ class CPMoreAboutYouFragment : BaseFragment(), View.OnClickListener {
     private var relationshipList = arrayListOf<EnumDataModel>()
     private var starSignList = arrayListOf<EnumDataModel>()
 
-    //    private lateinit var genderAdapter: EnumDataAdapter
-//    private lateinit var relationshipAdapter: EnumDataAdapter
-//    private lateinit var starSignAdapter: EnumDataAdapter
+    private lateinit var genderAdapter: EnumDataAdapter
+    private lateinit var relationshipAdapter: EnumDataAdapter
+    private lateinit var starSignAdapter: EnumDataAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -50,48 +52,37 @@ class CPMoreAboutYouFragment : BaseFragment(), View.OnClickListener {
         binding.ivBack.setOnClickListener(this)
     }
 
-    private fun setObservers() {
-        /*viewModel.responseUpdate.observe(viewLifecycleOwner) {
-            if (it != null) {
-                viewModel.isLoading.value = false
-                session?.user = it.data
-                findNavController().navigate(R.id.to_cp_5)
-                viewModel.responseUpdate.value = null
-            }
-        }*/
-    }
-
     @SuppressLint("ClickableViewAccessibility")
     private fun initViews() {
-        /* genderList = RelationshipStatusData.getGenderList(requireContext())
-         if (session?.user?.gender != null) {
-             for (i in genderList.indices) {
-                 if (session?.user?.gender.equals(genderList[i].enum, true)) {
-                     genderList[i].isSelected = true
-                     viewModel.gender = genderList[i]
-                 }
-             }
-         }
+        genderList = RelationshipStatusData.getGenderList(requireContext())
+        if (session?.user?.gender != null) {
+            for (i in genderList.indices) {
+                if (session?.user?.gender.equals(genderList[i].enum, true)) {
+                    genderList[i].isSelected = true
+                    viewModel.gender = genderList[i]
+                }
+            }
+        }
 
-         relationshipList = RelationshipStatusData.getRelationshipList(requireContext())
-         if (session?.user?.relationShipStatus != null) {
-             for (i in relationshipList.indices) {
-                 if (session?.user?.relationShipStatus.equals(relationshipList[i].enum, true)) {
-                     relationshipList[i].isSelected = true
-                     viewModel.relationshipStatus = relationshipList[i]
-                 }
-             }
-         }
+        relationshipList = RelationshipStatusData.getRelationshipList(requireContext())
+        if (session?.user?.relationShipStatus != null) {
+            for (i in relationshipList.indices) {
+                if (session?.user?.relationShipStatus.equals(relationshipList[i].enum, true)) {
+                    relationshipList[i].isSelected = true
+                    viewModel.relationshipStatus = relationshipList[i]
+                }
+            }
+        }
 
-         starSignList = RelationshipStatusData.getStarSignList(requireContext())
-         if (session?.user?.starSign != null) {
-             for (i in starSignList.indices) {
-                 if (session?.user?.starSign.equals(starSignList[i].enum, true)) {
-                     starSignList[i].isSelected = true
-                     viewModel.starSign = starSignList[i]
-                 }
-             }
-         }*/
+        starSignList = RelationshipStatusData.getStarSignList(requireContext())
+        if (session?.user?.starSign != null) {
+            for (i in starSignList.indices) {
+                if (session?.user?.starSign.equals(starSignList[i].enum, true)) {
+                    starSignList[i].isSelected = true
+                    viewModel.starSign = starSignList[i]
+                }
+            }
+        }
 
         if (session?.user?.bio.isNullOrBlank()) {
             viewModel.bio.set(session?.user?.bio)
@@ -126,64 +117,51 @@ class CPMoreAboutYouFragment : BaseFragment(), View.OnClickListener {
                 binding.llBio.tvTitle.isSelected = true
             }
         }
-        /*genderAdapter = EnumDataAdapter(genderList, object : EnumDataAdapter.OnItemClickListener {
+        genderAdapter = EnumDataAdapter(genderList, object : EnumDataAdapter.OnItemClickListener {
             override fun onItemSelected(data: EnumDataModel) {
                 binding.llGender.recyclerview.isSelected = true
                 binding.llGender.tvTitle.isSelected = true
                 viewModel.gender = data
             }
-        })*/
+        })
         binding.llGender.recyclerview.layoutManager = GridLayoutManager(context, 3)
-//        binding.llGender.recyclerview.adapter = genderAdapter
+        binding.llGender.recyclerview.adapter = genderAdapter
 
 
-        /* relationshipAdapter =
-             EnumDataAdapter(relationshipList, object : EnumDataAdapter.OnItemClickListener {
-                 override fun onItemSelected(data: EnumDataModel) {
-                     binding.llRelationshipStatus.recyclerview.isSelected = true
-                     binding.llRelationshipStatus.tvTitle.isSelected = true
-                     viewModel.relationshipStatus = data
-                 }
-             })*/
+        relationshipAdapter =
+            EnumDataAdapter(relationshipList, object : EnumDataAdapter.OnItemClickListener {
+                override fun onItemSelected(data: EnumDataModel) {
+                    binding.llRelationshipStatus.recyclerview.isSelected = true
+                    binding.llRelationshipStatus.tvTitle.isSelected = true
+                    viewModel.relationshipStatus = data
+                }
+            })
         binding.llRelationshipStatus.recyclerview.layoutManager = GridLayoutManager(context, 3)
-//        binding.llRelationshipStatus.recyclerview.adapter = relationshipAdapter
+        binding.llRelationshipStatus.recyclerview.adapter = relationshipAdapter
 
-        /* starSignAdapter =
-             EnumDataAdapter(starSignList, object : EnumDataAdapter.OnItemClickListener {
-                 override fun onItemSelected(data: EnumDataModel) {
-                     binding.llStarSign.recyclerview.isSelected = true
-                     binding.llStarSign.tvTitle.isSelected = true
-                     viewModel.starSign = data
-                 }
-             })*/
+        starSignAdapter =
+            EnumDataAdapter(starSignList, object : EnumDataAdapter.OnItemClickListener {
+                override fun onItemSelected(data: EnumDataModel) {
+                    binding.llStarSign.recyclerview.isSelected = true
+                    binding.llStarSign.tvTitle.isSelected = true
+                    viewModel.starSign = data
+                }
+            })
         binding.llStarSign.recyclerview.layoutManager = GridLayoutManager(context, 4)
-//        binding.llStarSign.recyclerview.adapter = starSignAdapter
+        binding.llStarSign.recyclerview.adapter = starSignAdapter
     }
 
-//    private fun validate() {
-//        when {
-//            viewModel.gender == null && viewModel.relationshipStatus == null && viewModel.starSign == null && viewModel.bio.get()
-//                .isNullOrBlank() -> {
-//                findNavController().navigate(R.id.to_cp_5)
-//            }
-//            else -> {
-//                viewModel.isLoading.value = true
-//                setObservers()
-//                session?.user?.userId?.let { viewModel.updateStep4(it) }
-//            }
-//        }
-//    }
 
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.btnNext -> {
                 preventDoubleClick(view)
-//                validate()
-                viewModel.isLoading.value = true
-                setObservers()
-                session?.user?.userId?.let {
-                    findNavController().navigate(R.id.to_cp_5)
-                }
+                val user = session?.user
+                user?.gender = viewModel.gender?.enum
+                user?.relationShipStatus = viewModel.relationshipStatus?.enum
+                session?.user = user
+                findNavController().navigate(R.id.to_cp_5)
+
             }
 
             R.id.ivClose -> {

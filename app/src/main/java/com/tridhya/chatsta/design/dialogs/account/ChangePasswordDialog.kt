@@ -183,7 +183,7 @@ class ChangePasswordDialog :
             }
 
             else -> {
-                viewModel.isLoading.value = true
+//                viewModel.isLoading.value = true
 //                viewModel.changePassword()
                 val savedLogin = (context as ActivityBase).session?.savedLogin
 //                savedLogin?.password = it.data?.password

@@ -10,13 +10,14 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.tridhya.chatsta.Model.response.AllInterestResponseModel
 import com.tridhya.chatsta.R
 import com.tridhya.chatsta.databinding.FragmentCpLastQuestionsBinding
+import com.tridhya.chatsta.design.adapters.completeProfile.EnumInterestAdapter
 import com.tridhya.chatsta.design.dialogs.MessageDialog
 import com.tridhya.chatsta.design.dialogs.NumberPickerBottomDialog
 import com.tridhya.chatsta.design.fragments.BaseFragment
 import com.tridhya.chatsta.design.viewModel.CompleteProfileViewModel
+import com.tridhya.chatsta.model.AllInterestResponseModel
 
 class CPLastQuestionsFragment : BaseFragment(), View.OnClickListener {
 
@@ -24,7 +25,7 @@ class CPLastQuestionsFragment : BaseFragment(), View.OnClickListener {
     private var interestList: ArrayList<AllInterestResponseModel> = arrayListOf()
     private var selectedInterestList: ArrayList<String> = arrayListOf()
 
-    //    private lateinit var interestAdapter: EnumInterestAdapter
+    private lateinit var interestAdapter: EnumInterestAdapter
     private var height = 50
     private val viewModel by lazy { CompleteProfileViewModel(requireContext()) }
 
@@ -130,7 +131,7 @@ class CPLastQuestionsFragment : BaseFragment(), View.OnClickListener {
                 }
             }
             interestList = allInterestList
-            /*interestAdapter =
+            interestAdapter =
                 EnumInterestAdapter(interestList, object : EnumInterestAdapter.OnItemClickListener {
                     override fun onItemSelected(data: AllInterestResponseModel) {
                         if (interestAdapter.getSelectedCount() == 0) {
@@ -141,40 +142,11 @@ class CPLastQuestionsFragment : BaseFragment(), View.OnClickListener {
                             binding.llInterest.tvTitle.isSelected = true
                         }
                     }
-                }, true)*/
+                }, true)
             binding.llInterest.recyclerview.layoutManager = GridLayoutManager(context, 2)
-//            binding.llInterest.recyclerview.adapter = interestAdapter
+            binding.llInterest.recyclerview.adapter = interestAdapter
         }
-        viewModel.isLoading.value = true
-
-//        viewModel.interestList()
     }
-
-    /*private fun setObservers() {
-        viewModel.responseUpdate.observe(viewLifecycleOwner) {
-            if (it != null) {
-                viewModel.isLoading.value = false
-                session?.user = it.data
-                findNavController().navigate(R.id.to_register_complete_fragment)
-                viewModel.responseUpdate.value = null
-            }
-        }
-    }*/
-
-    /* private fun validate() {
-         when {
-             (viewModel.height.get().isNullOrEmpty() || viewModel.height.get() == "0")
-                     && getSelectedInterests().size < 1
-                     && viewModel.quotes.get().isNullOrEmpty() -> {
-                 findNavController().navigate(R.id.to_register_complete_fragment)
-             }
-             else -> {
-                 viewModel.isLoading.value = true
-                 setObservers()
-                 session?.user?.userId?.let { viewModel.updateStep5(it, selectedInterestList) }
-             }
-         }
-     }*/
 
     private fun getSelectedInterests(): ArrayList<String> {
         for (i in interestList.indices) {
@@ -188,11 +160,19 @@ class CPLastQuestionsFragment : BaseFragment(), View.OnClickListener {
         when (view?.id) {
             R.id.btnNext -> {
                 preventDoubleClick(view)
-//                validate()
-                viewModel.isLoading.value = true
-//                setObservers()
+                val user = session?.user
+                user?.firstName = viewModel.firstName.get()
+                user?.lastName = viewModel.lastName.get()
+                user?.height = if (viewModel.height.get().isNullOrEmpty() || viewModel.height.get()
+                        .isNullOrBlank() || viewModel.height.get().toString().trim() == "0"
+                ) 0 else viewModel.height.get()?.toInt()
+                user?.quotes = if (viewModel.quotes.get().isNullOrEmpty() || viewModel.quotes.get()
+                        .isNullOrBlank() || viewModel.quotes.get().toString().trim()
+                        .equals("null", true)
+                ) "" else viewModel.quotes.get().toString().trim()
+
+                session?.user = user
                 session?.user?.userId?.let {
-//                    viewModel.updateStep5(it, getSelectedInterests())
                     findNavController().navigate(R.id.to_register_complete_fragment)
                 }
             }

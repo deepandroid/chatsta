@@ -11,18 +11,22 @@ import android.net.Uri
 import android.os.Parcelable
 import android.os.SystemClock
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
+import com.bumptech.glide.Glide
 import com.tridhya.chatsta.utils.FilePathUtil
 import com.tridhya.chatsta.utils.FileUtils
 import com.tridhya.chatsta.R
 import com.tridhya.chatsta.base.ActivityBase
 import com.tridhya.chatsta.utils.Session
+import com.yalantis.ucrop.UCrop
 import gun0912.tedimagepicker.builder.TedImagePicker
 import gun0912.tedimagepicker.builder.type.MediaType
 import java.io.File
@@ -150,8 +154,8 @@ open class BaseFragment : Fragment() {
             )
 
             if (FileUtils(requireContext()).getFileSize(uri)!! < 10000000) {
-//                    UCrop.of(uri, destinationUri!!).withAspectRatio(1f, 1f)
-//                        .withMaxResultSize(1080, 768).start(requireContext(), this)
+                    UCrop.of(uri, destinationUri!!).withAspectRatio(1f, 1f)
+                        .withMaxResultSize(1080, 768).start(requireContext(), this)
             } else {
                 showToastShort(getString(R.string.ett_image_size))
             }
@@ -204,7 +208,8 @@ open class BaseFragment : Fragment() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)/*        if (requestCode == UCrop.REQUEST_CROP) {
+        super.onActivityResult(requestCode, resultCode, data)
+            if (requestCode == UCrop.REQUEST_CROP) {
                     if (resultCode == Activity.RESULT_OK) {
                         photoAdded.value = true
                         val uri = data?.let { UCrop.getOutput(it) }
@@ -221,7 +226,7 @@ open class BaseFragment : Fragment() {
                         Log.e("Ucrop Error", data?.let { UCrop.getError(it)?.printStackTrace() }.toString())
                     }
                     uploadView = null
-                }*/
+                }
     }
 
     fun preventDoubleClick(view: View) {

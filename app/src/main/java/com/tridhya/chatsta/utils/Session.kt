@@ -1,9 +1,9 @@
 package com.tridhya.chatsta.utils
 
 import android.content.Context
-import com.tridhya.chatsta.Model.request.RegisterRequestModel
+import com.tridhya.chatsta.model.request.RegisterRequestModel
 import com.google.gson.Gson
-import com.tridhya.chatsta.Model.User
+import com.tridhya.chatsta.model.User
 import com.tridhya.chatsta.R
 
 class Session(val context: Context) {

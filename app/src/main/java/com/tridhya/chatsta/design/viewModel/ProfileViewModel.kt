@@ -3,9 +3,9 @@ package com.tridhya.chatsta.design.viewModel
 import android.content.Context
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
-import com.tridhya.chatsta.Model.Images
-import com.tridhya.chatsta.Model.User
-import com.tridhya.chatsta.Model.response.EnumDataModel
+import com.tridhya.chatsta.model.Images
+import com.tridhya.chatsta.model.User
+import com.tridhya.chatsta.model.EnumDataModel
 import com.tridhya.chatsta.base.ActivityBase
 
 class ProfileViewModel(mContext: Context) : BaseViewModel(mContext) {

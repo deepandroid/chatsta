@@ -142,7 +142,7 @@ class ChangePinDialog :
             }
 
             else -> {
-                viewModel.isLoading.value = true
+//                viewModel.isLoading.value = true
                 MessageDialog.getInstance(
                     requireContext(),
                     "change pin",

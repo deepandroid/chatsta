@@ -29,6 +29,11 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <activity
             android:name=".design.activity.FullScreenImageActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
@@ -52,11 +57,10 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
+<!--                <data
                     android:host="chatstatest.page.link"
                     android:path="test"
-                    android:scheme="https" />
+                    android:scheme="https" />-->
             </intent-filter>
         </activity>
         <activity

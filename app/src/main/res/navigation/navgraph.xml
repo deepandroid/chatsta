@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/register"
-        android:name="com.tridhya.chatsta.design.fragments.RegisterFragment"
+        android:name="com.tridhya.chatsta.design.fragments.auth.RegisterFragment"
         android:label="Register"
         tools:layout="@layout/fragment_register">
 
@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/registerSuccess"
-        android:name="com.tridhya.chatsta.design.fragments.RegisterSuccessFragment"
+        android:name="com.tridhya.chatsta.design.fragments.auth.RegisterSuccessFragment"
         android:label="RegisterSuccess"
         tools:layout="@layout/fragment_register_success">
 
@@ -50,7 +50,7 @@
 
     <fragment
         android:id="@+id/registerComplete"
-        android:name="com.tridhya.chatsta.design.fragments.RegisterCompleteFragment"
+        android:name="com.tridhya.chatsta.design.fragments.auth.RegisterCompleteFragment"
         android:label="RegisterComplete"
         tools:layout="@layout/fragment_register_complete">
 
@@ -65,7 +65,7 @@
 
     <fragment
         android:id="@+id/login"
-        android:name="com.tridhya.chatsta.design.fragments.LoginFragment"
+        android:name="com.tridhya.chatsta.design.fragments.auth.LoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_login">
 
@@ -88,7 +88,7 @@
 
     <fragment
         android:id="@+id/forgotPassword"
-        android:name="com.tridhya.chatsta.design.fragments.ForgotPasswordFragment"
+        android:name="com.tridhya.chatsta.design.fragments.forogtPassword.ForgotPasswordFragment"
         android:label="ForgotPassword"
         tools:layout="@layout/fragment_forgot_password">
 
@@ -203,7 +203,7 @@
 
     <fragment
         android:id="@+id/unlockPin"
-        android:name="com.tridhya.chatsta.design.fragments.PinUnlockFragment"
+        android:name="com.tridhya.chatsta.design.fragments.auth.PinUnlockFragment"
         android:label="PinUnlock"
         tools:layout="@layout/fragment_pin_unlock">
 
@@ -218,7 +218,7 @@
 
     <fragment
         android:id="@+id/createPin"
-        android:name="com.tridhya.chatsta.design.fragments.EnterPinFragment"
+        android:name="com.tridhya.chatsta.design.fragments.auth.EnterPinFragment"
         android:label="CreatePin"
         tools:layout="@layout/fragment_pin_enter" />
 
@@ -280,7 +280,7 @@
     </fragment>
     <fragment
         android:id="@+id/addPost"
-        android:name="com.tridhya.chatsta.design.fragments.AddPostFragment"
+        android:name="com.tridhya.chatsta.design.fragments.post.AddPostFragment"
         android:label="AddPost"
         tools:layout="@layout/fragment_create_post">
 
@@ -299,7 +299,7 @@
         tools:layout="@layout/fragment_notification" />
     <fragment
         android:id="@+id/profile"
-        android:name="com.tridhya.chatsta.design.fragments.ProfileFragment"
+        android:name="com.tridhya.chatsta.design.fragments.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile">
 
@@ -325,7 +325,7 @@
     </fragment>
     <fragment
         android:id="@+id/editProfile"
-        android:name="com.tridhya.chatsta.design.fragments.EditProfileFragment"
+        android:name="com.tridhya.chatsta.design.fragments.profile.EditProfileFragment"
         android:label="EditProfile"
         tools:layout="@layout/fragment_edit_profile" />
     <dialog
@@ -500,7 +500,7 @@
 
     <fragment
         android:id="@+id/userProfile"
-        android:name="com.tridhya.chatsta.design.fragments.UserProfileFragment"
+        android:name="com.tridhya.chatsta.design.fragments.profile.UserProfileFragment"
         android:label="UserProfileFragment"
         tools:layout="@layout/fragment_user_profile">
 
@@ -596,7 +596,7 @@
 
     <fragment
         android:id="@+id/createGroup"
-        android:name="com.tridhya.chatsta.design.fragments.chat.CreateGroupFragment"
+        android:name="com.tridhya.chatsta.design.fragments.chat.group.CreateGroupFragment"
         android:label="CreateGroupFragment"
         tools:layout="@layout/fragment_create_group">
 
@@ -610,7 +610,7 @@
     </fragment>
     <fragment
         android:id="@+id/groupChat"
-        android:name="com.tridhya.chatsta.design.fragments.chat.GroupChatFragment"
+        android:name="com.tridhya.chatsta.design.fragments.chat.group.GroupChatFragment"
         android:label="GroupChatFragment"
         tools:layout="@layout/fragment_group_chat">
 
@@ -682,7 +682,7 @@
 
     <fragment
         android:id="@+id/groupMessageSettings"
-        android:name="com.tridhya.chatsta.design.fragments.chat.GroupMessageSettingsFragment"
+        android:name="com.tridhya.chatsta.design.fragments.chat.group.GroupMessageSettingsFragment"
         android:label="GroupMessageSettingsFragment"
         tools:layout="@layout/fragment_group_message_settings">
 
@@ -738,7 +738,7 @@
 
     <fragment
         android:id="@+id/addMemberToGroup"
-        android:name="com.tridhya.chatsta.design.fragments.AddMemberToGroupFragment"
+        android:name="com.tridhya.chatsta.design.fragments.chat.group.AddMemberToGroupFragment"
         android:label="AddMemberToGroupFragment"
         tools:layout="@layout/fragment_add_member_to_group">
 
@@ -746,7 +746,7 @@
 
     <fragment
         android:id="@+id/edit_group"
-        android:name="com.tridhya.chatsta.design.fragments.EditGroupFragment"
+        android:name="com.tridhya.chatsta.design.fragments.chat.group.EditGroupFragment"
         android:label="EditGroupFragment"
         tools:layout="@layout/fragment_edit_group">
 

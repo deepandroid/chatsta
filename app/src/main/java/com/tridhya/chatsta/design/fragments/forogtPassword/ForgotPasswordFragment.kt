@@ -49,8 +49,6 @@ class ForgotPasswordFragment : BaseFragment(), View.OnClickListener {
             }
 
             else -> {
-//                viewModel.isLoading.value = true
-//                viewModel.getResetLink()
                 binding.llForgotPassword.gone()
                 binding.llForgotPasswordSuccess.visible()
             }

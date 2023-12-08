@@ -1,5 +1,6 @@
 package com.tridhya.chatsta.design.dialogs
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +12,8 @@ import com.tridhya.chatsta.R
 import com.tridhya.chatsta.base.ActivityBase
 import com.tridhya.chatsta.databinding.LayoutSettingsDialogBinding
 import com.tridhya.chatsta.design.BaseBottomSheetDialogFragment
+import com.tridhya.chatsta.design.MainActivity
+import com.tridhya.chatsta.enum.chat.UserStatus
 
 
 class SettingsBottomDialog :
@@ -84,6 +87,14 @@ class SettingsBottomDialog :
                 (context as ActivityBase).preventDoubleClick(view)
 //                viewModel.isLoading.value = true
 //                viewModel.logoutUser()
+//                updateUserStatus(UserStatus.OFFLINE)
+                (context as ActivityBase).session?.logout()
+//            goToActivityAndClearTask<MainActivity>()
+                val intent = Intent(requireActivity(), MainActivity::class.java)
+//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                requireActivity().startActivity(intent)
+                requireActivity().finish()
+
             }
 
             R.id.ivClose -> {

@@ -53,7 +53,7 @@ class InformativePagesBottomDialog :
         binding.tvContactUs.setOnClickListener(this)
         binding.tvTermsandConditions.setOnClickListener(this)
         binding.tvPrivacyPolicy.setOnClickListener(this)
-        viewModel.isLoading.value = true
+//        viewModel.isLoading.value = true
 //        viewModel.informativePagesInfo(VERSION_INFO)
     }
 

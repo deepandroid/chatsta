@@ -403,6 +403,7 @@
     <string name="membership_plan">Membership Plan</string>
     <string name="choose_plan">Choose Plan</string>
     <string name="premiun">Premium</string>
+    <string name="gold_coast_queensland">Gold Coast, Queensland</string>
 
     <array name="dot_colors">
         <item>#8A97C1</item>

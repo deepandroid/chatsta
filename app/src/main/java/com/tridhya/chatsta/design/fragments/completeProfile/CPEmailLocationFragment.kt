@@ -20,13 +20,15 @@ import com.tridhya.chatsta.extensions.invisible
 import com.tridhya.chatsta.extensions.isEmail
 import com.tridhya.chatsta.extensions.visible
 
-class CPEmailLocationFragment : BaseFragment(), View.OnClickListener {
+class CPEmailLocationFragment : BaseFragment(), View.OnClickListener,
+    PlacesAutoCompleteAdapter.onItemClick {
 
     private lateinit var binding: FragmentCpEmailLocationBinding
     private val viewModel by lazy { CompleteProfileViewModel(requireContext()) }
-//    private var placesAutoCompleteAdapter: PlacesAutoCompleteAdapter? = null
+    private var placesAutoCompleteAdapter: PlacesAutoCompleteAdapter? = null
 
     private var stopSearch = false
+
 
     private val filterTextWatcher: TextWatcher = object : TextWatcher {
         override fun afterTextChanged(s: Editable) {
@@ -76,25 +78,13 @@ class CPEmailLocationFragment : BaseFragment(), View.OnClickListener {
         binding.etLocation.ivClear.setOnClickListener(this)
     }
 
-    private fun setObservers() {
-        /*viewModel.responseUpdate.observe(viewLifecycleOwner) {
-            if (it != null) {
-                viewModel.isLoading.value = false
-                session?.user = it.data
-                it.data?.let { it1 -> updateFirebaseUser(it1) }
-                findNavController().navigate(R.id.to_cp_3)
-                viewModel.responseUpdate.value = null
-            }
-        }*/
-    }
-
     private fun initViews() {
 
         binding.etLocation.editText.addTextChangedListener(filterTextWatcher)
-//        placesAutoCompleteAdapter = PlacesAutoCompleteAdapter(requireContext(), this)
+        placesAutoCompleteAdapter = PlacesAutoCompleteAdapter(this)
         binding.rvLocations.layoutManager = LinearLayoutManager(requireContext())
-//        binding.rvLocations.adapter = placesAutoCompleteAdapter
-//        placesAutoCompleteAdapter?.notifyDataSetChanged()
+        binding.rvLocations.adapter = placesAutoCompleteAdapter
+        placesAutoCompleteAdapter?.notifyDataSetChanged()
 
         if (!session?.user?.email.isNullOrBlank())
             viewModel.email.set(session?.user?.email)
@@ -162,20 +152,23 @@ class CPEmailLocationFragment : BaseFragment(), View.OnClickListener {
                 if (viewModel.email.get().isNullOrBlank()) {
                     showValidationDialog()
                 } else {
-                    viewModel.isLoading.value = true
-                    setObservers()
                     session?.user?.userId?.let {
+                        val user = session?.user
+                        user?.email = viewModel.email.get()
+                        user?.location = viewModel.location.get()
+                        session?.user = user
                         findNavController().navigate(R.id.to_cp_3)
                     }
                 }
             }
 
             else -> {
-                viewModel.isLoading.value = true
-                setObservers()
-                session?.user?.userId?.let {
-                    findNavController().navigate(R.id.to_cp_3)
-                }
+                val user = session?.user
+                user?.email = viewModel.email.get()
+                user?.location = viewModel.location.get()
+                session?.user = user
+                findNavController().navigate(R.id.to_cp_3)
+
             }
         }
     }
@@ -193,8 +186,6 @@ class CPEmailLocationFragment : BaseFragment(), View.OnClickListener {
             .setListener(object : MessageDialog.ButtonListener {
                 override fun onPositiveBtnClicked(dialog: MessageDialog) {
                     dialog.dismiss()
-                    viewModel.isLoading.value = true
-                    setObservers()
                     session?.user?.userId?.let {
                         findNavController().navigate(R.id.to_cp_3)
                     }
@@ -251,5 +242,10 @@ class CPEmailLocationFragment : BaseFragment(), View.OnClickListener {
         }
     }
 
-
+    override fun onItemClicked(result: String) {
+        stopSearch = true
+        binding.etLocation.editText.setText(result)
+        binding.etLocation.editText.setSelection(binding.etLocation.editText.length())
+        viewModel.location.set(result)
+    }
 }

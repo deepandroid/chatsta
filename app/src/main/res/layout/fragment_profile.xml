@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="com.tridhya.chatsta.Model.User" />
+            type="com.tridhya.chatsta.model.User" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

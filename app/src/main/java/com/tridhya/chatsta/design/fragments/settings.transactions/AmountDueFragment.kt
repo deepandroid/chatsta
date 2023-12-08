@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.navigation.fragment.findNavController
-import com.tridhya.chatsta.Model.User
+import com.tridhya.chatsta.model.User
 import com.tridhya.chatsta.R
 import com.tridhya.chatsta.base.ActivityBase
 import com.tridhya.chatsta.databinding.FragmentAmountDueBinding

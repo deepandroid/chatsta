@@ -14,6 +14,7 @@ import com.tridhya.chatsta.design.fragments.BaseFragment
 import com.tridhya.chatsta.design.viewModel.CompleteProfileViewModel
 import com.tridhya.chatsta.extensions.gone
 import com.tridhya.chatsta.extensions.visible
+import com.tridhya.chatsta.model.Images
 import com.tridhya.chatsta.utils.FileUtils
 
 class CPAddPhotosFragment : BaseFragment(),
@@ -23,8 +24,9 @@ class CPAddPhotosFragment : BaseFragment(),
     private val viewModel by lazy { CompleteProfileViewModel(requireContext()) }
     private var deleteBtn: View? = null
     private val uriList: ArrayList<String> = ArrayList()
+    var images: ArrayList<Images> = arrayListOf()
 
-    //    private val urlList: ArrayList<String> = ArrayList()
+//        private val urlList: ArrayList<String> = ArrayList()
     private val urlList: HashMap<Int?, String?> = HashMap()
 
     override fun onCreateView(
@@ -196,7 +198,7 @@ class CPAddPhotosFragment : BaseFragment(),
                     && binding.cvAddPhoto5.imageView.tag == null
                 ) {
                     viewModel.images = arrayListOf()
-                    viewModel.isLoading.value = true
+//                    viewModel.isLoading.value = true
                     setObservers()
                     session?.user?.userId?.let {
 //                        viewModel.updateStep3(it)
@@ -246,7 +248,7 @@ class CPAddPhotosFragment : BaseFragment(),
     }
 
     private fun uploadPhotos() {
-        viewModel.isLoading.value = true
+//        viewModel.isLoading.value = true
         uriList.clear()
         urlList.clear()
 
@@ -285,8 +287,15 @@ class CPAddPhotosFragment : BaseFragment(),
             uriList.add(path5!!)
         }
 
-        /*for (i in uriList.indices)
-            AWSUtils(
+        for (i in uriList.indices){
+            images.add(Images(uriList[i],i.toString()))
+        }
+        val user = session?.user
+        user?.images = images
+        session?.user = user
+        findNavController().navigate(R.id.to_cp_4)
+
+            /*AWSUtils(
                 context = requireContext(),
                 filePath = uriList[i],
                 onAwsImageUploadListener = this,

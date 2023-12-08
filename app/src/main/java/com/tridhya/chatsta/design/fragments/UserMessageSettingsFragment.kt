@@ -341,7 +341,7 @@ class UserMessageSettingsFragment : BaseFragment(), View.OnClickListener {
 
             R.id.llBlock, R.id.tvBlockContact -> {
                 preventDoubleClick(view)
-                viewModel.isLoading.value = true
+//                viewModel.isLoading.value = true
 //                userId?.let { viewModel.blockUnblockConnection(userId = it) }
             }
 

@@ -9,7 +9,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.tridhya.chatsta.Model.User
+import com.tridhya.chatsta.model.User
 import com.tridhya.chatsta.R
 import com.tridhya.chatsta.databinding.FragmentMyConnectionsBinding
 import com.tridhya.chatsta.design.dialogs.feed.ConnectionsMoreOptionsBottomDialog

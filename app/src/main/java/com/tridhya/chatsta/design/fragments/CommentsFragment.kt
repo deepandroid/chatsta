@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.tridhya.chatsta.Model.response.CommentsModel
 import com.tridhya.chatsta.R
 import com.tridhya.chatsta.databinding.FragmentCommentsBinding
 import com.tridhya.chatsta.design.dialogs.MessageDialog
 import com.tridhya.chatsta.design.dialogs.feed.CommentsMoreOptionsBottomDialog
 import com.tridhya.chatsta.extensions.gone
 import com.tridhya.chatsta.extensions.visible
+import com.tridhya.chatsta.model.CommentsModel
 import com.tridhya.chatsta.utils.GlideUtils
 
 class CommentsFragment : BaseFragment(), View.OnClickListener,

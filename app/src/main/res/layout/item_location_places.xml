@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:gravity="bottom"
-                android:text="Gold Coast, Queensland"
+                android:text="@string/gold_coast_queensland"
                 android:textColor="@color/pale_purple" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

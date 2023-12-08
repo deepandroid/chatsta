@@ -35,7 +35,7 @@ import com.tridhya.chatsta.extensions.visible
 import com.devlomi.record_view.OnRecordListener
 import com.devlomi.record_view.RecordPermissionHandler
 import com.google.android.material.tabs.TabLayout
-import com.tridhya.chatsta.Model.response.Message
+import com.tridhya.chatsta.model.Message
 import com.tridhya.chatsta.R
 import com.tridhya.chatsta.base.ActivityBase
 import com.tridhya.chatsta.databinding.FragmentChatBinding

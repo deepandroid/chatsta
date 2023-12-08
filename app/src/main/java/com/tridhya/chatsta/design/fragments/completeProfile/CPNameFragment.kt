@@ -37,10 +37,14 @@ class CPNameFragment : BaseFragment(), View.OnClickListener {
         when (view?.id) {
             R.id.btnNext -> {
                 preventDoubleClick(view)
-                viewModel.isLoading.postValue(true)
+//                viewModel.isLoading.postValue(true)
                 setObservers()
                 session?.user?.userId?.let {
 //                    viewModel.updateStep1(it)
+                    val user = session?.user
+                    user?.firstName = viewModel.firstName.get()
+                    user?.lastName = viewModel.lastName.get()
+                    session?.user = user
                     findNavController().navigate(R.id.to_cp_2)
                 }
             }

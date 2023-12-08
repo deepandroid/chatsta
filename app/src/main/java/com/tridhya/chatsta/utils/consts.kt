@@ -58,9 +58,6 @@ import kotlin.system.exitProcess
 
 @SuppressLint("SdCardPath", "StaticFieldLeak")
 object Constant {
-
-
-
     const val SHARED_COMMON = "SharedCommon"
     const val BASE_URL = "BaseUrl"
     const val API_CLIENT = "ApiClient"
@@ -86,6 +83,7 @@ object Constant {
     private lateinit var wvProgressText: WebView
     private lateinit var btCancelDownload: Button
     private lateinit var clProgressDialog: ConstraintLayout
+/*
     fun showProgress(context: Context) {
         try {
             dialog = FullWidthDialog(context)
@@ -107,6 +105,7 @@ object Constant {
             e.localizedMessage?.let { logE("catch Error", it) }
         }
     }
+*/
 
 
     fun dismissProgress(context: Context) {

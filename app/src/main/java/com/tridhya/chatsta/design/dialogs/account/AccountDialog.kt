@@ -13,7 +13,7 @@ import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
-import com.tridhya.chatsta.Model.User
+import com.tridhya.chatsta.model.User
 import com.tridhya.chatsta.R
 import com.tridhya.chatsta.base.ActivityBase
 import com.tridhya.chatsta.databinding.LayoutAccountDialogBinding
@@ -52,7 +52,7 @@ class AccountDialog :
             viewLifecycleOwner,
             backPressedCallback
         )
-        viewModel.isLoading.value = true
+//        viewModel.isLoading.value = true
 //        viewModel.getUserProfile(session?.user?.userId)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
@@ -284,7 +284,7 @@ class AccountDialog :
             }
 
             else -> {
-                viewModel.isLoading.value = true
+//                viewModel.isLoading.value = true
                 currentPin = ""
                 newPin = ""
                 (context as ActivityBase).session?.user?.userId?.let { /*viewModel.updateProfile(it)*/ }

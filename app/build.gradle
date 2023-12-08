@@ -138,10 +138,9 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer:2.17.1'
     implementation 'androidx.mediarouter:mediarouter:1.2.6'
 
-    //navigation
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.5'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.7.5'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.5'
+    //Navigation
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
 
     //TedImagePicker
     implementation 'io.github.ParkSangGwon:tedimagepicker:1.2.8'

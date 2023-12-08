@@ -1,7 +1,7 @@
 package com.tridhya.chatsta.utils
 
 import android.content.Context
-import com.tridhya.chatsta.Model.response.EnumDataModel
+import com.tridhya.chatsta.model.EnumDataModel
 import com.tridhya.chatsta.R
 import com.tridhya.chatsta.provider.Constants
 

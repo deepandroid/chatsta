@@ -7,12 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import com.tridhya.chatsta.Model.response.CommentsModel
 import com.tridhya.chatsta.R
 import com.tridhya.chatsta.base.ActivityBase
 import com.tridhya.chatsta.databinding.LayoutMoreOptionsDialogBinding
 import com.tridhya.chatsta.design.BaseBottomSheetDialogFragment
 import com.tridhya.chatsta.extensions.gone
+import com.tridhya.chatsta.model.CommentsModel
 
 class CommentsMoreOptionsBottomDialog :
     BaseBottomSheetDialogFragment(), View.OnClickListener {

@@ -1,5 +1,6 @@
 package com.tridhya.chatsta.model
 
+import androidx.annotation.DrawableRes
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
@@ -10,7 +11,7 @@ data class PostReactionsResponseModel(
     var id: String? = null,
     @SerializedName("imageName")
     @Expose
-    var imageName: String? = null,
+     var imageName: String? = null,
     @SerializedName("imgUrl")
     @Expose
     var imageUrl: String? = null,
@@ -37,4 +38,7 @@ data class PostReactionsResponseModel(
     var v: Int? = null,
     @Expose(serialize = false)
     var isSelected: Boolean = false,
+    @SerializedName("imgUrl")
+    @Expose
+    @DrawableRes var emojiUrl: Int? = null,
 ) : Serializable

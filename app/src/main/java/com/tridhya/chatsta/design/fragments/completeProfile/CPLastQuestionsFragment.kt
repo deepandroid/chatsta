@@ -91,7 +91,7 @@ class CPLastQuestionsFragment : BaseFragment(), View.OnClickListener {
             }
         }
 
-        binding.etHeight.editText.addTextChangedListener {
+        binding.etHeight.editText.addTextChangedListener{
             if (it.toString().isNotBlank() && it.toString().toInt() > 0) {
                 binding.etHeight.editText.isSelected = true
                 binding.etHeight.tvTitle.isSelected = true

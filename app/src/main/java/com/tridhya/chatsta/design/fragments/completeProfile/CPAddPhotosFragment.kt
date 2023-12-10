@@ -26,7 +26,6 @@ class CPAddPhotosFragment : BaseFragment(),
     private val uriList: ArrayList<String> = ArrayList()
     var images: ArrayList<Images> = arrayListOf()
 
-//        private val urlList: ArrayList<String> = ArrayList()
     private val urlList: HashMap<Int?, String?> = HashMap()
 
     override fun onCreateView(
@@ -198,10 +197,7 @@ class CPAddPhotosFragment : BaseFragment(),
                     && binding.cvAddPhoto5.imageView.tag == null
                 ) {
                     viewModel.images = arrayListOf()
-//                    viewModel.isLoading.value = true
-                    setObservers()
                     session?.user?.userId?.let {
-//                        viewModel.updateStep3(it)
                         findNavController().navigate(R.id.to_cp_4)
                     }
                 } else
@@ -248,7 +244,6 @@ class CPAddPhotosFragment : BaseFragment(),
     }
 
     private fun uploadPhotos() {
-//        viewModel.isLoading.value = true
         uriList.clear()
         urlList.clear()
 
@@ -287,32 +282,12 @@ class CPAddPhotosFragment : BaseFragment(),
             uriList.add(path5!!)
         }
 
-        for (i in uriList.indices){
-            images.add(Images(uriList[i],i.toString()))
+        for (i in uriList.indices) {
+            images.add(Images(uriList[i], i.toString()))
         }
         val user = session?.user
         user?.images = images
         session?.user = user
         findNavController().navigate(R.id.to_cp_4)
-
-            /*AWSUtils(
-                context = requireContext(),
-                filePath = uriList[i],
-                onAwsImageUploadListener = this,
-                filePathKey = AwsConstants.folderPath(session?.user, AwsConstants.IMAGE),
-                position = i
-            ).beginUpload()*/
-    }
-
-    private fun setObservers() {
-        /*viewModel.responseUpdate.observe(viewLifecycleOwner) {
-            if (it != null) {
-                viewModel.isLoading.value = false
-                session?.user = it.data
-                it.data?.let { it1 -> updateFirebaseUser(it1) }
-                findNavController().navigate(R.id.to_cp_4)
-                viewModel.responseUpdate.value = null
-            }
-        }*/
     }
 }

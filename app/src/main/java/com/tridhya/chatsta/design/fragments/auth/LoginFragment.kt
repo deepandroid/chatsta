@@ -104,6 +104,8 @@ class LoginFragment : BaseFragment(), View.OnClickListener {
     private fun initViews() {
 
         if (session?.savedLogin != null) {
+            viewModel.userName.set(session?.savedLogin?.userName)
+            viewModel.password.set(session?.savedLogin?.password)
             binding.tvEnterPin.visible()
         } else {
             binding.tvEnterPin.gone()

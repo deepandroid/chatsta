@@ -9,42 +9,46 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.appbar.AppBarLayout
-import com.tridhya.chatsta.model.User
-import com.tridhya.chatsta.model.AllInterestResponseModel
 import com.tridhya.chatsta.R
 import com.tridhya.chatsta.databinding.FragmentProfileBinding
+import com.tridhya.chatsta.design.adapters.ImagesAdapter
+import com.tridhya.chatsta.design.adapters.completeProfile.EnumInterestAdapter
+import com.tridhya.chatsta.design.adapters.profile.MyConnectionsAdapter
 import com.tridhya.chatsta.design.dialogs.MemberShipDialog
 import com.tridhya.chatsta.design.dialogs.MessageDialog
 import com.tridhya.chatsta.design.dialogs.feed.MoreOptionsBottomDialog
 import com.tridhya.chatsta.design.fragments.BaseFragment
+import com.tridhya.chatsta.design.viewModel.FeedViewModel
 import com.tridhya.chatsta.design.viewModel.ProfileViewModel
 import com.tridhya.chatsta.extensions.gone
 import com.tridhya.chatsta.extensions.visible
+import com.tridhya.chatsta.model.AllInterestResponseModel
 import com.tridhya.chatsta.model.PostModel
+import com.tridhya.chatsta.model.User
 import com.tridhya.chatsta.provider.Constants
+import com.tridhya.chatsta.utils.LoadMoreRecyclerViewAdapter
 import com.tridhya.chatsta.utils.RelationshipStatusData
 
 class ProfileFragment : BaseFragment(), View.OnClickListener,
-    MoreOptionsBottomDialog.OptionSelectedListener {
+    LoadMoreRecyclerViewAdapter.OnLoadMoreListener,
+    MoreOptionsBottomDialog.OptionSelectedListener, MyConnectionsAdapter.OnItemClickListener {
 
     private lateinit var binding: FragmentProfileBinding
 
-    //    private lateinit var interestAdapter: EnumInterestAdapter
-//    private lateinit var imagesAdapter: ImagesAdapter
-    /*private val myConnectionsAdapter by lazy {
+    private lateinit var interestAdapter: EnumInterestAdapter
+    private lateinit var imagesAdapter: ImagesAdapter
+
+    private val myConnectionsAdapter by lazy {
         MyConnectionsAdapter(
             listener = this,
             loadMoreListener = this
         )
-    }*/
+    }
     var count = 0
     private var isRegister = false
-
-    //    private var successPostCommentListener: FeedAdapter.OnSuccessPostCommentListener? = null
-//    private val viewModel by lazy { FeedViewModel(requireContext()) }
+//    private var successPostCommentListener: FeedAdapter.OnSuccessPostCommentListener? = null
+    private val viewModel by lazy { FeedViewModel(requireContext()) }
     private val profileViewModel by lazy { ProfileViewModel(requireContext()) }
-
     //    private lateinit var feedAdapter: FeedAdapter
     private var page: Int = 1
 
@@ -64,6 +68,8 @@ class ProfileFragment : BaseFragment(), View.OnClickListener,
             }
 //            viewModel.isLoading.value = true
 //            profileViewModel.getAllDetails(session?.user?.userId.toString())
+            setProfileData(session?.user)
+            profileViewModel.userName
         }
         return binding.root
     }
@@ -73,7 +79,7 @@ class ProfileFragment : BaseFragment(), View.OnClickListener,
         showMembershipDialog()
         var isShow = true
         var scrollRange = -1
-        binding.appbar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { barLayout, verticalOffset ->
+        binding.appbar.addOnOffsetChangedListener { barLayout, verticalOffset ->
             if (scrollRange == -1) {
                 scrollRange = barLayout?.totalScrollRange!!
             }
@@ -82,7 +88,7 @@ class ProfileFragment : BaseFragment(), View.OnClickListener,
             } else if (isShow) {
                 isShow = false
             }
-        })
+        }
         binding.showMoreText.setOnClickListener(this)
         binding.evEditProfile.setOnClickListener(this)
         binding.tvRequestCount.setOnClickListener(this)
@@ -152,12 +158,12 @@ class ProfileFragment : BaseFragment(), View.OnClickListener,
 
     private fun setProfileData(user: User?) {
         setLayout(user)
-        setInterests(user?.interests as ArrayList<AllInterestResponseModel>)
+//        setInterests(user?.interests as ArrayList<AllInterestResponseModel>)
         val genderList = RelationshipStatusData.getGenderList(requireContext())
         val relationshipList = RelationshipStatusData.getRelationshipList(requireContext())
         val starSignList = RelationshipStatusData.getStarSignList(requireContext())
         for (i in genderList.indices) {
-            if (user.gender.equals(genderList[i].enum, true)) {
+            if (user?.gender.equals(genderList[i].enum, true)) {
                 binding.ivGenderImage.setImageResource(genderList[i].imagePath)
                 binding.ivGenderImage.isSelected = true
                 binding.tvGenderName.isSelected = true
@@ -165,7 +171,7 @@ class ProfileFragment : BaseFragment(), View.OnClickListener,
             }
         }
         for (i in relationshipList.indices) {
-            if (user.relationShipStatus.equals(relationshipList[i].enum, true)) {
+            if (user?.relationShipStatus.equals(relationshipList[i].enum, true)) {
                 binding.ivRelationshipStatusImage.setImageResource(relationshipList[i].imagePath)
                 binding.ivRelationshipStatusImage.isSelected = true
                 binding.tvRelationshipStatusName.isSelected = true
@@ -173,7 +179,7 @@ class ProfileFragment : BaseFragment(), View.OnClickListener,
             }
         }
         for (i in starSignList.indices) {
-            if (user.starSign.equals(starSignList[i].text, true)) {
+            if (user?.starSign.equals(starSignList[i].text, true)) {
                 binding.ivStarSignImage.setImageResource(starSignList[i].imagePath)
                 binding.ivStarSignImage.isSelected = true
                 binding.tvStarSignName.isSelected = true
@@ -188,8 +194,8 @@ class ProfileFragment : BaseFragment(), View.OnClickListener,
             binding.tvYourPhotos.gone()
             binding.viewPagerImages.visible()
             binding.tabLayout.visible()
-//            imagesAdapter = ImagesAdapter(requireContext(), user.images)
-//            binding.viewPagerImages.adapter = imagesAdapter
+            imagesAdapter = ImagesAdapter(requireContext(), user.images!!)
+            binding.viewPagerImages.adapter = imagesAdapter
             binding.tabLayout.setupWithViewPager(binding.viewPagerImages, true)
             binding.viewPagerImages.scrollIndicators = View.SCROLL_INDICATOR_BOTTOM
         } else {
@@ -345,6 +351,13 @@ class ProfileFragment : BaseFragment(), View.OnClickListener,
     override fun onReportSelected(dialog: MoreOptionsBottomDialog, postModel: PostModel) {
 //        viewModel.isLoading.value = true
 //        postModel.id?.let { viewModel.reportPost(postId = it) }
+    }
+
+    override fun onConnectionClicked(userData: User) {
+    }
+
+    override fun onLoadMore() {
+
     }
 
 }

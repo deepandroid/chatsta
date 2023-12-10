@@ -10,18 +10,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.GridLayoutManager
-import com.tridhya.chatsta.model.Images
-import com.tridhya.chatsta.model.User
-import com.tridhya.chatsta.model.AllInterestResponseModel
-import com.tridhya.chatsta.model.EnumDataModel
 import com.tridhya.chatsta.R
 import com.tridhya.chatsta.databinding.FragmentEditProfileBinding
+import com.tridhya.chatsta.design.adapters.completeProfile.EnumDataAdapter
+import com.tridhya.chatsta.design.adapters.completeProfile.EnumInterestAdapter
 import com.tridhya.chatsta.design.dialogs.MessageDialog
 import com.tridhya.chatsta.design.dialogs.NumberPickerBottomDialog
 import com.tridhya.chatsta.design.fragments.BaseFragment
 import com.tridhya.chatsta.design.viewModel.ProfileViewModel
 import com.tridhya.chatsta.extensions.gone
 import com.tridhya.chatsta.extensions.visible
+import com.tridhya.chatsta.model.AllInterestResponseModel
+import com.tridhya.chatsta.model.EnumDataModel
+import com.tridhya.chatsta.model.Images
+import com.tridhya.chatsta.model.User
 import com.tridhya.chatsta.utils.FileUtils
 import com.tridhya.chatsta.utils.GlideUtils
 import com.tridhya.chatsta.utils.RelationshipStatusData
@@ -35,13 +37,13 @@ class EditProfileFragment : BaseFragment(),
     private var relationshipList = arrayListOf<EnumDataModel>()
     private var starSignList = arrayListOf<EnumDataModel>()
 
-    //    private lateinit var genderAdapter: EnumDataAdapter
-//    private lateinit var relationshipAdapter: EnumDataAdapter
-//    private lateinit var starSignAdapter: EnumDataAdapter
+    private lateinit var genderAdapter: EnumDataAdapter
+    private lateinit var relationshipAdapter: EnumDataAdapter
+    private lateinit var starSignAdapter: EnumDataAdapter
     private var interestList: ArrayList<AllInterestResponseModel> = arrayListOf()
     private var selectedInterestList: ArrayList<String> = arrayListOf()
 
-    //    private lateinit var interestAdapter: EnumInterestAdapter
+    private lateinit var interestAdapter: EnumInterestAdapter
     private var deleteBtn: View? = null
     var user: User? = null
     private var height = 50
@@ -126,7 +128,7 @@ class EditProfileFragment : BaseFragment(),
 
     @SuppressLint("ClickableViewAccessibility")
     private fun initViews() {
-        if (user?.images?.isEmpty() == true){
+        if (user?.images?.isEmpty() == true) {
             return
         }
         if (user?.images?.size!! >= 1) {
@@ -252,7 +254,7 @@ class EditProfileFragment : BaseFragment(),
             }
         }
 
-        /* genderAdapter = EnumDataAdapter(
+         genderAdapter = EnumDataAdapter(
              genderList,
              object : EnumDataAdapter.OnItemClickListener {
                  override fun onItemSelected(data: EnumDataModel) {
@@ -261,32 +263,32 @@ class EditProfileFragment : BaseFragment(),
                      viewModel.gender = data
                  }
              }
-         )*/
+         )
         binding.llGender.recyclerview.layoutManager = GridLayoutManager(context, 3)
-//        binding.llGender.recyclerview.adapter = genderAdapter
+        binding.llGender.recyclerview.adapter = genderAdapter
 
 
-        /*relationshipAdapter =
+        relationshipAdapter =
             EnumDataAdapter(relationshipList, object : EnumDataAdapter.OnItemClickListener {
                 override fun onItemSelected(data: EnumDataModel) {
                     binding.llRelationshipStatus.recyclerview.isSelected = true
                     binding.llRelationshipStatus.tvTitle.isSelected = true
                     viewModel.relationshipStatus = data
                 }
-            })*/
+            })
         binding.llRelationshipStatus.recyclerview.layoutManager = GridLayoutManager(context, 3)
-//        binding.llRelationshipStatus.recyclerview.adapter = relationshipAdapter
+        binding.llRelationshipStatus.recyclerview.adapter = relationshipAdapter
 
-        /*starSignAdapter =
+        starSignAdapter =
             EnumDataAdapter(starSignList, object : EnumDataAdapter.OnItemClickListener {
                 override fun onItemSelected(data: EnumDataModel) {
                     binding.llStarSign.recyclerview.isSelected = true
                     binding.llStarSign.tvTitle.isSelected = true
                     viewModel.starSign = data
                 }
-            })*/
+            })
         binding.llStarSign.recyclerview.layoutManager = GridLayoutManager(context, 4)
-//        binding.llStarSign.recyclerview.adapter = starSignAdapter
+        binding.llStarSign.recyclerview.adapter = starSignAdapter
 
         if (!user?.gender.isNullOrEmpty()) {
             binding.llGender.llInputText.isSelected = true

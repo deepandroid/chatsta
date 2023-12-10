@@ -34,7 +34,6 @@ class CPEmailLocationFragment : BaseFragment(), View.OnClickListener,
         override fun afterTextChanged(s: Editable) {
             if (!stopSearch) {
                 if (s.toString() != "") {
-//                    placesAutoCompleteAdapter?.filter?.filter(s.toString())
                     if (binding.rvLocations.visibility === View.INVISIBLE) {
                         binding.rvLocations.visible()
                     }
@@ -152,13 +151,11 @@ class CPEmailLocationFragment : BaseFragment(), View.OnClickListener,
                 if (viewModel.email.get().isNullOrBlank()) {
                     showValidationDialog()
                 } else {
-                    session?.user?.userId?.let {
-                        val user = session?.user
-                        user?.email = viewModel.email.get()
-                        user?.location = viewModel.location.get()
-                        session?.user = user
-                        findNavController().navigate(R.id.to_cp_3)
-                    }
+                    val user = session?.user
+                    user?.email = viewModel.email.get()
+                    user?.location = viewModel.location.get()
+                    session?.user = user
+                    findNavController().navigate(R.id.to_cp_3)
                 }
             }
 

@@ -17,6 +17,7 @@ import com.tridhya.chatsta.databinding.FragmentRegisterBinding
 import com.tridhya.chatsta.design.fragments.BaseFragment
 import com.tridhya.chatsta.design.viewModel.RegisterViewModel
 import com.tridhya.chatsta.extensions.isValidPassword
+import com.tridhya.chatsta.model.User
 import com.tridhya.chatsta.model.request.RegisterRequestModel
 import com.tridhya.chatsta.provider.Constants.user1
 
@@ -52,9 +53,13 @@ class RegisterFragment : BaseFragment(), View.OnClickListener {
         binding.btnRegister.setOnClickListener(this)
         binding.etPin.editText.setOnClickListener(this)
 
+        viewModel.userName.set("test1")
+        viewModel.password.set("Test@1234")
+        viewModel.confirmPassword.set("Test@1234")
+        viewModel.pin.set("1234")
+
         binding.etUserName.editText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
             }
 
             override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -67,7 +72,6 @@ class RegisterFragment : BaseFragment(), View.OnClickListener {
                     binding.etUserName.editText.setSelection(result.length)
                 }
             }
-
         })
 
     }
@@ -119,10 +123,12 @@ class RegisterFragment : BaseFragment(), View.OnClickListener {
 
             else -> {
                 hideKeyboard()
-                session?.user = user1
-                session?.user?.username = viewModel.userName.get()
-                session?.user?.password = viewModel.password.get()
-                session?.user?.pin = viewModel.pin.get()
+                val user = User()
+                user1
+                user.username = viewModel.userName.get()
+                user.password = viewModel.password.get()
+                user.pin = viewModel.pin.get()
+                session?.user = user
 //                checkOrCreateNewUser(it)
                 session?.savedLogin =
                     RegisterRequestModel(

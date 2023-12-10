@@ -164,10 +164,10 @@ object Constants {
 
     val user1 = User(
         "1",
-        "TestTridhya@gmail.com",
-        "Test",
-        "Tridhya",
-        "test@",
+        "jessica@gmail.com",
+        "Jessica",
+        "Franco",
+        "Jessica",
         "Test@1234",
         "1234",
         "Gota,Ahmedabad",

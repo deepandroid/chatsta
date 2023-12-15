@@ -194,7 +194,7 @@ object Constants {
         null,
         null,
         null,
-        null,
+        "https://source.unsplash.com/user/c_v_r/1900x800",
         null,
         null,
         null,

@@ -41,4 +41,6 @@ data class PostReactionsResponseModel(
     @SerializedName("imgUrl")
     @Expose
     @DrawableRes var emojiUrl: Int? = null,
+    @Expose
+    @DrawableRes var gifDrawable: Int? = null,
 ) : Serializable

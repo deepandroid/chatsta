@@ -39,7 +39,7 @@ class FeedFragment() : BaseFragment(), FeedAdapter.OnItemClickListener, View.OnC
     private var successPostCommentListener: FeedAdapter.OnSuccessPostCommentListener? = null
     var count = 0
 
-    var postList: List<PostModel> = arrayListOf()
+    var postList: ArrayList<PostModel> = arrayListOf()
 
     constructor(parcel: Parcel) : this() {
         page = parcel.readInt()
@@ -56,32 +56,38 @@ class FeedFragment() : BaseFragment(), FeedAdapter.OnItemClickListener, View.OnC
             binding = FragmentFeedBinding.inflate(inflater, container, false)
             binding.lifecycleOwner = viewLifecycleOwner
             page = 1
-            viewModel.isLoading.value = true
+//            viewModel.isLoading.value = true
 //            viewModel.getPosts(page = page)
             postList = getFeedPostList()
             if (!this::feedAdapter.isInitialized) {
                 feedAdapter =
-                    FeedAdapter(listener = this, loadMoreListener = this, burnListener = this)
+                    FeedAdapter(
+//                        postList,
+                        listener = this,
+                        loadMoreListener = this,
+                        burnListener = this
+                    )
+                binding.rvFeed.layoutManager = LinearLayoutManager(requireContext())
                 binding.rvFeed.adapter = feedAdapter
             }
-            if (postList.isEmpty() && page == 1) {
-                binding.tvNoFeedFound.visible()
-                binding.rvFeed.gone()
-            } else {
-                binding.tvNoFeedFound.gone()
-                binding.rvFeed.visible()
-                val list = if (postList.isEmpty()) arrayListOf() else postList
-                postList.forEach {
-                    it.reactions.forEach { reaction ->
-                        Glide.with(requireContext()).asGif().load(reaction.gifUrl)
-                    }
-                }
-                if (page == 1) {
-                    feedAdapter.setList(list)
-                } else {
-                    feedAdapter.addList(list)
+            /* if (postList.isEmpty() && page == 1) {
+                 binding.tvNoFeedFound.visible()
+                 binding.rvFeed.gone()
+             } else {*/
+            binding.tvNoFeedFound.gone()
+            binding.rvFeed.visible()
+            val list = if (postList.isEmpty()) arrayListOf() else postList
+            postList.forEach {
+                it.reactions.forEach { reaction ->
+                    Glide.with(requireContext()).asGif().load(reaction.gifUrl)
                 }
             }
+            if (page == 1) {
+                feedAdapter.setList(list)
+            } else {
+                feedAdapter.addList(list)
+            }
+//            }
         }
         return binding.root
     }
@@ -89,7 +95,7 @@ class FeedFragment() : BaseFragment(), FeedAdapter.OnItemClickListener, View.OnC
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.mainToolbar)
-        viewModel.isLoading.value = true
+//        viewModel.isLoading.value = true
 //        viewModel.getAllSponsorClock()
 
         binding.toolbar.ivSearch.setOnClickListener(this)
@@ -208,7 +214,7 @@ class FeedFragment() : BaseFragment(), FeedAdapter.OnItemClickListener, View.OnC
             if (commentedText.isNotBlank() || commentedText.isNotEmpty()
             ) {
                 viewModel.commentText.set(commentedText)
-                viewModel.isLoading.value = true
+//                viewModel.isLoading.value = true
                 this.successPostCommentListener = successPostCommentListener
 //                postData.id?.let { it1 -> viewModel.postUserComments(it1) }
             } else {
@@ -268,7 +274,7 @@ class FeedFragment() : BaseFragment(), FeedAdapter.OnItemClickListener, View.OnC
             .setListener(object : MessageDialog.ButtonListener {
                 override fun onPositiveBtnClicked(dialog: MessageDialog) {
                     dialog.dismiss()
-                    viewModel.isLoading.value = true
+//                    viewModel.isLoading.value = true
 //                    postModel.id?.let { viewModel.deletePost(postId = it) }
                 }
             })
@@ -276,12 +282,12 @@ class FeedFragment() : BaseFragment(), FeedAdapter.OnItemClickListener, View.OnC
     }
 
     override fun onReportSelected(dialog: MoreOptionsBottomDialog, postModel: PostModel) {
-        viewModel.isLoading.value = true
+//        viewModel.isLoading.value = true
 //        postModel.id?.let { viewModel.reportPost(postId = it) }
     }
 
     override fun onLoadMore() {
-        ++page
+//        ++page
 //        viewModel.getPosts(page = page)
     }
 

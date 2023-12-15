@@ -113,66 +113,6 @@ class FeedAdapter(
         ) {
             val userData = data.postedBy
             val reactionList = data.reactions
-//            mDBReference = AppClass.mDBReference
-
-            /*            mDBReference //Observing user
-                            ?.child(Constants.TABLE_USERS)?.child(userData?.userId.toString())
-                            ?.addValueEventListener(object : ValueEventListener {
-                                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                                    val values = dataSnapshot.value as HashMap<*, *>?
-                                    Log.e("DataSnapshot", dataSnapshot.value.toString())
-
-                                    if (values != null) {
-                                        if (values.containsKey("lastSeen") && values["lastSeen"] != null)
-                                            lastSeen = values["lastSeen"] as Long
-                                        if (values.containsKey("isOnline") && values["isOnline"] != null)
-                                            isOnline = UserStatus.valueOf(values["isOnline"] as String)
-                                        userSetStatus =
-                                            if (values.containsKey("userSetStatus")) UserStatus.valueOf(values["userSetStatus"].toString()) else UserStatus.ONLINE
-
-                                        val inChatWith = if (values.containsKey("inChatWith")) {
-                                            values["inChatWith"].toString()
-                                        } else ""
-
-                                        if (userSetStatus == UserStatus.ONLINE) {
-                                            val status = if (inChatWith.isNotBlank()) {
-                                                if (getMessageIdChatWithMe(userData?.userId.toString()) == inChatWith) {
-                                                    isOnline
-                                                } else {
-                                                    UserStatus.BUSY
-                                                }
-                                            } else {
-                                                isOnline
-                                            }
-                                            when (status) {
-                                                UserStatus.ONLINE -> {
-                                                    binding.ivProfileIndicator.setImageResource(R.drawable.v_ic_circle_green)
-                                                }
-                                                UserStatus.BUSY -> {
-                                                    binding.ivProfileIndicator.setImageResource(R.drawable.v_ic_circle_blue)
-                                                }
-                                                else -> {
-                                                    binding.ivProfileIndicator.setImageResource(R.drawable.v_ic_circle_red)
-                                                }
-                                            }
-                                        } else {
-                                            when (userSetStatus) {
-                                                UserStatus.ONLINE -> {
-                                                    binding.ivProfileIndicator.setImageResource(R.drawable.v_ic_circle_green)
-                                                }
-                                                UserStatus.BUSY -> {
-                                                    binding.ivProfileIndicator.setImageResource(R.drawable.ic_busy_status)
-                                                }
-                                                else -> {
-                                                    binding.ivProfileIndicator.setImageResource(R.drawable.v_ic_circle_red)
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-
-                                override fun onCancelled(databaseError: DatabaseError) {}
-                            })*/
 
             if (timer != null) {
                 timer!!.cancel()
@@ -231,17 +171,7 @@ class FeedAdapter(
                 )
             binding.recyclerviewReactions.isNestedScrollingEnabled = false
             reactionsAdapter =
-                if ((mContext as ActivityBase).session?.user?.userId == userData?.userId || userData?.isPaidContentProvider == false) {
-                    val list = arrayListOf<PostReactionsResponseModel>()
-                    for (i in reactionList.indices) {
-                        if (reactionList[i].isFree == true) {
-                            list.add(reactionList[i])
-                        }
-                    }
-                    userData?.let { PostReactionsAdapter(mContext, list, data, it, this) }
-                } else {
                     userData?.let { PostReactionsAdapter(mContext, reactionList, data, it, this) }
-                }
             binding.recyclerviewReactions.adapter = reactionsAdapter
             if (userData != null) {
                 if (userData.images?.isEmpty() == false) {
@@ -319,19 +249,19 @@ class FeedAdapter(
             }
 
             binding.tvUserName.setOnClickListener {
-                mContext.preventDoubleClick(it)
+                (mContext as ActivityBase).preventDoubleClick(it)
                 userData?.let { it1 -> listener.onProfileClicked(it1) }
             }
             binding.ivProfileImage.setOnClickListener {
-                mContext.preventDoubleClick(it)
+                (mContext as ActivityBase).preventDoubleClick(it)
                 userData?.let { it1 -> listener.onProfileClicked(it1) }
             }
             binding.ivMoreOptions.setOnClickListener {
-                mContext.preventDoubleClick(it)
+                (mContext as ActivityBase).preventDoubleClick(it)
                 listener.onItemSelected(data)
             }
             binding.ivAddComments.setOnClickListener {
-                mContext.preventDoubleClick(it)
+                (mContext as ActivityBase).preventDoubleClick(it)
                 listener.onCommentsSelected(position, data, isMedia = true, "",
                     object : OnSuccessPostCommentListener {
                         override fun onSuccessPostComment(totalCount: Int) {
@@ -339,7 +269,7 @@ class FeedAdapter(
                     })
             }
             binding.llCommentsCount.setOnClickListener {
-                mContext.preventDoubleClick(it)
+                (mContext as ActivityBase).preventDoubleClick(it)
                 listener.onCommentsSelected(position, data, isMedia = true, "",
                     object : OnSuccessPostCommentListener {
                         override fun onSuccessPostComment(totalCount: Int) {
@@ -347,7 +277,7 @@ class FeedAdapter(
                     })
             }
             binding.ivPostComments.setOnClickListener {
-                mContext.preventDoubleClick(it)
+                (mContext as ActivityBase).preventDoubleClick(it)
                 listener.onCommentsSelected(
                     position,
                     data,

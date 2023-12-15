@@ -26,8 +26,10 @@ import com.tridhya.chatsta.extensions.hideKeyboard
 import com.tridhya.chatsta.extensions.invisible
 import com.tridhya.chatsta.extensions.visible
 import com.tridhya.chatsta.utils.GlideUtils
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class MainActivity : ActivityBase(), NavController.OnDestinationChangedListener {
 
     private lateinit var binding: ActivityMainBinding
@@ -151,18 +153,18 @@ class MainActivity : ActivityBase(), NavController.OnDestinationChangedListener 
         }
     }
 
-  /*  override fun onBackPressed() {
-        val navHostFragment: Fragment? =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
-        if (navHostFragment?.childFragmentManager?.fragments?.get(0) == EnterNewPasswordFragment() || navHostFragment?.childFragmentManager?.fragments?.get(
-                0
-            ) == PasswordUpdatedFragment()
-        ) {
-            goToActivityAndClearTask<MainActivity>()
-        } else {
-            super.onBackPressed()
-        }
-    }*/
+    /*  override fun onBackPressed() {
+          val navHostFragment: Fragment? =
+              supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+          if (navHostFragment?.childFragmentManager?.fragments?.get(0) == EnterNewPasswordFragment() || navHostFragment?.childFragmentManager?.fragments?.get(
+                  0
+              ) == PasswordUpdatedFragment()
+          ) {
+              goToActivityAndClearTask<MainActivity>()
+          } else {
+              super.onBackPressed()
+          }
+      }*/
 
     fun showGIF(url: String) {
         binding.ivGif.visible()

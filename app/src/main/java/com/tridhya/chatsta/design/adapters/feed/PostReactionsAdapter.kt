@@ -1,6 +1,7 @@
 package com.tridhya.chatsta.design.adapters.feed
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,8 +15,6 @@ import com.tridhya.chatsta.extensions.visible
 import com.tridhya.chatsta.model.PostModel
 import com.tridhya.chatsta.model.PostReactionsResponseModel
 import com.tridhya.chatsta.model.User
-import com.tridhya.chatsta.utils.GlideUtils
-import com.tridhya.chatsta.utils.NumberFormatter
 
 class PostReactionsAdapter(
     val mContext: Context,
@@ -42,12 +41,15 @@ class PostReactionsAdapter(
 
     override fun onBindViewHolder(holder: ReactionViewHolder, position: Int) {
         val data = list[position]
-        if ((mContext as ActivityBase).session?.user?.userId == userData.userId || userData.isPaidContentProvider == false) {
+        /*if ((mContext as ActivityBase).session?.user?.userId == userData.userId || userData.isPaidContentProvider == false) {
             if (data.isFree!!) {
+                Log.d("TAG", "onBindViewHolderEmoi: "+data.emojiUrl)
+
                 holder.binding.llMain.visible()
                 holder.binding.tvAmount.gone()
-                GlideUtils(holder.binding.ivImage.context)
-                    .loadImage(data.imageUrl, holder.binding.ivImage)
+                holder.binding.ivImage.setImageDrawable(mContext.getDrawable(data.emojiUrl!!))
+//                GlideUtils(holder.binding.ivImage.context)
+//                    .loadImage(data.emojiUrl, holder.binding.ivImage)
                 if (data.count == 0L) {
                     holder.binding.tvCount.invisible()
                 } else {
@@ -58,32 +60,35 @@ class PostReactionsAdapter(
             } else {
                 holder.binding.llMain.gone()
             }
+        } else {*/
+        Log.d("TAG", "onBindViewHolderEmoi: " + data.emojiUrl)
+//            GlideUtils(holder.binding.ivImage.context)
+//                .loadImage(data.emojiUrl, holder.binding.ivImage)
+        holder.binding.ivImage.setImageDrawable(mContext.getDrawable(data.emojiUrl!!))
+        if (data.isFree!!) {
+            holder.binding.tvAmount.gone()
         } else {
-            GlideUtils(holder.binding.ivImage.context)
-                .loadImage(data.imageUrl, holder.binding.ivImage)
-            if (data.isFree!!) {
-                holder.binding.tvAmount.gone()
-            } else {
-                holder.binding.tvAmount.visible()
-                holder.binding.tvAmount.text = "$${data.price}"
-            }
-            if (data.count == 0L) {
-                holder.binding.tvCount.invisible()
-            } else {
-                holder.binding.tvCount.visible()
-                count = data.count!!
-                holder.binding.tvCount.text = count.toString()
-            }
+            holder.binding.tvAmount.visible()
+            holder.binding.tvAmount.text = "$${data.price}"
         }
+        if (data.count == 0L) {
+            holder.binding.tvCount.invisible()
+        } else {
+            holder.binding.tvCount.visible()
+            count = data.count!!
+            holder.binding.tvCount.text = count.toString()
+        }
+//        }
 
         holder.binding.llMain.setOnClickListener {
-            mContext.preventDoubleClick(it)
+            (mContext as ActivityBase).preventDoubleClick(it)
             if (data.isFree != true) {
                 itemSelected =
                     if (itemSelected == holder.bindingAdapterPosition) null else holder.bindingAdapterPosition
                 notifyDataSetChanged()
             } else {
-                data.gifUrl?.let { it1 -> (mContext as MainActivity).showGIF(it1) }
+                data.gifDrawable?.let { it1 -> (mContext as MainActivity).showGIF(it1) }
+//                data.gifUrl?.let { it1 -> (mContext as MainActivity).showGIF(it1) }
                 val data = list[holder.bindingAdapterPosition]
                 notifyDataSetChanged()
 
@@ -102,10 +107,11 @@ class PostReactionsAdapter(
         }
 
         holder.binding.tvDonate.setOnClickListener {
-            mContext.preventDoubleClick(it)
+            (mContext as ActivityBase).preventDoubleClick(it)
             val newData = list[holder.bindingAdapterPosition]
             notifyDataSetChanged()
-            data.gifUrl?.let { it1 -> (mContext as MainActivity).showGIF(it1) }
+//            data.gifUrl?.let { it1 -> (mContext as MainActivity).showGIF(it1) }
+            data.gifDrawable?.let { it1 -> (mContext as MainActivity).showGIF(it1) }
             listener.onItemSelected(
                 newData,
                 postData,

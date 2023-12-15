@@ -30,22 +30,26 @@ import androidx.core.widget.doOnTextChanged
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.tridhya.chatsta.extensions.gone
-import com.tridhya.chatsta.extensions.visible
 import com.devlomi.record_view.OnRecordListener
 import com.devlomi.record_view.RecordPermissionHandler
 import com.google.android.material.tabs.TabLayout
-import com.tridhya.chatsta.model.Message
 import com.tridhya.chatsta.R
 import com.tridhya.chatsta.base.ActivityBase
 import com.tridhya.chatsta.databinding.FragmentChatBinding
+import com.tridhya.chatsta.design.adapters.ChatAdapter
 import com.tridhya.chatsta.design.dialogs.MessageDialog
 import com.tridhya.chatsta.design.fragments.BaseFragment
 import com.tridhya.chatsta.design.viewModel.chat.ChatViewModel
 import com.tridhya.chatsta.enum.chat.MessageType
 import com.tridhya.chatsta.enum.chat.UserStatus
+import com.tridhya.chatsta.extensions.gone
+import com.tridhya.chatsta.extensions.visible
+import com.tridhya.chatsta.model.Message
 import com.tridhya.chatsta.provider.Constants
 import com.tridhya.chatsta.provider.Constants.SELF_DESTRUCT_OFF
+import com.tridhya.chatsta.provider.dummyData.chat.getMessages.getChatMessages
+import com.tridhya.chatsta.utils.FileUtils
+import com.tridhya.chatsta.utils.GlideUtils
 import com.tridhya.chatsta.utils.MyEditText
 import java.io.File
 import java.io.IOException
@@ -58,17 +62,11 @@ class ChatFragment : BaseFragment(), View.OnClickListener {
     private val viewModel by lazy { ChatViewModel(requireContext()) }
     private val mediaPlayer: MediaPlayer = MediaPlayer()
 
-    //    private var adapter: ChatAdapter? = null
-//    private var chatEmojis: ArrayList<ChatEmojisModel>? = null
-//    private var chatSoundEmojis: ArrayList<ChatEmojisModel>? = null
-//    private var chatEmojisAdapter: ChatEmojisAdapter? = null
-//    private var chatSoundEmojisAdapter: ChatSoundEmojisAdapter? = null
+    private var adapter: ChatAdapter? = null
+
     private var selectedUserId: String? = null
 
-    //    private val mediaList: ArrayList<MediaUris> = arrayListOf()
-//    private val uploadedMedia = arrayListOf<PostMediaModel>()
     val messages = arrayListOf<Message>()
-//    private val mediaAdapter by lazy { ScheduleMessageAdapter(mediaList) }
 
 
     private var userId: String? = null
@@ -129,16 +127,13 @@ class ChatFragment : BaseFragment(), View.OnClickListener {
         return binding.root
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
 
     private fun recorderView() {
         binding.recordButton.setRecordView(binding.recordView)
         binding.recordView.setCounterTimeColor(requireContext().getColor(R.color.black))
         binding.recordView.setSoundEnabled(true)
         binding.recordButton.isListenForRecord = true
-//        binding.recordView.setBackgroundResource(R.drawable.bg_border_purple)
+        binding.recordView.setBackgroundResource(R.drawable.bg_border_purple)
         binding.llRecordView.setPadding(16, 0, 16, 0)
         //Cancel Bounds is when the Slide To Cancel text gets before the timer . default is 8
         binding.recordView.cancelBounds = 8F
@@ -148,10 +143,10 @@ class ChatFragment : BaseFragment(), View.OnClickListener {
         binding.recordView.setLessThanSecondAllowed(false)
         binding.recordView.setSlideToCancelText("Slide To Cancel")
 //        binding.recordButton.isListenForRecord = false
-//        binding.recordButton.setOnRecordClickListener(OnRecordClickListener {
-//            Toast.makeText(requireContext(), "RECORD BUTTON CLICKED", Toast.LENGTH_SHORT).show()
-//            Log.d("RecordButton", "RECORD BUTTON CLICKED")
-//        })
+        /* binding.recordButton.setOnRecordClickListener(OnRecordClickListener {
+             Toast.makeText(requireContext(), "RECORD BUTTON CLICKED", Toast.LENGTH_SHORT).show()
+             Log.d("RecordButton", "RECORD BUTTON CLICKED")
+         })*/
 
 
 //        binding.recordView.setCustomSounds(R.raw.record_start, R.raw.record_finished, 0)
@@ -210,56 +205,23 @@ class ChatFragment : BaseFragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        userName = session?.user?.username
+        binding.tvUserName.text = userName
+        binding.tvToolbarTitle.text = userName
+        isDeletedUser = false
+        binding.llBlock.gone()
+        binding.llMainActions.visible()
+
+        binding.clUserStatus.visible()
+        binding.clToolbarUserStatus.visible()
+        binding.tvUserStatus.text = "Focusing on goals"
+        binding.tvToolbarUserStatus.text = "Focusing on goals"
+
+        GlideUtils(requireContext()).circleImage()
+            .loadImage("https://source.unsplash.com/user/c_v_r/1900x800", binding.ivProfileImage)
+
         binding.rvScheduleMessage.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-//        binding.rvScheduleMessage.adapter = mediaAdapter
-        /*
-                mStorageRef = FirebaseStorage.getInstance().reference
-                mDBReference = AppClass.mDBReference
-                mDBReference?.child(Constants.TABLE_USERS)?.child(userId.toString())
-                    ?.addListenerForSingleValueEvent(object : ValueEventListener {
-                        override fun onDataChange(dataSnapshot: DataSnapshot) {
-                            val values = dataSnapshot.value as HashMap<*, *>?
-                            userName = values?.get("name").toString()
-                            binding.tvUserName.text = userName
-                            binding.tvToolbarTitle.text = userName
-                            if (values?.containsKey("isDeleted") == true && values["isDeleted"] == true) {
-                                isDeletedUser = true
-                                binding.tvBlockContact.text = getString(R.string.user_has_deleted_account)
-                                binding.llBlock.visible()
-                                binding.llMainActions.gone()
-                            } else {
-                                isDeletedUser = false
-                                binding.llBlock.gone()
-                                binding.llMainActions.visible()
-                            }
-                            if (values?.containsKey("userTextStatus") == true && values["userTextStatus"] != null && values["userTextStatus"].toString()
-                                    .isNotBlank()
-                            ) {
-                                binding.clUserStatus.visible()
-                                binding.clToolbarUserStatus.visible()
-                                binding.tvUserStatus.text = values["userTextStatus"].toString()
-                                binding.tvToolbarUserStatus.text = values["userTextStatus"].toString()
-                            } else {
-                                binding.clUserStatus.gone()
-                                binding.clToolbarUserStatus.gone()
-                            }
-                            if (values?.containsKey("image") == true && values["image"].toString()
-                                    .isNotEmpty() && values["image"]
-                                    .toString().isNotBlank()
-                            )
-                                GlideUtils(requireContext()).circleImage()
-                                    .loadImage(values["image"].toString(), binding.ivProfileImage)
-                            else
-                                GlideUtils(requireContext()).circleImage()
-                                    .loadImage(R.drawable.ic_app, binding.ivProfileImage)
-                        }
-
-                        override fun onCancelled(databaseError: DatabaseError) {
-
-                        }
-
-                    })*/
 
         initViews()
         setObservers()
@@ -296,11 +258,6 @@ class ChatFragment : BaseFragment(), View.OnClickListener {
             params["blockedBy_${session?.user?.userId}"] = isBlockedUser
             params["blockedBy_${userId}"] = isBlockedForChat
 
-//            mDBReference
-//                ?.child(Constants.TABLE_CHAT)
-//                ?.child(Constants.TABLE_THREADS)
-//                ?.child(threadId.toString())
-//                ?.updateChildren(params)
 
             if (!isDeletedUser) {
                 when {
@@ -346,13 +303,13 @@ class ChatFragment : BaseFragment(), View.OnClickListener {
                     if (inputContentInfo != null) {
                         if (inputContentInfo.contentUri != null) {
                             Log.e("GIF::::", inputContentInfo.contentUri.path.toString())
-//                            val uri = inputContentInfo.contentUri
-//                            val size = FileUtils(requireContext()).getFileSize(uri)
-//                            if (size != null && size <= 30000000) {
-//                                uploadMedia(MessageType.IMAGE, uri, 1)
-//                            } else {
-//                                showToastShort(getString(R.string.ett_file_size))
-//                            }
+                            val uri = inputContentInfo.contentUri
+                            val size = FileUtils(requireContext()).getFileSize(uri)
+                            if (size != null && size <= 30000000) {
+                                uploadMedia(MessageType.IMAGE, uri, 1)
+                            } else {
+                                showToastShort(getString(R.string.ett_file_size))
+                            }
                         }
                         if (inputContentInfo.linkUri != null) {
                             Log.e("GIF:::", inputContentInfo.linkUri!!.path.toString())
@@ -403,18 +360,6 @@ class ChatFragment : BaseFragment(), View.OnClickListener {
     override fun onResume() {
         super.onResume()
         (context as ActivityBase).disableScreenShots()
-//        AppClass.setInChat(userId.toString(), true)
-        /*findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Boolean>(
-            "chatDeleted"
-        )?.observe(viewLifecycleOwner) {
-            if (it) {
-                findNavController().currentBackStackEntry?.savedStateHandle?.remove<Boolean>(
-                    "chatDeleted"
-                )
-                deleteChatAnimation()
-            }
-        }*/
-
         binding.rvMessages.post {
             Handler(Looper.getMainLooper()).postDelayed(
                 { scrollDown() },
@@ -422,30 +367,9 @@ class ChatFragment : BaseFragment(), View.OnClickListener {
             )
         }
 
-//        val chatWith = ChatWith()
-//        chatWith.userId = selectedUserId
-
-        /*        if (mDBReference != null) {
-                    mDBReference!!
-                        .child(Constants.TABLE_USERS).child(session?.user?.userId.toString())
-                        .child("chatWith")
-                        .setValue(chatWith)
-                }*/
-
-        /*
-                val params: MutableMap<String, Any> = HashMap()
-                params["inChatWith"] = getMessageIdChatWithMe(userId.toString())
-        */
-
-//        mDBReference
-//            ?.child(Constants.TABLE_USERS)
-//            ?.child(session?.user?.userId.toString())
-//            ?.updateChildren(params)
     }
 
     override fun onClick(view: View?) {
-        mediaPlayer.stop()
-//        adapter?.destroy()
         when (view?.id) {
             R.id.ivClose -> {
                 preventDoubleClick(view)
@@ -510,24 +434,6 @@ class ChatFragment : BaseFragment(), View.OnClickListener {
                 preventDoubleClick(view)
                 hideKeyboard()
                 binding.llEmojis.gone()
-                /*                SelfDestructMessageDialog.getInstance(
-                                    requireContext(),
-                                    destructDuration.toString()
-                                ).setListener(object :
-                                    SelfDestructMessageDialog.ButtonListener {
-                                    override fun onDurationSelected(
-                                        dialog: SelfDestructMessageDialog,
-                                        duration: String,
-                                    ) {
-                                        dialog.dismiss()
-                                        destructDuration = duration
-                                        if (duration != SELF_DESTRUCT_OFF) {
-                                            binding.ivBurnYellow.visible()
-                                        } else {
-                                            binding.ivBurnYellow.gone()
-                                        }
-                                    }
-                                }).show()*/
             }
 
             R.id.tvDelete -> {
@@ -612,12 +518,6 @@ class ChatFragment : BaseFragment(), View.OnClickListener {
                     binding.evMessage.setText("")
                 } else {
                     binding.tvDate.tag = scheduleMessageTimeStamp
-//                    binding.tvDate.text = scheduleMessageTimeStamp?.let {
-//                        TimeStamp.millisToFormat(
-//                            it,
-//                            TimeStamp.FULL_DATE_FORMAT_SCHEDULE
-//                        )
-//                    }
                     binding.llScheduleMessage.visible()
                     binding.llEmojis.gone()
                     binding.ivSend.gone()
@@ -628,26 +528,10 @@ class ChatFragment : BaseFragment(), View.OnClickListener {
                     binding.evMessage.setText("")
                     scheduledMessages.forEach {
                         when (it.type) {
-                            MessageType.IMAGE -> {
-                            }
 
-                            MessageType.EMOJI -> {
-                            }
-
-                            MessageType.VIDEO -> {
-                            }
-
-                            MessageType.AUDIO -> {
-                            }
-
-                            MessageType.SOUND_EMOJI -> {
-                            }
-
-                            MessageType.FILE -> {
-                            }
 
                             MessageType.TEXT -> {
-//                                binding.evMessage.setText(message)
+                                binding.evMessage.setText(it.message)
                             }
 
                             else -> {}
@@ -774,7 +658,7 @@ class ChatFragment : BaseFragment(), View.OnClickListener {
         params["inChatWith"] = getMessageIdChatWithMe(userId.toString())
 
         val mLayoutManager = LinearLayoutManager(requireContext())
-//        mLayoutManager.stackFromEnd = true
+        mLayoutManager.stackFromEnd = true
         binding.rvMessages.layoutManager = mLayoutManager
         binding.rvMessages.itemAnimator = null
 
@@ -783,25 +667,21 @@ class ChatFragment : BaseFragment(), View.OnClickListener {
             handler.removeCallbacksAndMessages(null)
             handler.postDelayed(runnable, 1500)
         }
-        /*        val query = mThreadReference?.orderByChild("timestamp")
-                val options = FirebaseRecyclerOptions.Builder<Message>()
-                    .setQuery(query!!, Message::class.java)
-                    .setLifecycleOwner(binding.lifecycleOwner)
-                    .build()
-                if (adapter == null || adapter?.itemCount == 0) {
-                    adapter = ChatAdapter(options, userId, this)
-                    if (!viewModel.responseChatReactions.value.isNullOrEmpty()) {
-                        adapter?.setChatReactions(viewModel.responseChatReactions.value!!)
-                    }
-                    binding.rvMessages.adapter = adapter
-        
-                    binding.rvMessages.post {
-                        Handler(Looper.getMainLooper()).postDelayed(
-                            { scrollDown() },
-                            100
-                        )
-                    }
-                }*/
+        updateUserStatus(true)
+
+        if (adapter == null || adapter?.itemCount == 0) {
+
+            val chatMessages = getChatMessages()
+            adapter = ChatAdapter(chatMessages)
+            binding.rvMessages.adapter = adapter
+
+            binding.rvMessages.post {
+                Handler(Looper.getMainLooper()).postDelayed(
+                    { scrollDown() },
+                    100
+                )
+            }
+        }
         getSelfDestruct()
         setChatHistoryAdapter()
         checkBlockedUser()
@@ -809,126 +689,15 @@ class ChatFragment : BaseFragment(), View.OnClickListener {
     }
 
     private fun checkDeletedChat() {
-        /*if (deletedChatListener != null) {
-            mDBReference
-                ?.child(Constants.TABLE_CHAT)
-                ?.child(Constants.TABLE_THREADS)
-                ?.child(threadId.toString())
-                ?.child("isDeleting")
-                ?.addValueEventListener(deletedChatListener!!)
-        }*/
+
     }
 
     private fun checkBlockedUser() {
-        /* if (blockedForChatListener != null) {
-             mDBReference
-                 ?.child(Constants.TABLE_CHAT)
-                 ?.child(Constants.TABLE_THREADS)
-                 ?.child(threadId.toString())
-                 ?.child("blockedBy_${userId}")
-                 ?.addValueEventListener(blockedForChatListener!!)
-         }
-         if (blockedForUserListener != null) {
-             mDBReference
-                 ?.child(Constants.TABLE_CHAT)
-                 ?.child(Constants.TABLE_THREADS)
-                 ?.child(threadId.toString())
-                 ?.child("blockedBy_${session?.user?.userId}")
-                 ?.addValueEventListener(blockedForUserListener!!)
-         }*/
+
     }
 
     private fun setChatHistoryAdapter() {
 
-        /*mDBReference
-            ?.child(Constants.TABLE_CHAT)
-            ?.child(Constants.TABLE_CONVERSATIONS)
-            ?.child(session?.user?.userId.toString())
-            ?.child(threadId.toString())
-            ?.addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()) {
-                        *//*lastDeleted = snapshot.child("lastDeleted").value as Long?
-                        val query = if (lastDeleted != null) {
-                            val cal = Calendar.getInstance()
-                            cal.timeInMillis = lastDeleted!!
-                            val time = cal.timeInMillis.toDouble()
-                            mThreadReference?.orderByChild("timestamp")?.startAt(time)
-                        } else {
-                            mThreadReference?.orderByChild("timestamp")
-                        }*//*
-
-                        *//*isBlockedUser =
-                            if (snapshot.hasChild("blockedBy_${session?.user?.userId}"))
-                                snapshot.child("blockedBy_${session?.user?.userId}").value as Boolean
-                            else false
-
-                        isBlockedForChat =
-                            if (snapshot.hasChild("blockedBy_${userId}"))
-                                snapshot.child("blockedBy_${userId}").value as Boolean
-                            else false
-
-                        if (!isDeletedUser) {
-                            when {
-                                isBlockedUser -> {
-                                    binding.llBlock.visible()
-                                    binding.llMainActions.gone()
-                                    binding.tvBlockContact.text =
-                                        getString(R.string.you_have_blocked_this_user)
-                                }
-                                isBlockedForChat -> {
-                                    binding.llBlock.visible()
-                                    binding.llMainActions.gone()
-                                    binding.tvBlockContact.text =
-                                        getString(R.string.you_can_no_longer_reply_to_this_conversation)
-                                }
-                                else -> {
-                                    binding.llBlock.gone()
-                                    binding.llMainActions.visible()
-                                }
-                            }
-                        } else {
-                            binding.llBlock.visible()
-                            binding.llMainActions.gone()
-                            binding.tvBlockContact.text =
-                                getString(R.string.user_has_deleted_account)
-                        }*//*
-
-                        *//*val options = FirebaseRecyclerOptions.Builder<Message>()
-                            .setQuery(query!!, Message::class.java)
-                            .setLifecycleOwner(binding.lifecycleOwner)
-                            .build()
-
-                        if (adapter == null || adapter?.itemCount == 0) {
-                            adapter = ChatAdapter(options, userId)
-                            binding.rvMessages.adapter = adapter
-//                            binding.rvMessages.itemAnimator = NoAnimAnimator()
-                            *//**//*adapter!!.registerAdapterDataObserver(object :
-                                RecyclerView.AdapterDataObserver() {
-                                override fun onItemRangeInserted(
-                                    positionStart: Int,
-                                    itemCount: Int,
-                                ) {
-                                    binding.rvMessages.smoothScrollToPosition(adapter!!.itemCount)
-                                }
-                            })*//**//*
-                            binding.rvMessages.post {
-//                                binding.rvMessages.scrollToPosition(adapter!!.itemCount)
-                                Handler(Looper.getMainLooper()).postDelayed(
-                                    Runnable { scrollDown() },
-                                    100
-                                )
-                            }
-                        } else {
-                            adapter?.updateOptions(options)
-                        }*//*
-                    }
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    showToastLong(error.message)
-                }
-            })*/
     }
 
     val handler = Handler(Looper.getMainLooper())
@@ -938,35 +707,25 @@ class ChatFragment : BaseFragment(), View.OnClickListener {
 
     private fun updateUserStatus(isTyping: Boolean) {
         val myUserId = session?.user?.userId.toString()
+        if (userSetStatus == UserStatus.ONLINE) {
+            val status = UserStatus.BUSY
+            when (status) {
+                UserStatus.ONLINE -> {
+                    binding.ivProfileIndicator.setImageResource(R.drawable.v_ic_circle_green)
+                    binding.ivIndicator.setImageResource(R.drawable.v_ic_circle_green)
+                }
 
-        /*        val conversation = mDBReference
-                    ?.child(Constants.TABLE_CHAT)
-                    ?.child(Constants.TABLE_CONVERSATIONS)
-                    ?.child(userId.toString())//Receiver
-                    ?.child(threadId.toString())//thread
-        
-                conversation?.addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onCancelled(error: DatabaseError) {
-        
-                    }
-        
-                    override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        if (dataSnapshot.value != null) {
-                            val params: MutableMap<String, Any> = HashMap()
-                            params[myUserId] = isTyping
-        
-                            mDBReference
-                                ?.child(Constants.TABLE_CHAT)
-                                ?.child(Constants.TABLE_CONVERSATIONS)
-                                ?.child(userId.toString())//Receiver
-                                ?.child(threadId.toString())//thread
-                                ?.child("isTyping")
-                                ?.updateChildren(params)
-                        }
-                        conversation.removeEventListener(this)
-                    }
-        
-                })*/
+                UserStatus.BUSY -> {
+                    binding.ivProfileIndicator.setImageResource(R.drawable.v_ic_circle_blue)
+                    binding.ivIndicator.setImageResource(R.drawable.v_ic_circle_blue)
+                }
+
+                else -> {
+                    binding.ivProfileIndicator.setImageResource(R.drawable.v_ic_circle_red)
+                    binding.ivIndicator.setImageResource(R.drawable.v_ic_circle_red)
+                }
+            }
+        }
     }
 
     override fun onStop() {
@@ -986,13 +745,6 @@ class ChatFragment : BaseFragment(), View.OnClickListener {
 
             //Clearing text filed
             binding.evMessage.setText("")
-
-            /*
-                        if (adapter == null || adapter?.itemCount == 0) {
-                            setChatHistoryAdapter()
-                        }
-            */
-
         }
     }
 
@@ -1004,7 +756,16 @@ class ChatFragment : BaseFragment(), View.OnClickListener {
     }
 
     private fun scrollDown() {
-
+        if (adapter != null) {
+            val viewHolder =
+                binding.rvMessages.findViewHolderForAdapterPosition(adapter!!.itemCount - 1)
+            viewHolder?.itemView?.y?.toInt()?.let {
+                binding.nestedScrollView.smoothScrollTo(
+                    0,
+                    it
+                )
+            }
+        }
     }
 
     private fun sendEmojiMessage(emojiUrl: String, audioUrl: String = "", type: MessageType) {
